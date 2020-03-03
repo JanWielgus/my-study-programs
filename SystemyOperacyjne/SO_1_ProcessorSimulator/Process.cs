@@ -74,6 +74,9 @@ namespace SO_1_ProcessorSimulator
         }
 
 
+        public int ID { get { return id; } }
+
+
 
 
         // >>>>>>>>>>> Methods
@@ -82,16 +85,25 @@ namespace SO_1_ProcessorSimulator
         // Executes this process for a given time
         // May be not ended in a given time
         // Autimatically executes execute() method when done
-        public void executeFor(int time)
+        // Returns true when ended execution
+        public bool executeFor(int time)
         {
+            // Decrease remaining time
             RemainingExecutionTime -= time;
 
             // If the whole task was completed then show the result
             if (RemainingExecutionTime == 0)
+            {
                 execute();
+                return true;
+            }
             else
+            {
                 Console.WriteLine("Task " + id + " suspended and waiting (remain " +
                     RemainingExecutionTime + " of total " + TotalExecutionTime + ")");
+
+                return false;
+            }
         }
     }
 }

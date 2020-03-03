@@ -38,6 +38,14 @@ namespace SO_1_ProcessorSimulator
             }
         }
 
+
+        // Remove process from the list
+        public bool removeProcess(Process process)
+        {
+            return processList.Remove(process);
+        }
+
+
         public int getAmtOfAwaitingProcesses()
         {
             return processList.Count;

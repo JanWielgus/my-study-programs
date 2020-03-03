@@ -21,9 +21,14 @@ namespace SO_1_ProcessorSimulator
         public bool executeNextTask()
         {
             // Execute the next time for this processor's time-slice (kwant czasu)
-            schedulingAlgorithm.getNextProcess().executeFor(timeSlice);
+            // And delete it if it was completed
+            Process currentPorcess = schedulingAlgorithm.getNextProcess();
+            bool result = currentPorcess.executeFor(timeSlice);
+            if (result == true) // when execution was ended
+                schedulingAlgorithm.removeProcess(currentPorcess);
 
 
+            // If there is no awaiting processes return true
             if (schedulingAlgorithm.getAmtOfAwaitingProcesses() == 0)
                 return true;
             else
