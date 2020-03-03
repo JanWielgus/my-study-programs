@@ -8,6 +8,7 @@ namespace SO_1_ProcessorSimulator
     {
         private int totalExecutionTime = 0;
         private int remainingExecutionTime = 0;
+        private int waitingTime;
         private bool isDone = false;
         private int id;
         private static int lastGivenID = 0;
@@ -64,6 +65,13 @@ namespace SO_1_ProcessorSimulator
         }
 
         public bool IsDone { get { return isDone; } }
+
+
+        public int WaitingTime
+        {
+            get { return waitingTime; }
+            set { waitingTime = value; }
+        }
 
 
 
