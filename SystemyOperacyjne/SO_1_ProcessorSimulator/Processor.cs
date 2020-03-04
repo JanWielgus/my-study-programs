@@ -21,6 +21,8 @@ namespace SO_1_ProcessorSimulator
         // Return true if there is no new process
         public bool executeNextTask()
         {
+            ProgramTimer.tick(timeSlice);
+
             // If there is no awaiting processes return true
             if (schedulingAlgorithm.getAmtOfAwaitingProcesses() == 0)
                 return true;
@@ -32,8 +34,6 @@ namespace SO_1_ProcessorSimulator
             if (result == true) // when execution was ended
             {
                 schedulingAlgorithm.removeProcess(currentPorcess);
-                Console.WriteLine("\tAverage turnaround time " + getAverageTurnaround());
-                Console.WriteLine("\tCount: " + schedulingAlgorithm.getAmtOfAwaitingProcesses());
             }
 
 
@@ -55,7 +55,7 @@ namespace SO_1_ProcessorSimulator
         }
 
 
-        public float getAverageTurnaround()
+        public float getAverageTurnaroundTime()
         {
             return schedulingAlgorithm.getAverageTurnaroundTime();
         }

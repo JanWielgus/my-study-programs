@@ -7,27 +7,24 @@ namespace SO_1_ProcessorSimulator
     abstract class SchedulingAlgorithm
     {
         protected List<Process> processList;
+        Average averageTurnaroundTime;
 
         public SchedulingAlgorithm()
         {
             // create a processes list
             processList = new List<Process>();
+
+            averageTurnaroundTime = new Average();
         }
 
         
         // Add new process to the list
-        public virtual void addProcess(Process process)
+        public void addProcess(Process process)
         {
+            process.AddedToProcessorTime = ProgramTimer.getTime();
+
             processList.Add(process);
         }
-
-        /*
-        // Create and add new process with random execution time
-        public void addNewRandomProcess(int maxExecutionTime)
-        {
-            Random tempRandom = new Random();
-            processList.Add(new Process(tempRandom.Next(0, maxExecutionTime)));
-        }*/
 
 
         // Add a whole 
@@ -43,6 +40,9 @@ namespace SO_1_ProcessorSimulator
         // Remove process from the list
         public virtual bool removeProcess(Process process)
         {
+            process.ExecutionEndTime = ProgramTimer.getTime();
+            averageTurnaroundTime.addNewValue(process.getTurnaroundTime());
+
             return processList.Remove(process);
         }
 
@@ -53,10 +53,13 @@ namespace SO_1_ProcessorSimulator
         }
 
 
+        public float getAverageTurnaroundTime()
+        {
+            return averageTurnaroundTime.getAverage();
+        }
+
+
         // Return next process that have to be executed for a given time by the processor
         public abstract Process getNextProcess();
-
-
-        public abstract float getAverageTurnaroundTime();
     }
 }

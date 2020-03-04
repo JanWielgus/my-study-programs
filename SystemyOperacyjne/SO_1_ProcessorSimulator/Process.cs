@@ -8,9 +8,13 @@ namespace SO_1_ProcessorSimulator
     {
         private int totalExecutionTime = 0;
         private int remainingExecutionTime = 0;
-        private int waitingTime;
         private bool isDone = false;
         private int id;
+
+        // For time calculations
+        private int addedToProcessorTime = -1;
+        private int executionEndTime = -1;
+
         private static int lastGivenID = 0;
 
 
@@ -26,14 +30,16 @@ namespace SO_1_ProcessorSimulator
         }
 
 
-        // Final taks execution
-        // Just shows a message
-        private void execute()
+        // Copy constructor
+        public Process(Process processToCopy)
         {
-            Console.WriteLine("Task " + id + " has just ended!");
-            isDone = true;
+            totalExecutionTime = processToCopy.totalExecutionTime;
+            remainingExecutionTime = processToCopy.remainingExecutionTime;
+            isDone = processToCopy.isDone;
+            id = processToCopy.id;
+            addedToProcessorTime = processToCopy.addedToProcessorTime;
+            executionEndTime = processToCopy.executionEndTime;
         }
-
 
 
 
@@ -67,19 +73,35 @@ namespace SO_1_ProcessorSimulator
         public bool IsDone { get { return isDone; } }
 
 
-        public int WaitingTime
+        public int ID { get { return id; } }
+
+
+        public int AddedToProcessorTime
         {
-            get { return waitingTime; }
-            set { waitingTime = value; }
+            get { return addedToProcessorTime; }
+            set { addedToProcessorTime = value; }
         }
 
+        public int ExecutionEndTime
+        {
+            get { return executionEndTime; }
+            set { executionEndTime = value; }
+        }
 
-        public int ID { get { return id; } }
 
 
 
 
         // >>>>>>>>>>> Methods
+
+
+        // Final taks execution
+        // Just shows a message
+        private void execute()
+        {
+            Console.WriteLine("Task " + id + " has just ended!");
+            isDone = true;
+        }
 
 
         // Executes this process for a given time
@@ -104,6 +126,15 @@ namespace SO_1_ProcessorSimulator
 
                 return false;
             }
+        }
+
+
+        public int getTurnaroundTime()
+        {
+            if (AddedToProcessorTime == -1 || ExecutionEndTime == -1)
+                return -1;
+
+            return ExecutionEndTime - TotalExecutionTime - AddedToProcessorTime;
         }
     }
 }
