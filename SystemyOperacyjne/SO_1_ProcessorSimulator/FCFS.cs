@@ -11,6 +11,7 @@ namespace SO_1_ProcessorSimulator
             // do nothing
         }
 
+
         public override void addProcess(Process process)
         {
             base.addProcess(process);
@@ -25,6 +26,7 @@ namespace SO_1_ProcessorSimulator
                 
         }
 
+
         public override float getAverageTurnaroundTime()
         {
             int sum = 0;
@@ -34,6 +36,7 @@ namespace SO_1_ProcessorSimulator
 
             return (float)sum / processList.Count;
         }
+
 
         public override Process getNextProcess()
         {
