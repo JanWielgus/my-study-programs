@@ -16,17 +16,18 @@ namespace SO_1_ProcessorSimulator
 
         
         // Add new process to the list
-        public void addProcess(Process process)
+        public virtual void addProcess(Process process)
         {
             processList.Add(process);
         }
 
+        /*
         // Create and add new process with random execution time
         public void addNewRandomProcess(int maxExecutionTime)
         {
             Random tempRandom = new Random();
             processList.Add(new Process(tempRandom.Next(0, maxExecutionTime)));
-        }
+        }*/
 
 
         // Add a whole 
@@ -34,13 +35,13 @@ namespace SO_1_ProcessorSimulator
         {
             foreach (Process process in processListToAdd)
             {
-                processList.Add(process);
+                addProcess(process);
             }
         }
 
 
         // Remove process from the list
-        public bool removeProcess(Process process)
+        public virtual bool removeProcess(Process process)
         {
             return processList.Remove(process);
         }
