@@ -19,7 +19,7 @@ namespace SO_1_ProcessorSimulator
 
         
         // Add new process to the list
-        public void addProcess(Process process)
+        public virtual void addProcess(Process process)
         {
             process.AddedToProcessorTime = ProgramTimer.getTime();
 

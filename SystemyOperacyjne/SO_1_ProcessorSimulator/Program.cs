@@ -1,10 +1,15 @@
-﻿using System;
+﻿/*
+ * Author: Jan Wielgus
+ * Date: 03.02.2020
+ */
+
+using System;
 using System.Collections.Generic;
 
 
 
 /*
- * This is a processor simulator
+ * This is a processor scheduling algorithms simulator
  * 
  * 
  * This program should be designed in a different way:
@@ -33,10 +38,10 @@ namespace SO_1_ProcessorSimulator
                 processSequenceArray.Add(new List<Process>());
                 List<Process> currentList = processSequenceArray[i];
 
-                int amtOfProcesses = random.Next(3, 6); // min/max of processes in this sequence
+                int amtOfProcesses = random.Next(3, 6); // SETTINGS: min/max of processes in this sequence
 
                 for (int j = 0; j < amtOfProcesses; j++)
-                    currentList.Add(new Process(random.Next(2, 12))); // min/max execution time for this process
+                    currentList.Add(new Process(random.Next(2, 12))); // SETTING: min/max execution time for this process
             }
 
 
@@ -45,6 +50,7 @@ namespace SO_1_ProcessorSimulator
             List<List<Process>> processListCopy1 = getProcessSequenceCopy(processSequenceArray);
             List<List<Process>> processListCopy2 = getProcessSequenceCopy(processSequenceArray);
             List<List<Process>> processListCopy3 = getProcessSequenceCopy(processSequenceArray);
+            List<List<Process>> processListCopy4 = getProcessSequenceCopy(processSequenceArray);
 
             //showProcessSequence(processSequenceArray);
             //showProcessSequence(processListCopy1);
@@ -52,40 +58,30 @@ namespace SO_1_ProcessorSimulator
 
             // Execute processors one by one
             // While processor is working add next processes sequences at specified order
-            
-
-            Console.WriteLine(" >>>  PROCESSOR 1 - FCFS");
-            Console.WriteLine();
-            executeProcessor(new Processor(new FCFS(), TimeSlice), processListCopy1);
-            Console.WriteLine();
-            Console.WriteLine(" <<< ENDED");
+            // Processor make time ticks
 
 
-
-            Console.WriteLine(" >>>  PROCESSOR 2 - SJF (Non-preemptive)"); // wywłaszczenie i bez (o co chodzi ??? ) <-----
-            Console.WriteLine();
-            //...
-            Console.WriteLine();
-            Console.WriteLine(" <<< ENDED");
+            executeProcessor(new Processor(new FCFS(), TimeSlice),
+                processListCopy1,
+                "PROCESSOR 1 - FCFS");
 
 
+            executeProcessor(new Processor(new SJF_NonPreemptive(), TimeSlice),
+                processListCopy2,
+                "PROCESSOR 2 - SJF(Non - preemptive)");
 
-            Console.WriteLine(" >>>  PROCESSOR 2 - SJF (Preemptive)"); // wywłaszczenie i bez (o co chodzi ??? ) <-----
-            Console.WriteLine();
-            //...
-            Console.WriteLine();
-            Console.WriteLine(" <<< ENDED");
+    
+            executeProcessor(new Processor(new SJF_Preemptive(), TimeSlice),
+                processListCopy3,
+                "PROCESSOR 2 - SJF (Preemptive)");
 
 
-
-            Console.WriteLine(" >>>  PROCESSOR 3 - Rotary");
-            Console.WriteLine();
-            executeProcessor(new Processor(new Rotary(), TimeSlice), processListCopy2);
-            Console.WriteLine();
-            Console.WriteLine(" <<< ENDED");
-            
+            executeProcessor(new Processor(new Rotary(), TimeSlice),
+                processListCopy4,
+                "PROCESSOR 3 - Rotary");
 
         }
+
 
 
         
@@ -115,8 +111,11 @@ namespace SO_1_ProcessorSimulator
         }
 
 
-        static void executeProcessor(Processor processor, List<List<Process>> listOfProcesses)
+        static void executeProcessor(Processor processor, List<List<Process>> listOfProcesses, string text)
         {
+            Console.WriteLine("   >>>>><    " + text + "    ><<<<<");
+            Console.WriteLine();
+
             int count = 0;
             processor.addProcessSequence(listOfProcesses[0]); // add the first process sequence
 
@@ -134,6 +133,9 @@ namespace SO_1_ProcessorSimulator
             // Show average turnaound time
             Console.WriteLine();
             Console.WriteLine("Average turnaround time: " + processor.getAverageTurnaroundTime());
+            Console.WriteLine("<<<<<   ENDED");
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
 

@@ -15,7 +15,7 @@ namespace SO_1_ProcessorSimulator
             return next;
         }
 
-
+        
         public override bool removeProcess(Process process)
         {
             if (base.removeProcess(process))
@@ -23,7 +23,7 @@ namespace SO_1_ProcessorSimulator
                 // If removed any element then move back
                 // To prevent skipping processes
                 // (When process is removed then the next is at the same index)
-                changeNextIndex(0);
+                changeNextIndex(-1);
                 return true;
             }
 

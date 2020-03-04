@@ -99,7 +99,7 @@ namespace SO_1_ProcessorSimulator
         // Just shows a message
         private void execute()
         {
-            Console.WriteLine("Task " + id + " has just ended!");
+            Console.WriteLine("Task " + id + " has just ended! (total: " + TotalExecutionTime + ")");
             isDone = true;
         }
 
