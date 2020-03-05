@@ -24,7 +24,7 @@ namespace SO_1_ProcessorSimulator
         public float getAverage()
         {
             if (amt > 0)
-                return sum / amt;
+                return (float)sum / amt;
             else
                 return -1;
         }

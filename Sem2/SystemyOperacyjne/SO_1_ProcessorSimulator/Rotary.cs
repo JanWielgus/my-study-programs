@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
+/*
+ * This scheduling algorithm treats processes array like a circle.
+ * Each process get one processor time slice and regardless the result is
+ * starts executing the next process (also for the one time slice)
+ * */
+
+
 namespace SO_1_ProcessorSimulator
 {
     class Rotary : SchedulingAlgorithm

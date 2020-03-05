@@ -17,6 +17,8 @@ using System.Collections.Generic;
  * 
  */
 
+
+
 namespace SO_1_ProcessorSimulator
 {
     class Program
@@ -26,9 +28,7 @@ namespace SO_1_ProcessorSimulator
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
-
+            // Each list has a list of processes (they will be added in several packs of processes to the processor)
             List<List<Process>> processSequenceArray = new List<List<Process>>();
 
             // Generate an array of random sequences of random processes
@@ -38,12 +38,11 @@ namespace SO_1_ProcessorSimulator
                 processSequenceArray.Add(new List<Process>());
                 List<Process> currentList = processSequenceArray[i];
 
-                int amtOfProcesses = random.Next(3, 6); // SETTINGS: min/max of processes in this sequence
+                int amtOfProcesses = random.Next(3, 7); // SETTINGS: min/max of processes in this sequence
 
                 for (int j = 0; j < amtOfProcesses; j++)
-                    currentList.Add(new Process(random.Next(2, 12))); // SETTING: min/max execution time for this process
+                    currentList.Add(new Process(random.Next(2, 15))); // SETTING: min/max execution time for this process
             }
-
 
 
             // Make a copies for each processor
@@ -57,8 +56,8 @@ namespace SO_1_ProcessorSimulator
             //showProcessSequence(processListCopy2);
 
             // Execute processors one by one
-            // While processor is working add next processes sequences at specified order
-            // Processor make time ticks
+            // While processor is working add next processes sequences
+            // Processor make time ticks inside
 
 
             executeProcessor(new Processor(new FCFS(), TimeSlice),
@@ -80,7 +79,7 @@ namespace SO_1_ProcessorSimulator
                 processListCopy4,
                 "PROCESSOR 3 - Rotary");
 
-        }
+        } // main
 
 
 
@@ -132,7 +131,7 @@ namespace SO_1_ProcessorSimulator
 
             // Show average turnaound time
             Console.WriteLine();
-            Console.WriteLine("Average turnaround time: " + processor.getAverageTurnaroundTime());
+            Console.WriteLine("Average turnaround time: " + processor.getAverageTurnaroundTime().ToString(".0"));
             Console.WriteLine("<<<<<   ENDED");
             Console.WriteLine();
             Console.WriteLine();
