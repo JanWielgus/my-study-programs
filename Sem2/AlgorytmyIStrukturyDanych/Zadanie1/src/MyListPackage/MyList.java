@@ -1,5 +1,6 @@
 package MyListPackage;
 
+import javax.swing.*;
 import java.util.Iterator;
 
 public class MyList<T> implements Iterable<T>
@@ -21,12 +22,17 @@ public class MyList<T> implements Iterable<T>
         if (index < 0)
             return false;
 
+        // If there are no array ensure the default capacity
+        if (array == null)
+            ensureCapacity(defaultCapacity);
         // Check if need to extend the array size
-        if (actualSize+1 > array.length)
+        else if (actualSize+1 > array.length)
+        {
             if (actualSize < defaultCapacity)
                 ensureCapacity(defaultCapacity);
             else
                 ensureCapacity(actualSize*2); // double the previous capacity
+        }
 
         // If index is between previous data
         if (index < actualSize)
@@ -75,7 +81,13 @@ public class MyList<T> implements Iterable<T>
 
     public boolean contains(T object)
     {
-        for (int i)
+        for (T obj: array)
+        {
+            if (obj == object)
+                return true;
+        }
+
+        return false;
     }
 
 
@@ -116,31 +128,71 @@ public class MyList<T> implements Iterable<T>
 
     public T get(int index)
     {
-
+        // If element is within the array size
+        if (index >= 0 && index < actualSize)
+            return array[index];
+        else
+            return null;
     }
 
 
     public int indexOf(T object)
     {
+        int curIndex = 0;
+        for (T obj: array)
+        {
+            if (obj == object)
+                return curIndex;
+            curIndex++;
+        }
 
+        return -1;
     }
 
 
-    public void set(int index, T element)
+    public T set(int index, T element)
     {
+        // If element is within the array size
+        if (index >= 0 && index < actualSize)
+        {
+            T prevObj = array[index];
+            array[index] = element;
 
+            // Return previous object on that position
+            return prevObj;
+        }
+        else
+            return null;
     }
 
 
-    public void remove(int index)
+    public T remove(int index)
     {
+        // Return null if try to remove object outside of the array
+        if (index < 0 || index >= actualSize)
+            return null;
 
+        T prevObj = get(index);
+        if (prevObj != null)
+        {
+            // Move all objects down in the array (fill the gap)
+            for (int i=index+1; i<actualSize; i++)
+                array[i-1] = array[i];
+
+            // Decrease the actual array length
+            actualSize--;
+
+            // Return previous object on that position
+            return prevObj;
+        }
+        else
+            return null;
     }
 
 
     public int size()
     {
-
+        return actualSize;
     }
 
 
@@ -151,12 +203,15 @@ public class MyList<T> implements Iterable<T>
     {
         return new Iterator<T>()
         {
-            int lastIndex = 0;
+            int lastIndex = -1;
 
             @Override
             public boolean hasNext()
             {
-                if (lastIndex >=0 && lastIndex < actualSize-1)
+                int testIndex = lastIndex + 1;
+
+                // If index in the next position is in the array border
+                if (testIndex >= 0 && testIndex < actualSize)
                     return true;
                 return false;
             }
@@ -176,7 +231,8 @@ public class MyList<T> implements Iterable<T>
             @Override
             public void remove()
             {
-                
+                if (lastIndex >= 0 && lastIndex < actualSize)
+                    MyList.this.remove(lastIndex);
             }
         };
     }
