@@ -22,6 +22,7 @@ public class MainClass
         testIterator.next();
         System.out.println("Next " + testIterator.next());
         testIterator.add(5);
+        testIterator.add(10);
         System.out.println("Next " + testIterator.next());
 
         showList(testList2);

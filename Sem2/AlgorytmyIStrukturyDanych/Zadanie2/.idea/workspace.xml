@@ -123,9 +123,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ExtendedOneWayLinkedListWithHeadTest" />
+        <item itemvalue="JUnit.ExtendedOneWayLinkedListWithHeadTest.addInIteratorTest" />
         <item itemvalue="Application.MainClass" />
         <item itemvalue="JUnit.ExtendedOneWayLinkedListWithHeadTest.forwardAndBackIteratorTest" />
-        <item itemvalue="JUnit.ExtendedOneWayLinkedListWithHeadTest.addInIteratorTest" />
         <item itemvalue="JUnit.ExtendedOneWayLinkedListWithHeadTest.setInIteratorTest" />
       </list>
     </recent_temporary>
