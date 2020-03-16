@@ -1,9 +1,10 @@
 package ClassFromLecture;
 
 
-// Wykłdowca nie zaimplementował w swojej klasie dwóch metod co zmusza
-// do zadeklarowania tej klasy jako abstrakcyjnej
-public abstract class OneWayLinkedListWithHead<E> extends AbstractList<E>
+import java.util.Iterator;
+import java.util.ListIterator;
+
+public class OneWayLinkedListWithHead<E> extends AbstractList<E>
 {
     Element head=null;
 
@@ -179,6 +180,17 @@ public abstract class OneWayLinkedListWithHead<E> extends AbstractList<E>
     }
 
 
+
+
+    @Override
+    public Iterator<E> iterator() {
+        return null;
+    }
+
+    @Override
+    public ListIterator<E> listIterator() {
+        return null;
+    }
 
 
 
