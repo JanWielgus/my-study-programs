@@ -4,6 +4,7 @@ import ClassFromLecture.*;
 
 import java.util.Iterator;
 import java.util.ListIterator;
+import java.util.NoSuchElementException;
 import java.util.function.Consumer;
 
 public class ExtendedOneWayLinkedListWithHead<T>
@@ -57,13 +58,13 @@ public class ExtendedOneWayLinkedListWithHead<T>
                     return get(lastIndex);
                 }
                 else
-                    return null;
+                    throw new NoSuchElementException();
             }
 
             @Override
             public boolean hasPrevious()
             {
-                int testIndex = lastIndex - 1;
+                int testIndex = lastIndex;
 
                 // If index in the prev position is in the array border
                 if (inBorder(testIndex))
@@ -76,11 +77,12 @@ public class ExtendedOneWayLinkedListWithHead<T>
             {
                 if (hasPrevious())
                 {
+                    T toReturn = get(lastIndex);
                     lastIndex--;
-                    return get(lastIndex);
+                    return toReturn;
                 }
                 else
-                    return null;
+                    throw new NoSuchElementException();
             }
 
             @Override
@@ -89,37 +91,51 @@ public class ExtendedOneWayLinkedListWithHead<T>
                 if (hasNext())
                     return lastIndex + 1;
                 else
-                    return -1;
+                    throw new NoSuchElementException();
             }
 
             @Override
             public int previousIndex()
             {
                 if (hasPrevious())
-                    return lastIndex - 1;
+                    return lastIndex;
                 else
-                    return -1;
+                    throw new NoSuchElementException();
             }
 
             @Override
             public void remove()
             {
                 if (inBorder(lastIndex))
+                {
                     ExtendedOneWayLinkedListWithHead.this.remove(lastIndex);
+                    lastIndex--;
+                }
+                else
+                    throw new IllegalStateException();
             }
 
             @Override
             public void set(T t)
             {
                 if (inBorder(lastIndex))
+                {
                     ExtendedOneWayLinkedListWithHead.this.set(lastIndex, t);
+                }
+                else
+                    throw new IllegalStateException();
             }
 
             @Override
             public void add(T t)
             {
-                if (inBorder(lastIndex))
-                    ExtendedOneWayLinkedListWithHead.this.add(lastIndex, t);
+                if (inBorder(lastIndex+1))
+                {
+                    ExtendedOneWayLinkedListWithHead.this.add(lastIndex+1, t);
+                    lastIndex++;
+                }
+                else
+                    throw new IllegalStateException();
             }
 
             boolean inBorder(int index)

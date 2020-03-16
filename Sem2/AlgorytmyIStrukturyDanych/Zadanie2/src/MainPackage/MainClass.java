@@ -11,7 +11,7 @@ public class MainClass
     {
         System.out.println("Dziala");
 
-/*
+
         ExtendedOneWayLinkedListWithHead<Integer> testList2 = new ExtendedOneWayLinkedListWithHead<>();
 
         testList2.add(1);
@@ -26,12 +26,12 @@ public class MainClass
 
         showList(testList2);
 
-        testList2.remove(3);
+        testList2.remove(2);
         showList(testList2);
 
 
-*/
 
+/*
 
         // Other tests
 
@@ -80,6 +80,8 @@ public class MainClass
         testList.add(8);
         testList.add(10);
         showList(testList);
+
+ */
     }
 
     public static <T> void showList (IList<T> toShow)
