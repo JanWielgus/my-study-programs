@@ -19,7 +19,7 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator
 
 
         // Random memory location
-        Instruction()
+        public Instruction()
         {
             Random rand = new Random();
             memLoc = rand.Next(Constants.FirstMemoryUnitAddr, Constants.LastMemoryUnitAddr);
@@ -29,7 +29,7 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator
 
 
         // Set memory location
-        Instruction(int memoryLocation)
+        public Instruction(int memoryLocation)
         {
             memLoc = memoryLocation;
 
@@ -38,26 +38,26 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator
 
 
         // Copy constructor
-        Instruction(Instruction instrToCopy)
+        public Instruction(Instruction instrToCopy)
         {
             memLoc = instrToCopy.memLoc;
             ID = instrToCopy.ID;
         }
 
 
-        void execute()
+        public void execute()
         {
             Console.WriteLine("Mem read instr no. " + ID + " addr: " + memLoc + " has just been executed.");
         }
 
 
-        int getID()
+        public int getID()
         {
             return ID;
         }
 
 
-        int getMemoryLocaiton()
+        public int getMemoryLocaiton()
         {
             return memLoc;
         }
