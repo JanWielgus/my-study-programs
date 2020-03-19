@@ -18,7 +18,14 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms
             if (instructionList.Count == 0)
                 throw new IndexOutOfRangeException("Array has no elements");
 
+            return getShortestSeekTimeInstruciton();
+        }
 
+
+
+        // Return drive instruction that has the shortest seek time
+        private Instruction getShortestSeekTimeInstruciton()
+        {
             // Finding the shortest seek time instruciton
             Instruction SST_instr = instructionList[0]; // shortest seek time instruciton
             int shortestSeekTime = getSeekTime(SST_instr); // its actual seek time

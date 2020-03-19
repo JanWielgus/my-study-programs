@@ -12,6 +12,7 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms
     {
         public override Instruction getNextInstruction()
         {
+            // Next instruction is the first one
             return instructionList[0];
         }
     }
