@@ -32,40 +32,5 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms
             else
                 return closestInstr;
         }
-
-
-        public override void addInstruction(Instruction instruction)
-        {
-            base.addInstruction(instruction);
-
-
-            if (instructionList.Count == 0)
-                instructionList.Add(instruction);
-            else
-            {
-                // Add in the order (avoid sorting)
-
-                // If new address is before the first instruction already in the list
-                if (instruction.getAddress() < instructionList[0].getAddress())
-                    instructionList.Insert(0, instruction);
-
-                // Find the proper place
-                else
-                {
-                    for (int i=1; i<instructionList.Count; i++)
-                    {
-                        // If new address is between previous and next and break
-                        if (instruction.getAddress() >= instructionList[i-1].getAddress() &&
-                            instruction.getAddress() <= instructionList[i].getAddress())
-                        {
-                            instructionList.Insert(i, instruction);
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-
     }
 }
