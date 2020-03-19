@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms;
 
 
 /*
@@ -13,13 +14,20 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator
 {
     class HDD_Drive
     {
-        private Algorithms.SchedulingAlgorithm schedulingAlgorithm;
+
+        private SchedulingAlgorithm schedulingAlgorithm;
         private Sum armMovementSum;
 
 
-        HDD_Drive()
+        HDD_Drive(SchedulingAlgorithm schedulingAlgorithm)
         {
+            this.schedulingAlgorithm = schedulingAlgorithm;
             armMovementSum = new Sum();
         }
+
+
+
+        // PUT CODE THERE
+        // ...
     }
 }
