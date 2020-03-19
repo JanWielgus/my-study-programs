@@ -9,7 +9,6 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms
         protected List<Instruction> instructionList;
 
 
-
         public SchedulingAlgorithm()
         {
             instructionList = new List<Instruction>();
@@ -24,7 +23,7 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms
         // Add new scheduling algorithm to the list
         public virtual void addInstruction(Instruction instruction)
         {
-            throw new NotImplementedException();
+            instructionList.Add(instruction);
         }
 
 
