@@ -19,7 +19,7 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator
         private Sum armMovementSum;
 
 
-        HDD_Drive(SchedulingAlgorithm schedulingAlgorithm)
+        public HDD_Drive(SchedulingAlgorithm schedulingAlgorithm)
         {
             driveArm = DriveArm.getInstance(); // Singleton
             this.schedulingAlgorithm = schedulingAlgorithm;
@@ -62,7 +62,7 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator
         }
 
 
-        public void addInstrucitonSequence(List<Instruction> instrListToAdd)
+        public void addInstrucitonList(List<Instruction> instrListToAdd)
         {
             schedulingAlgorithm.addInstructionSequence(instrListToAdd);
         }
