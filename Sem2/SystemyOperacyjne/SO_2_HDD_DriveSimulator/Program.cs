@@ -22,31 +22,26 @@ namespace SO_2_HDD_DriveSimulator
             Console.WriteLine("Hello World!");
 
             // Create the first instruciton sequence
-            List<List<Instruction>> instrSeq1 = createInstrucitonSequence();
+            List<List<Instruction>> instrSeq = createInstrucitonSequence();
 
-            // Copy this sequence to other sequences (deep copy)
-            List<List<Instruction>> instrSeq2 = getInstructionSequenceCopy(instrSeq1);
-            List<List<Instruction>> instrSeq3 = getInstructionSequenceCopy(instrSeq1);
-            List<List<Instruction>> instrSeq4 = getInstructionSequenceCopy(instrSeq1);
-
-
+            
             runDrive(new HDD_Drive(new FCFS()),
-                instrSeq1,
+                getInstructionSequenceCopy(instrSeq),
                 "Drive 1 - FCFS");
 
 
             runDrive(new HDD_Drive(new SSTF()),
-                instrSeq1,
+                getInstructionSequenceCopy(instrSeq),
                 "Drive 2 - SSTF");
 
 
             runDrive(new HDD_Drive(new SCAN()),
-                instrSeq1,
+                getInstructionSequenceCopy(instrSeq),
                 "Drive 3 - SCAN");
-
+            
 
             runDrive(new HDD_Drive(new C_SCAN()),
-                instrSeq1,
+                getInstructionSequenceCopy(instrSeq),
                 "Drive 4 - C-SCAN");
         }
 
@@ -75,6 +70,9 @@ namespace SO_2_HDD_DriveSimulator
         {
             Console.WriteLine("   >>>>><    " + text + "    ><<<<<");
             Console.WriteLine();
+
+            // Set the drive arm starting memory address
+            DriveArm.getInstance().moveToAddress((Constants.FirstMemoryUnitAddr + Constants.LastMemoryUnitAddr)/2);
 
             int count = 0;
             hdd_drive.addInstrucitonList(instrSeq[0]);
