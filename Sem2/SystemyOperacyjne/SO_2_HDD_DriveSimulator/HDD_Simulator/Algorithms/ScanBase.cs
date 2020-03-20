@@ -21,50 +21,64 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms
         {
             // If there are no elements then add the first one
             if (instructionList.Count == 0)
-                base.addInstruction(instruction); // just adds to the list
+            {
+                instructionList.Add(instruction);
+                return;
+            }
 
             // Else add keeping the order (without sorting)
-            else
-            {
-                // If new address is before the first instruction already in the list
-                if (instruction.getAddress() < instructionList[0].getAddress())
-                    instructionList.Insert(0, instruction);
 
-                // Find the proper place
-                else
+
+            // If new address is before the first instruction already in the list
+            if (instruction.getAddress() < instructionList[0].getAddress())
+            {
+                instructionList.Insert(0, instruction);
+                return;
+            }
+
+
+            // Find place between current instrucitons
+            for (int i = 1; i < instructionList.Count; i++)
+            {
+                // If new address is between previous and next and break
+                if (instruction.getAddress() >= instructionList[i - 1].getAddress() &&
+                    instruction.getAddress() <= instructionList[i].getAddress())
                 {
-                    for (int i = 1; i < instructionList.Count; i++)
-                    {
-                        // If new address is between previous and next and break
-                        if (instruction.getAddress() >= instructionList[i - 1].getAddress() &&
-                            instruction.getAddress() <= instructionList[i].getAddress())
-                        {
-                            instructionList.Insert(i, instruction);
-                            break;
-                        }
-                    }
+                    instructionList.Insert(i, instruction);
+                    return;
                 }
             }
 
+
+            // If not found a place before, add at the end
+            instructionList.Add(instruction);
         }
 
 
 
         protected Instruction getClosestInstruction(Direction direction)
         {
-            foreach (Instruction instr in instructionList)
+            if (direction == Direction.FORWARD)
             {
-                if (direction == Direction.FORWARD)
+                // Find first instruction with bigger address than current arm address
+                foreach (Instruction instr in instructionList)
                 {
                     if (instr.getAddress() > driveArm.getCurrentAddress())
                         return instr;
                 }
-                else if (direction == Direction.BACKWARD)
+            }
+            else if (direction == Direction.BACKWARD)
+            {
+                // Iterate backward
+                // Find first instruction with less address than current arm address
+                for (int i = instructionList.Count - 1; i >= 0; i--)
                 {
-                    if (instr.getAddress() < driveArm.getCurrentAddress())
-                        return instr;
+                    Instruction curInstr = instructionList[i];
+                    if (curInstr.getAddress() < driveArm.getCurrentAddress())
+                        return curInstr;
                 }
             }
+
 
             // if nothing was found - reached end of a memory address
             return null;
