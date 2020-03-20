@@ -13,8 +13,8 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator
     class Instruction
     {
         private readonly int address;
-
         private readonly int ID;
+
         private static int nextID_toSet = 0; // each instruction ID is set to this value and increment it
 
 

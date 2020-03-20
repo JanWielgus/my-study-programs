@@ -27,10 +27,28 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms
                 // Change direction
                 movingDirection = movingDirection == Direction.FORWARD ? Direction.BACKWARD : Direction.FORWARD;
 
-                return getClosestInstruction(movingDirection);
+                closestInstr = getClosestInstruction(movingDirection);
+
+                // If backwards closest instruction is also null then something is wrong so throw an exception
+                if (closestInstr == null)
+                    // If this method is wrote properly, this exception should never occur
+                    throw new InstructionNotFoundException("There are no new instructions in both ways");
+                else
+                    return closestInstr;
             }
             else
                 return closestInstr;
+        }
+
+
+        public class InstructionNotFoundException : Exception
+        {
+            public InstructionNotFoundException() { }
+            public InstructionNotFoundException(string message) : base(message) { }
+            public InstructionNotFoundException(string message, Exception inner) : base(message, inner) { }
+            protected InstructionNotFoundException(
+              System.Runtime.Serialization.SerializationInfo info,
+              System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
         }
     }
 }

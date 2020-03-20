@@ -13,7 +13,7 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms
         public SchedulingAlgorithm()
         {
             instructionList = new List<Instruction>();
-            driveArm = DriveArm.getInstance();
+            driveArm = DriveArm.getInstance(); // Singleton
         }
 
 

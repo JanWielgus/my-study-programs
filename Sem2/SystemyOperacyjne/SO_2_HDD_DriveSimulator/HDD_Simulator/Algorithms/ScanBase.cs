@@ -56,12 +56,12 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms
             {
                 if (direction == Direction.FORWARD)
                 {
-                    if (instr.getAddress() >= driveArm.getCurrentAddress())
+                    if (instr.getAddress() > driveArm.getCurrentAddress())
                         return instr;
                 }
                 else if (direction == Direction.BACKWARD)
                 {
-                    if (instr.getAddress() <= driveArm.getCurrentAddress())
+                    if (instr.getAddress() < driveArm.getCurrentAddress())
                         return instr;
                 }
             }
