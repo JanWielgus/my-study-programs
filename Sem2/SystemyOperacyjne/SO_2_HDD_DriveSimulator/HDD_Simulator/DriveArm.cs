@@ -20,12 +20,11 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator
     // >> Singleton part
 
         // The only instance
-        private static DriveArm driveArmInstance;
-        private static bool isCreated = false;
+        private static DriveArm driveArmInstance = null;
 
         public static DriveArm getInstance()
         {
-            if (!isCreated)
+            if (driveArmInstance == null)
                 driveArmInstance = new DriveArm();
 
             return driveArmInstance;
