@@ -65,7 +65,7 @@ public class MyStackTest
         Assertions.assertEquals(false, stack.isEmpty());
 
         // Make stack empty
-        for (int i=5; i>0; i++)
+        for (int i=5; i>0; i--)
             stack.pop();
 
         Assertions.assertEquals(true, stack.isEmpty());
