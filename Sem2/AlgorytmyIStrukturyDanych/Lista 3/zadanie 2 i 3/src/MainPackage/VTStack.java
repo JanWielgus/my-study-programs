@@ -43,8 +43,7 @@ public class VTStack<T> extends MyStack<T>
     }
 
 
-    @Override
-    public T top() throws EmptyStackException
+    public T toTop() throws EmptyStackException
     {
         T result = super.top();
         cursor = lastIndex; // set index to the last element
@@ -54,15 +53,15 @@ public class VTStack<T> extends MyStack<T>
 
 
     // return false if cursor is at the bottom of the stack
-    public boolean down()
+    public void down() throws BottomOfStackException
     {
+        if (downDist == amtOfElem-1)
+            throw new BottomOfStackException();
         if (downDist < amtOfElem-1)
         {
             downDist++;
             cursor = correctIndex(cursor-1);
-            return true;
         }
-        return false;
     }
 
 

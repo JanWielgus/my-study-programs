@@ -23,7 +23,7 @@ public class VTStackTest
 
 
     @Test
-    void generalTest1() throws IStack.FullStackException, IStack.EmptyStackException
+    void generalTest1() throws IStack.FullStackException, IStack.EmptyStackException, BottomOfStackException
     {
         Assertions.assertEquals(3, stack.size());
 
@@ -33,7 +33,7 @@ public class VTStackTest
         stack.down();
         stack.down();
         Assertions.assertEquals(10, stack.peek());
-        stack.top();
+        stack.toTop();
         Assertions.assertEquals(123, stack.pop());
         Assertions.assertEquals(15, stack.pop());
         stack.pop();
@@ -58,7 +58,7 @@ public class VTStackTest
 
 
     @Test
-    void downTest() throws IStack.FullStackException, IStack.EmptyStackException
+    void downTest() throws IStack.FullStackException, IStack.EmptyStackException, BottomOfStackException
     {
         stack.push(2837);
         stack.down();
@@ -66,9 +66,7 @@ public class VTStackTest
         stack.down();
         Assertions.assertEquals(5, stack.peek());
 
-        // if try to go down from the last element should return false
-        Assertions.assertEquals(false, stack.down());
-        //stack.down();
-        //System.out.println(stack.peek());
+        // if try to go down from the last element should throw an exception
+        Assertions.assertThrows(BottomOfStackException.class, stack::down);
     }
 }
