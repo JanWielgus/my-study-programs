@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="34953f1c-6bb1-4e3d-b7d1-0b41a18420db" name="Default Changelist" comment="" />
+    <list default="true" id="174224be-2551-4f37-a592-b944a0271645" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,6 +11,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -18,7 +19,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
   </component>
-  <component name="ProjectId" id="1ZX5lZjjcFYXV7M5Q7OVVa84YjN" />
+  <component name="ProjectId" id="1ZXb72qF3t92RywosGRxQEWGNSl" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
@@ -38,10 +39,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SolutionTest">
+  <component name="RunManager" selected="JUnit.MyStackTest">
     <configuration name="MainClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainPackage.MainClass" />
-      <module name="zadanie 1" />
+      <module name="zadanie 2 i 3" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="MainPackage.*" />
@@ -52,8 +53,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SolutionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="zadanie 1" />
+    <configuration name="MyStackTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zadanie 2 i 3" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="MainPackage.*" />
@@ -61,66 +62,15 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="MainPackage" />
-      <option name="MAIN_CLASS_NAME" value="MainPackage.SolutionTest" />
+      <option name="MAIN_CLASS_NAME" value="MainPackage.MyStackTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SolutionTest.bracketIndexTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="zadanie 1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MainPackage.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="MainPackage" />
-      <option name="MAIN_CLASS_NAME" value="MainPackage.SolutionTest" />
-      <option name="METHOD_NAME" value="bracketIndexTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SolutionTest.compareTwoBracketsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="zadanie 1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MainPackage.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="MainPackage" />
-      <option name="MAIN_CLASS_NAME" value="MainPackage.SolutionTest" />
-      <option name="METHOD_NAME" value="compareTwoBracketsTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SolutionTest.isNotNestedTest3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="zadanie 1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MainPackage.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="MainPackage" />
-      <option name="MAIN_CLASS_NAME" value="MainPackage.SolutionTest" />
-      <option name="METHOD_NAME" value="isNotNestedTest3" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SolutionTest" />
-        <item itemvalue="JUnit.SolutionTest.isNotNestedTest3" />
-        <item itemvalue="JUnit.SolutionTest.bracketIndexTest" />
-        <item itemvalue="JUnit.SolutionTest.compareTwoBracketsTest" />
+        <item itemvalue="JUnit.MyStackTest" />
         <item itemvalue="Application.MainClass" />
       </list>
     </recent_temporary>
@@ -130,11 +80,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="34953f1c-6bb1-4e3d-b7d1-0b41a18420db" name="Default Changelist" comment="" />
-      <created>1584972749468</created>
+      <changelist id="174224be-2551-4f37-a592-b944a0271645" name="Default Changelist" comment="" />
+      <created>1584988214407</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1584972749468</updated>
+      <updated>1584988214407</updated>
     </task>
     <servers />
   </component>
