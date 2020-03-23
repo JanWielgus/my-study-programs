@@ -20,6 +20,12 @@
   </component>
   <component name="ProjectId" id="1ZX5lZjjcFYXV7M5Q7OVVa84YjN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -32,7 +38,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.SolutionTest">
     <configuration name="MainClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainPackage.MainClass" />
       <module name="zadanie 1" />
@@ -46,8 +52,75 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SolutionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zadanie 1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MainPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="MainPackage" />
+      <option name="MAIN_CLASS_NAME" value="MainPackage.SolutionTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SolutionTest.bracketIndexTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zadanie 1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MainPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="MainPackage" />
+      <option name="MAIN_CLASS_NAME" value="MainPackage.SolutionTest" />
+      <option name="METHOD_NAME" value="bracketIndexTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SolutionTest.compareTwoBracketsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zadanie 1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MainPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="MainPackage" />
+      <option name="MAIN_CLASS_NAME" value="MainPackage.SolutionTest" />
+      <option name="METHOD_NAME" value="compareTwoBracketsTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SolutionTest.isNotNestedTest3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zadanie 1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MainPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="MainPackage" />
+      <option name="MAIN_CLASS_NAME" value="MainPackage.SolutionTest" />
+      <option name="METHOD_NAME" value="isNotNestedTest3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SolutionTest" />
+        <item itemvalue="JUnit.SolutionTest.isNotNestedTest3" />
+        <item itemvalue="JUnit.SolutionTest.bracketIndexTest" />
+        <item itemvalue="JUnit.SolutionTest.compareTwoBracketsTest" />
         <item itemvalue="Application.MainClass" />
       </list>
     </recent_temporary>
