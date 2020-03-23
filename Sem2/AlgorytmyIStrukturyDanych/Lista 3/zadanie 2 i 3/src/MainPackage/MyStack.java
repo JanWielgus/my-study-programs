@@ -70,7 +70,7 @@ public class MyStack<T> implements IStack<T>
     }
 
 
-    private int correctIndex(int index)
+    protected int correctIndex(int index)
     {
         if (index >= Size)
             index -= Size;
