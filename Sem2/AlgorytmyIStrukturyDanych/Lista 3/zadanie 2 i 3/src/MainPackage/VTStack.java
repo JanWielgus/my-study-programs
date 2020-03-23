@@ -6,6 +6,7 @@ package MainPackage;
 public class VTStack<T> extends MyStack<T>
 {
     private int cursor = 0; // index
+    private int downDist = 0; // distance from the top of the stack
 
 
     public VTStack(int size)
@@ -28,6 +29,7 @@ public class VTStack<T> extends MyStack<T>
     {
         super.push(elem);
         cursor = lastIndex;
+        downDist = 0;
     }
 
 
@@ -36,6 +38,7 @@ public class VTStack<T> extends MyStack<T>
     {
         T result = super.pop();
         cursor = lastIndex;
+        downDist = 0;
         return result;
     }
 
@@ -44,7 +47,8 @@ public class VTStack<T> extends MyStack<T>
     public T top() throws EmptyStackException
     {
         T result = super.top();
-        cursor = size()-1; // set index to the last element
+        cursor = lastIndex; // set index to the last element
+        downDist = 0;
         return result;
     }
 
@@ -52,31 +56,13 @@ public class VTStack<T> extends MyStack<T>
     // return false if cursor is at the bottom of the stack
     public boolean down()
     {
-        if (cursorDistanceFromTop(lastIndex) < amtOfElem)
+        if (downDist < amtOfElem-1)
         {
+            downDist++;
             cursor = correctIndex(cursor-1);
             return true;
         }
         return false;
-    }
-
-/*
-    private int distanceFromLastElementIndex(int index)
-    {
-        int lastElementIndex = correctIndex(lastIndex - size());
-
-        if (lastElementIndex <= cursor)
-            return cursor-lastElementIndex;
-        else
-            return (Size + cursor) - lastElementIndex;
-    }*/
-
-    private int cursorDistanceFromTop(int index)
-    {
-        if (index <= cursor)
-            return cursor - index;
-        else
-            return (Size + cursor) - index;
     }
 
 

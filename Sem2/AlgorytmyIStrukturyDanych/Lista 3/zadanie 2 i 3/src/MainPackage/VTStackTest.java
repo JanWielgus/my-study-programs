@@ -68,5 +68,7 @@ public class VTStackTest
 
         // if try to go down from the last element should return false
         Assertions.assertEquals(false, stack.down());
+        //stack.down();
+        //System.out.println(stack.peek());
     }
 }

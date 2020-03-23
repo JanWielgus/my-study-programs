@@ -39,7 +39,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.VTStackTest">
+  <component name="RunManager" selected="JUnit.MyStackTest">
     <configuration name="MainClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainPackage.MainClass" />
       <module name="zadanie 2 i 3" />
@@ -83,10 +83,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="VTStackTest.downTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zadanie 2 i 3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MainPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="MainPackage" />
+      <option name="MAIN_CLASS_NAME" value="MainPackage.VTStackTest" />
+      <option name="METHOD_NAME" value="downTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.VTStackTest" />
         <item itemvalue="JUnit.MyStackTest" />
+        <item itemvalue="JUnit.VTStackTest" />
+        <item itemvalue="JUnit.VTStackTest.downTest" />
         <item itemvalue="Application.MainClass" />
       </list>
     </recent_temporary>
