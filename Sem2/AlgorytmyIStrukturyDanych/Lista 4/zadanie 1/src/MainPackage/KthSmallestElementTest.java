@@ -56,12 +56,14 @@ public class KthSmallestElementTest
 
         Assertions.assertEquals(2, KthSmallestElement.getKthSmElem(1, testList));
         Assertions.assertEquals(3, KthSmallestElement.getKthSmElem(2, testList));
-        Assertions.assertEquals(4, KthSmallestElement.getKthSmElem(3, testList));
-        Assertions.assertEquals(6, KthSmallestElement.getKthSmElem(4, testList));
-        Assertions.assertEquals(9, KthSmallestElement.getKthSmElem(5, testList));
-        Assertions.assertEquals(10, KthSmallestElement.getKthSmElem(6, testList));
-        Assertions.assertEquals(134, KthSmallestElement.getKthSmElem(7, testList));
-        Assertions.assertEquals(1123, KthSmallestElement.getKthSmElem(8, testList));
+        Assertions.assertEquals(3, KthSmallestElement.getKthSmElem(3, testList));
+        Assertions.assertEquals(4, KthSmallestElement.getKthSmElem(4, testList));
+        Assertions.assertEquals(6, KthSmallestElement.getKthSmElem(5, testList));
+        Assertions.assertEquals(6, KthSmallestElement.getKthSmElem(6, testList));
+        Assertions.assertEquals(9, KthSmallestElement.getKthSmElem(7, testList));
+        Assertions.assertEquals(10, KthSmallestElement.getKthSmElem(8, testList));
+        Assertions.assertEquals(134, KthSmallestElement.getKthSmElem(9, testList));
+        Assertions.assertEquals(1123, KthSmallestElement.getKthSmElem(10, testList));
     }
 
 

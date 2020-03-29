@@ -39,6 +39,15 @@ public class KthSmallestElement
                 Sr.add(elem);
         }
 
+        /*
+        System.out.println("u value: " + uElem);
+        System.out.println("Sl:");
+        showList(Sl);
+        System.out.println("Su:");
+        showList(Su);
+        System.out.println("Sr:");
+        showList(Sr);*/
+
 
         // Recursive calls
         if (k <= Sl.size())
@@ -47,5 +56,15 @@ public class KthSmallestElement
             return uElem;
         else
             return getKthSmElem(k - Sl.size() - Su.size(), Sr);
+    }
+
+
+
+    private static <T> void showList(ArrayList<T> list)
+    {
+        System.out.println("List size: " + list.size());
+        for (T elem: list)
+            System.out.println("\t" + elem);
+        System.out.println();
     }
 }

@@ -38,7 +38,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.KthSmallestElementTest.generalTest2">
+  <component name="RunManager" selected="JUnit.KthSmallestElementTest">
     <configuration name="KthSmallestElementTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="zadanie 1" />
       <extension name="coverage">
@@ -88,9 +88,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.KthSmallestElementTest" />
         <item itemvalue="JUnit.KthSmallestElementTest.generalTest2" />
         <item itemvalue="JUnit.KthSmallestElementTest.generalTest1" />
-        <item itemvalue="JUnit.KthSmallestElementTest" />
       </list>
     </recent_temporary>
   </component>
@@ -117,16 +117,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/MainPackage/KthSmallestElement.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
