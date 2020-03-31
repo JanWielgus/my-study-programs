@@ -26,7 +26,6 @@ public class Solution
 
             currentEnd = B[i];
             size++;
-            System.out.println("Size: " + size + " End: " + currentEnd);
         }
 
         return size;
