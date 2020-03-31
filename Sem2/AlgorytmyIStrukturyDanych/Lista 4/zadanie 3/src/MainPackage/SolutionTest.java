@@ -1,16 +1,27 @@
 package MainPackage;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class SolutionTest
 {
+    Solution sol;
+    int[] A;
+    int[] B;
+
+    @BeforeEach
+    void setup()
+    {
+        sol = new Solution();
+        sol = new Solution();
+    }
+
     @Test
     void test1()
     {
-        Solution sol = new Solution();
-        int[] A = new int[5];
-        int[] B = new int[5];
+        A = new int[5];
+        B = new int[5];
 
         A[0] = 1;
         A[1] = 3;
@@ -26,4 +37,5 @@ public class SolutionTest
 
         Assertions.assertEquals(3, sol.solution(A, B));
     }
+
 }

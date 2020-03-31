@@ -8,6 +8,9 @@ public class Solution
 {
     public int solution(int[] A, int[] B)
     {
+        if (A.length == 0 || B.length == 0)
+            return 0;
+
         int size = 1;
         int currentEnd = B[0];
 
