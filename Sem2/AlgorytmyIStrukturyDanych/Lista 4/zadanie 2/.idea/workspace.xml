@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c1282b0-6d0a-46e9-95bc-d0b8f38e5506" name="Default Changelist" comment="" />
+    <list default="true" id="bdd4f145-c9e9-48c0-b8c4-92ae710f71e4" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +18,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
   </component>
-  <component name="ProjectId" id="1ZofeVrvOPg7X10Jn5jnS3NtxBW" />
+  <component name="ProjectId" id="1Zt7QPadjuvJv3iWv9pV5n8mnD4" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
@@ -38,9 +38,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.KthSmallestElementTest">
-    <configuration name="KthSmallestElementTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="zadanie 1" />
+  <component name="RunManager">
+    <configuration name="SolutionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zadanie 2" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="MainPackage.*" />
@@ -48,49 +48,15 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="MainPackage" />
-      <option name="MAIN_CLASS_NAME" value="MainPackage.KthSmallestElementTest" />
+      <option name="MAIN_CLASS_NAME" value="MainPackage.SolutionTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="KthSmallestElementTest.generalTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="zadanie 1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MainPackage.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="MainPackage" />
-      <option name="MAIN_CLASS_NAME" value="MainPackage.KthSmallestElementTest" />
-      <option name="METHOD_NAME" value="generalTest1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="KthSmallestElementTest.generalTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="zadanie 1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MainPackage.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="MainPackage" />
-      <option name="MAIN_CLASS_NAME" value="MainPackage.KthSmallestElementTest" />
-      <option name="METHOD_NAME" value="generalTest2" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.KthSmallestElementTest" />
-        <item itemvalue="JUnit.KthSmallestElementTest.generalTest2" />
-        <item itemvalue="JUnit.KthSmallestElementTest.generalTest1" />
+        <item itemvalue="JUnit.SolutionTest" />
       </list>
     </recent_temporary>
   </component>
@@ -99,11 +65,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5c1282b0-6d0a-46e9-95bc-d0b8f38e5506" name="Default Changelist" comment="" />
-      <created>1585510462511</created>
+      <changelist id="bdd4f145-c9e9-48c0-b8c4-92ae710f71e4" name="Default Changelist" comment="" />
+      <created>1585646519712</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1585510462511</updated>
+      <updated>1585646519712</updated>
     </task>
     <servers />
   </component>
@@ -112,9 +78,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
