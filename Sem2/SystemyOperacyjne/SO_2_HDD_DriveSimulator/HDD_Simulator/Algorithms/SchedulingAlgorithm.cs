@@ -44,7 +44,7 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms
         }
 
 
-        public int getAmtOfAwaitingInstructions()
+        public virtual int getAmtOfAwaitingInstructions()
         {
             return instructionList.Count;
         }

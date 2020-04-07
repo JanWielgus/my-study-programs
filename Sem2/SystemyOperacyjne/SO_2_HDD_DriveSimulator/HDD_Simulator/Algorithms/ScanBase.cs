@@ -58,10 +58,16 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms
 
         protected Instruction getClosestInstruction(Direction direction)
         {
+            return getClosestInstruction(direction, instructionList);
+        }
+
+
+        protected Instruction getClosestInstruction(Direction direction, List<Instruction> list)
+        {
             if (direction == Direction.FORWARD)
             {
                 // Find first instruction with bigger address than current arm address
-                foreach (Instruction instr in instructionList)
+                foreach (Instruction instr in list)
                 {
                     if (instr.getAddress() > driveArm.getCurrentAddress())
                         return instr;
@@ -71,9 +77,9 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms
             {
                 // Iterate backward
                 // Find first instruction with less address than current arm address
-                for (int i = instructionList.Count - 1; i >= 0; i--)
+                for (int i = list.Count - 1; i >= 0; i--)
                 {
-                    Instruction curInstr = instructionList[i];
+                    Instruction curInstr = list[i];
                     if (curInstr.getAddress() < driveArm.getCurrentAddress())
                         return curInstr;
                 }
