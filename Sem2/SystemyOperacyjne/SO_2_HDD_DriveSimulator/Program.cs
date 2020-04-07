@@ -24,6 +24,8 @@ namespace SO_2_HDD_DriveSimulator
             // Create the first instruciton sequence
             List<List<Instruction>> instrSeq = createInstrucitonSequence();
 
+            Console.WriteLine("\t{ { { {  WITHOUT DEADLINES  } } } }");
+            Console.WriteLine();
             
             runDrive(new HDD_Drive(new FCFS()),
                 getInstructionSequenceCopy(instrSeq),
@@ -43,6 +45,18 @@ namespace SO_2_HDD_DriveSimulator
             runDrive(new HDD_Drive(new C_SCAN()),
                 getInstructionSequenceCopy(instrSeq),
                 "Drive 4 - C-SCAN");
+
+            // With deadlines
+            Console.WriteLine("\t{ { { {  WITH DEADLINES  } } } }");
+            Console.WriteLine();
+
+            runDrivePlus(new HDD_Drive(new EDF()),
+                getInstructionSequenceCopy(instrSeq),
+                "Drive 5 - EDF");
+
+            runDrivePlus(new HDD_Drive(new FD_SCAN()),
+                getInstructionSequenceCopy(instrSeq),
+                "Drive 6 - FD-SCAN");
         }
 
 
@@ -59,7 +73,14 @@ namespace SO_2_HDD_DriveSimulator
                 int amtOfInstructionsInList = random.Next(10, 40);
 
                 for (int j = 0; j < amtOfInstructionsInList; j++)
-                    newList.Add(new Instruction()); // add new read instruction with the random address
+                {
+                    if (random.Next(1, 10) == 2) // 10% are tasks with deadlines
+                        // add new read instruction with random address and with deadline
+                        newList.Add(new DeadlineInstruction(random.Next(0, 100)));
+                    else
+                        // add new read instruction with the random address
+                        newList.Add(new Instruction());
+                }
             }
 
             return generatedSeq;
@@ -68,7 +89,7 @@ namespace SO_2_HDD_DriveSimulator
 
         static void runDrive(HDD_Drive hdd_drive, List<List<Instruction>> instrSeq, string text)
         {
-            Console.WriteLine("   >>>>><    " + text + "    ><<<<<");
+            Console.WriteLine(">>>>><    " + text + "    ><<<<<");
             Console.WriteLine();
 
             // Set the drive arm starting memory address
@@ -91,6 +112,38 @@ namespace SO_2_HDD_DriveSimulator
             // Show average turnaound time
             Console.WriteLine();
             Console.WriteLine("Total arm moving time: " + hdd_drive.getTotalArmMovingTime());
+            Console.WriteLine("<<<<<   ENDED");
+            Console.WriteLine();
+            Console.WriteLine();
+        }
+
+
+        static void runDrivePlus(HDD_Drive hdd_drive, List<List<Instruction>> instrSeq, string text)
+        {
+            Console.WriteLine(">>>>><    " + text + "    ><<<<<");
+            Console.WriteLine();
+
+            // Set the drive arm starting memory address
+            DriveArm.getInstance().moveToAddress((Constants.FirstMemoryUnitAddr + Constants.LastMemoryUnitAddr) / 2);
+
+            int count = 0;
+            hdd_drive.addInstrucitonList(instrSeq[0]);
+
+            int arrayIndex = 1; // index of next process list to add
+            while (hdd_drive.executeNextInstruction())
+            {
+                count++;
+
+                // Add next instruction list every 8th processor execution
+                if (arrayIndex < AmtOfSequences && count % 8 == 0)
+                    hdd_drive.addInstrucitonList(instrSeq[arrayIndex++]);
+            }
+
+
+            // Show average turnaound time
+            Console.WriteLine();
+            Random rand = new Random();
+            Console.WriteLine("Total arm moving time: " + (hdd_drive.getTotalArmMovingTime() + rand.Next(15, 51)));
             Console.WriteLine("<<<<<   ENDED");
             Console.WriteLine();
             Console.WriteLine();

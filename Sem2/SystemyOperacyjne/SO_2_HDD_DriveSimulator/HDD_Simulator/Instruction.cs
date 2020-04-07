@@ -47,7 +47,7 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator
 
         public void execute()
         {
-            Console.WriteLine("Mem read instr no. " + ID + " addr: " + address + " has just been executed.");
+            //Console.WriteLine("Mem read instr no. " + ID + " addr: " + address + " has just been executed.");
         }
 
 

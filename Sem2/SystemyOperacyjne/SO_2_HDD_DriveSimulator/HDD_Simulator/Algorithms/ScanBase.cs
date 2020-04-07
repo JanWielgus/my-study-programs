@@ -56,6 +56,15 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms
 
 
 
+        protected Instruction getClosestInstruction(List<Instruction> list)
+        {
+            Instruction instr = getClosestInstruction(Direction.FORWARD, list);
+            if (instr != null)
+                return instr;
+            else
+                return getClosestInstruction(Direction.BACKWARD, list);
+        }
+
         protected Instruction getClosestInstruction(Direction direction)
         {
             return getClosestInstruction(direction, instructionList);

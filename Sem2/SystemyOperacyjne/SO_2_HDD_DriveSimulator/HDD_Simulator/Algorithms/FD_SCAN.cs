@@ -23,27 +23,43 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms
         {
             Direction direction = determineDirection();
             Instruction closestNormal = getClosestInstruction(direction);
+
+            if (deadlineInstrList.Count == 0)
+                return instructionList[0];
+
             DeadlineInstruction closestDeadline = (DeadlineInstruction)getClosestInstruction(direction, deadlineInstrList);
 
+            Instruction toReturn;
+
             if (closestDeadline == null)
-                return closestNormal;
+                toReturn = closestNormal;
             if (closestNormal == null)
-                return closestDeadline;
+                toReturn = closestDeadline;
 
             if (direction == Direction.FORWARD)
             {
                 if (closestDeadline.getAddress() < closestNormal.getAddress())
-                    return closestDeadline;
+                    toReturn = closestDeadline;
                 else
-                    return closestNormal;
+                    toReturn = closestNormal;
             }
             else // Backward
             {
                 if (closestDeadline.getAddress() > closestNormal.getAddress())
-                    return closestDeadline;
+                    toReturn = closestDeadline;
                 else
-                    return closestNormal;
+                    toReturn = closestNormal;
             }
+
+            if (toReturn == null)
+            {
+                if (deadlineInstrList.Count > 0)
+                    return deadlineInstrList[0];
+                else
+                    return instructionList[0];
+            }
+            else
+                return toReturn;
         }
 
         public override int getAmtOfAwaitingInstructions()
@@ -74,25 +90,19 @@ namespace SO_2_HDD_DriveSimulator.HDD_Simulator.Algorithms
 
             int armAddr = DriveArm.getInstance().getCurrentAddress();
 
-            // Get closest instructions in both directions
-            Instruction closestForward = getClosestInstruction(Direction.FORWARD, deadlineInstrList);
-            Instruction closestBackward = getClosestInstruction(Direction.BACKWARD, deadlineInstrList);
+            Instruction closest;
 
-            // If one of them is null, return the other one
-            if (closestForward == null)
-                return Direction.BACKWARD;
-            if (closestBackward == null)
-                return Direction.FORWARD;
+            if (deadlineInstrList.Count > 0)
+                closest = getClosestInstruction(deadlineInstrList);
+            else
+                closest = getClosestInstruction(instructionList);
 
-            if (distance(armAddr, closestForward.getAddress()) < distance(armAddr, closestBackward.getAddress()))
+
+            if (closest.getAddress() >= armAddr)
                 return Direction.FORWARD;
             else
                 return Direction.BACKWARD;
         }
 
-        private int distance(int one, int two)
-        {
-            return Math.Abs(one - two);
-        }
     }
 }
