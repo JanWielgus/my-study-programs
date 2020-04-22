@@ -10,6 +10,7 @@ namespace SO_3_PageReplacementSimulator.PageReplacement
 		public bool InMemory { get; set; }
 		public int MemoryAddTimeStamp { get; set; }
 		public int LastUseTimeStamp { get; set; }
+		public int Chance { get; set; } // only for ALRU
 
 		public DataUnit(int addr)
 		{
@@ -17,6 +18,7 @@ namespace SO_3_PageReplacementSimulator.PageReplacement
 			InMemory = false;
 			MemoryAddTimeStamp = 0;
 			LastUseTimeStamp = 0;
+			Chance = 1;
 		}
 	}
 }

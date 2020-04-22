@@ -56,5 +56,29 @@ namespace SO_3_PageReplacementSimulator.PageReplacement
 		{
 			return pageReplacementCounter;
 		}
+
+
+
+		public bool loadPageToPhysicalMemoryOPT(int address, List<int> remainingRequests)
+		{
+			// Update timer
+			// Just increase time by some value
+			Timer.getInstance().increaseTime(7);
+
+			if (address >= pagesArray.Count || address < 0)
+				return false;
+
+
+			DataUnit toAdd = pagesArray[address]; // address is the same as index in array
+			if (physicalMemory.addFrameToMemory(toAdd) == false)
+			{
+				pageReplacementCounter++;
+				((OPT)pageReplAlg).replacePageOPT(remainingRequests, pagesArray.Count);
+
+				physicalMemory.addFrameToMemory(toAdd);
+			}
+
+			return true;
+		}
 	}
 }

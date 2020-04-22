@@ -21,11 +21,11 @@ namespace SO_3_PageReplacementSimulator.PageReplacement
 		{
 			//Timer.getInstance().increaseTime(3);
 			// Check if frame of this address already exist in memory array
-			foreach (DataUnit frame in frameArray)
+			for (int i=0; i<frameArray.Count; i++)
 			{
-				if (frame.Address == frameToAdd.Address)
+				if (frameArray[i].Address == frameToAdd.Address)
 				{
-					frame.LastUseTimeStamp = Timer.getInstance().getTime();
+					frameArray[i].LastUseTimeStamp = Timer.getInstance().getTime();
 					return true;
 				}
 			}
@@ -39,7 +39,9 @@ namespace SO_3_PageReplacementSimulator.PageReplacement
 			Timer timer = Timer.getInstance();
 			frameToAdd.LastUseTimeStamp = timer.getTime();
 			frameToAdd.MemoryAddTimeStamp = timer.getTime();
+			frameToAdd.Chance = 1;
 			frameArray.Add(frameToAdd);
+			//Console.WriteLine("\tAdded frame " + frameToAdd.Address + "\t" + frameArray.ToArray());
 
 			return true;
 		}
@@ -50,6 +52,7 @@ namespace SO_3_PageReplacementSimulator.PageReplacement
 			for (int i=0; i<frameArray.Count; i++)
 			{
 				DataUnit currentFrame = frameArray[i];
+				//Console.WriteLine("\t\tRemoving frame " + currentFrame.Address);
 
 				if (currentFrame.Address == address)
 				{
