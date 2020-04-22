@@ -65,7 +65,7 @@ namespace SO_3_PageReplacementSimulator
 				addressList, "LRU");
 
 			simulate(new ALRU(), amtOfFrames, amtOfPages,
-				addressList, "Apprx LRU");
+				addressList, "Approx LRU");
 
 			simulate(new RAND(), amtOfFrames, amtOfPages,
 				addressList, "RAND");
