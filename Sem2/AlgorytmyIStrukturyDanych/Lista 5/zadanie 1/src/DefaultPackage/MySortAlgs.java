@@ -107,14 +107,17 @@ public class MySortAlgs
             System.out.println();
         }*/
 
-        // sort buckets and add update result array
-        int currentAppendIndex = 0;
+        // sort buckets and update result array
+        int currentAppendIndex = 0; // index to put next element in the result array
         for (Bucket<T> bucket: bucketArrays)
         {
             List<T> bucketList = bucket.getList();
+
+            // If bucket has at least two elements, use insertion sort
             if (bucketList.size() > 1)
                 insertionSort(bucketList);
 
+            // Append all bucket elements to result array
             for (int i=0; i<bucketList.size(); i++)
             {
                 list.set(currentAppendIndex, bucketList.get(i));
