@@ -150,4 +150,31 @@ public class MySortAlgsTest
         MySortAlgs.bucketSort(testList);
         Assertions.assertArrayEquals(new Object[]{-5, 1, 1, 2, 3, 5, 6, 10, 11, 98, 100}, testList.toArray());
     }
+
+
+    @Test
+    void bucketSortTest4FloatingPoint()
+    {
+        ArrayList<Double> floatingArray = new ArrayList<>();
+        floatingArray.add(0.1);
+        floatingArray.add(0.05);
+        floatingArray.add(0.01);
+        floatingArray.add(0.2);
+        floatingArray.add(0.051);
+
+        MySortAlgs.bucketSort(floatingArray);
+        Assertions.assertArrayEquals(new Object[]{0.01, 0.05, 0.051, 0.1, 0.2}, floatingArray.toArray());
+    }
+
+
+    @Test
+    void bucketSortTest4Negative()
+    {
+        testList.add(-10);
+        testList.add(-5);
+        testList.add(-8);
+
+        MySortAlgs.bucketSort(testList);
+        Assertions.assertArrayEquals(new Object[]{-10, -8, -5, 1, 5, 6, 10, 11}, testList.toArray());
+    }
 }

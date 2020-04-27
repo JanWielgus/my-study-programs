@@ -84,22 +84,20 @@ public class MySortAlgs
         for (int i=0; i<amtOfBuckets; i++)
             bucketArrays[i] = new Bucket<>();
 
+        T smallest = getMin(list);
+        T biggest = getMax(list);
 
-        // divider = ceil((maxValue + 1) / amtOfBuckets)
-        T maxVal = getMax(list);
-        System.out.println("Max: " + maxVal);
-        double divider = Math.ceil((maxVal.doubleValue() + 1.0) / (double)amtOfBuckets);
-        System.out.println("Divider: " + divider);
 
         // put data into buckets
         for (T element: list)
         {
-            // index = floor(value / divider)
-            int j = (int)Math.floor(element.doubleValue() / divider);
-            System.out.println("J: " + j);
+            int j = (int)(map(element.doubleValue(), smallest.doubleValue(), biggest.doubleValue(),
+                    0, amtOfBuckets-1) + 0.5);
+            //System.out.println("J: " + j);
             bucketArrays[j].addElement(element);
         }
 
+        /*
         // Test - show all buckets
         for (Bucket<T> bucket: bucketArrays)
         {
@@ -107,7 +105,7 @@ public class MySortAlgs
             for (int i=0; i<bucket.getList().size(); i++)
                 System.out.print(" " + bucket.getList().get(i));
             System.out.println();
-        }
+        }*/
 
         // sort buckets and add update result array
         int currentAppendIndex = 0;
@@ -173,6 +171,16 @@ public class MySortAlgs
     }
 
 
+    private static <T extends Number& Comparable<T>> T getMin(List<T> numbers)
+    {
+        T minimum = numbers.get(0);
+        for (int i=1; i<numbers.size(); i++)
+            if (numbers.get(i).compareTo(minimum) < 0)
+                minimum = numbers.get(i);
+        return minimum;
+    }
+
+
     private static <T extends Number& Comparable<T>> T getMax(List<T> numbers)
     {
         T maximum = numbers.get(0);
@@ -180,5 +188,11 @@ public class MySortAlgs
             if (numbers.get(i).compareTo(maximum) > 0)
                 maximum = numbers.get(i);
         return maximum;
+    }
+
+
+    private static double map(double x, double in_min, double in_max, double out_min, double out_max)
+    {
+        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
     }
 }

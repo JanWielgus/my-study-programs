@@ -41,7 +41,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MySortAlgsTest.bucketSortTest2">
+  <component name="RunManager" selected="JUnit.MySortAlgsTest">
     <configuration name="MySortAlgsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="zadanie 1" />
       <extension name="coverage">
@@ -53,22 +53,6 @@
       <option name="PACKAGE_NAME" value="DefaultPackage" />
       <option name="MAIN_CLASS_NAME" value="DefaultPackage.MySortAlgsTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MySortAlgsTest.bucketSortTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="zadanie 1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="DefaultPackage.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="DefaultPackage" />
-      <option name="MAIN_CLASS_NAME" value="DefaultPackage.MySortAlgsTest" />
-      <option name="METHOD_NAME" value="bucketSortTest1" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -89,7 +73,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MySortAlgsTest.insertionSortTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MySortAlgsTest.bucketSortTest3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="zadanie 1" />
       <extension name="coverage">
         <pattern>
@@ -99,13 +83,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="DefaultPackage" />
       <option name="MAIN_CLASS_NAME" value="DefaultPackage.MySortAlgsTest" />
-      <option name="METHOD_NAME" value="insertionSortTest1" />
+      <option name="METHOD_NAME" value="bucketSortTest3" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MySortAlgsTest.quickSortTest3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MySortAlgsTest.bucketSortTest4FloatingPoint" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="zadanie 1" />
       <extension name="coverage">
         <pattern>
@@ -115,7 +99,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="DefaultPackage" />
       <option name="MAIN_CLASS_NAME" value="DefaultPackage.MySortAlgsTest" />
-      <option name="METHOD_NAME" value="quickSortTest3" />
+      <option name="METHOD_NAME" value="bucketSortTest4FloatingPoint" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MySortAlgsTest.bucketSortTest4Negative" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zadanie 1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DefaultPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DefaultPackage" />
+      <option name="MAIN_CLASS_NAME" value="DefaultPackage.MySortAlgsTest" />
+      <option name="METHOD_NAME" value="bucketSortTest4Negative" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -123,11 +123,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MySortAlgsTest.bucketSortTest2" />
-        <item itemvalue="JUnit.MySortAlgsTest.bucketSortTest1" />
-        <item itemvalue="JUnit.MySortAlgsTest.quickSortTest3" />
         <item itemvalue="JUnit.MySortAlgsTest" />
-        <item itemvalue="JUnit.MySortAlgsTest.insertionSortTest1" />
+        <item itemvalue="JUnit.MySortAlgsTest.bucketSortTest4Negative" />
+        <item itemvalue="JUnit.MySortAlgsTest.bucketSortTest4FloatingPoint" />
+        <item itemvalue="JUnit.MySortAlgsTest.bucketSortTest2" />
+        <item itemvalue="JUnit.MySortAlgsTest.bucketSortTest3" />
       </list>
     </recent_temporary>
   </component>
