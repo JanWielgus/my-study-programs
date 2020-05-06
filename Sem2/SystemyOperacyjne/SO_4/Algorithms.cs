@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
+
+/*
+ * Every algorithm returns amount of global page faults
+ * 
+ * */
+
+
 namespace SO_4
 {
 	class Algorithms
@@ -11,7 +18,6 @@ namespace SO_4
         public int AmtOfPages;
         public int Processes;
         public int interval;
-        public List<Page> ProcessList;
         public Proces[] ProcessesTab;
 
         List<Page> PageReferences = new List<Page>();
@@ -28,21 +34,21 @@ namespace SO_4
             ProcessesTab = new Proces[Processes];
 
 
-            // generate random
+            // generate random pages
             for (int a = 0; a < amtOfPages; a++)
             {
                 Random rand = new Random();
                 int k = (int)(rand.NextDouble() * Processes);
                 int r = (int)(rand.NextDouble() * interval);
                 if ((k == 3 || k == 5) && k % 3 != 0)
-                {
                     k = 8;
-                }
+
                 // creating page references
                 PageReferences.Add(new Page(r, 0, k));
 
             }
-            // creating table of processes
+
+            // create process list
             for (int w = 0; w < Processes; w++)
             {
                 ProcessesTab[w] = new Proces(new List<Page>(), 0);
@@ -64,11 +70,13 @@ namespace SO_4
 
         public int Equal()
         {
-            //copying references
+            // copy references
             Proces[] ProcessesTabCopy = new Proces[Processes];
             int PF_SUM = 0;
+
             //frame size as a whole frames divided by processes length
             int frame_size = FrameSize / (ProcessesTab.Length);
+
             //adds all page faults
             for (int k = 0; k < ProcessesTab.Length; k++)
             {
@@ -85,30 +93,31 @@ namespace SO_4
 
         public int Proportional()
         {
-            //frame size as a whole frames divided by processes length
+            // frame size as a whole frames divided by processes length
             int frame_size = FrameSize / ProcessesTab.Length;
             Proces[] ProcessesTabCopy = new Proces[Processes];
             int PF_SUM = 0;
-            //copying page references
-            for (int k = 0; k < ProcessesTab.Length; k++)
-            {
-                ProcessesTabCopy[k] = new Proces(ProcessesTab[k]);
-                // ProcessesTabCopy[k].setFrame(frame_size);
 
-            }
+            // copying page references
+            for (int k = 0; k < ProcessesTab.Length; k++)
+                ProcessesTabCopy[k] = new Proces(ProcessesTab[k]);
+
+
             for (int j = 0; j < ProcessesTabCopy.Length; j++)
             {
 
-                //frame size: depends on proces size
+                // frame size: depends on proces size
                 frame_size = ProcessesTabCopy[j].proces.Count * FrameSize / AmtOfPages;
-                //minimal frame size
+
+                // minimal frame size
                 if (frame_size == 0)
-                {
                     frame_size = 3;
-                }
+
+
                 int p = LRU(ProcessesTabCopy[j].proces, frame_size);
                 PF_SUM += p;
             }
+
             return PF_SUM;
         }
 
@@ -117,30 +126,36 @@ namespace SO_4
 
         public int PageFaultSteering()
         {
-            //max page faults for starting working algorithm
+            // max page faults for starting working algorithm
             int PFMax = (int)0.6 * AmtOfPages;
-            //starting page size
+
+            // starting page size
             int frame_size = FrameSize / ProcessesTab.Length;
-            //copying page rreferences
+
+            // copying page rreferences
             Proces[] ProcessesTabCopy = new Proces[Processes];
             for (int k = 0; k < ProcessesTab.Length; k++)
             {
                 ProcessesTabCopy[k] = new Proces(ProcessesTab[k]);
                 ProcessesTabCopy[k].setFrame(frame_size);
-                //    System.out.println(ProcessesTabCopy[k].proces);
             }
+
             int freeFrames = 0;
             bool allDone = false;
             int size = Processes;
             int PFGlobal = 0;
+
             while (size != 0)
             {
                 int min = interval;
                 int max = 0;
+
                 //index of proces which generates minimal page faults
                 int minI = 0;
+
                 //index of proces which generates maximal page faults
                 int maxI = 0;
+
                 for (int i = 0; i < ProcessesTabCopy.Length; i++)
                 {
                     Proces t = ProcessesTabCopy[i];
@@ -184,6 +199,7 @@ namespace SO_4
                         {
                             freeFrames += ProcessesTabCopy[i].FRAME_SIZE;
                         }
+
                         ProcessesTabCopy[i] = null;
                         size--;
                     }
@@ -209,7 +225,7 @@ namespace SO_4
 
 
 
-
+ 
         public int ZoneModel(int zone)
         {
             int PFGlobal = 0;
@@ -224,10 +240,9 @@ namespace SO_4
 
                 //frame size as a number of duplications in zone
                 int frame_size = numberOfDuplications(ProcessesTabCopy[k].proces, zone);
+
                 //setting frame size to proces
                 ProcessesTabCopy[k].setFrame(frame_size);
-
-
             }
 
 
@@ -240,6 +255,7 @@ namespace SO_4
                     {
                         allDone++;
                         int w = ProcessesTabCopy[k].FRAME_SIZE;
+
                         //substracting allocated frames
                         freeFrames -= w;
                         if (ProcessesTabCopy[k].FRAME_SIZE != 0)
@@ -255,6 +271,8 @@ namespace SO_4
                 }
                 freeFrames = FrameSize;
             }
+
+
             //waiting processes
             while (allDone != Processes - 1);
 
