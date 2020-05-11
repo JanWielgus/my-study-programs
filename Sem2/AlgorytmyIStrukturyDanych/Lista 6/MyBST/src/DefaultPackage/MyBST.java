@@ -92,7 +92,7 @@ public class MyBST<T>
     }
 
 
-/*
+
     public T lower(T element)
     {
         if (root == null)
@@ -102,7 +102,8 @@ public class MyBST<T>
         if (curNode == null)
             throw new IllegalArgumentException("Element was not found");
 
-        return lower(curNode).element;
+        Node<T> result = lower(curNode);
+        return result == null ? null : result.element;
     }
 
 
@@ -111,9 +112,22 @@ public class MyBST<T>
         if (baseNode == null)
             throw new NullPointerException("Base node cannot be null");
 
-        // if has a left child, left
+        // if has a left child, predecessor (lower) is the minimum in left subtree
+        if (baseNode.leftChild != null)
+            return getMinimum(baseNode.leftChild);
+
+        // Find a node, which is right child of it's parent
+        Node<T> tempParent = baseNode.parent;
+        while (tempParent != null && baseNode == tempParent.leftChild)
+        {
+            baseNode = tempParent;
+            tempParent = tempParent.parent;
+        }
+
+        return tempParent;
+
         // TODO: square it away
-    }*/
+    }
 
 
     public void delete(T element)

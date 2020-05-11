@@ -114,6 +114,23 @@ public class MyBST_Test
 
 
     @Test
+    void lowerTest()
+    {
+        bst.addElement(5);
+        bst.addElement(3);
+        bst.addElement(4);
+        bst.addElement(2);
+        bst.addElement(7);
+        bst.addElement(11);
+        bst.addElement(10);
+        bst.addElement(12);
+
+        Assertions.assertEquals(3, bst.lower(4));
+        Assertions.assertEquals(7, bst.lower(10));
+    }
+
+
+    @Test
     void leafDeleteTest()
     {
         bst.addElement(7);
