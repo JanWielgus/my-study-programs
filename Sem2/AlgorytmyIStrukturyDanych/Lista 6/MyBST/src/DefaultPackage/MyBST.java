@@ -89,34 +89,6 @@ public class MyBST<T>
         }
 
         return tempParent;
-
-
-
-/*  REMOVE IF ABOVE IS WORKING
-
-        // if right is not null, then successor is min in the right subtree
-        if (baseNode.rightChild != null)
-            return minimum(baseNode.rightChild);
-
-        // if right is null, start from root and search for successor
-        Node<T> successor = null;
-        Node<T> localRoot = root;
-
-        while (localRoot != null)
-        {
-            int compResult = comparator.compare(baseNode.element, localRoot.element);
-            if (compResult < 0)
-            {
-                successor = localRoot;
-                localRoot = localRoot.leftChild;
-            }
-            else if (compResult > 0)
-                localRoot = localRoot.rightChild;
-            else
-                break;
-        }
-
-        return successor;*/
     }
 
 
