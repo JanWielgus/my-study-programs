@@ -20,6 +20,12 @@
   </component>
   <component name="ProjectId" id="1bl3n0MKFJWu68UgOVE1l1swrcN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -31,6 +37,97 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager" selected="JUnit.MyBST_Test.deleteEverythingTest">
+    <configuration name="MyBST_Test.deleteEverythingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyBST" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DefaultPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DefaultPackage" />
+      <option name="MAIN_CLASS_NAME" value="DefaultPackage.MyBST_Test" />
+      <option name="METHOD_NAME" value="deleteEverythingTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyBST_Test.deleteWithOneChildTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyBST" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DefaultPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DefaultPackage" />
+      <option name="MAIN_CLASS_NAME" value="DefaultPackage.MyBST_Test" />
+      <option name="METHOD_NAME" value="deleteWithOneChildTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyBST_Test.deleteWithTwoChildrenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyBST" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DefaultPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DefaultPackage" />
+      <option name="MAIN_CLASS_NAME" value="DefaultPackage.MyBST_Test" />
+      <option name="METHOD_NAME" value="deleteWithTwoChildrenTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyBST_Test.leafDeleteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyBST" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DefaultPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DefaultPackage" />
+      <option name="MAIN_CLASS_NAME" value="DefaultPackage.MyBST_Test" />
+      <option name="METHOD_NAME" value="leafDeleteTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyBST_Test.onlyChildDeleteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyBST" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DefaultPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DefaultPackage" />
+      <option name="MAIN_CLASS_NAME" value="DefaultPackage.MyBST_Test" />
+      <option name="METHOD_NAME" value="onlyChildDeleteTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MyBST_Test.deleteEverythingTest" />
+        <item itemvalue="JUnit.MyBST_Test.deleteWithTwoChildrenTest" />
+        <item itemvalue="JUnit.MyBST_Test.deleteWithOneChildTest" />
+        <item itemvalue="JUnit.MyBST_Test.leafDeleteTest" />
+        <item itemvalue="JUnit.MyBST_Test.onlyChildDeleteTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />

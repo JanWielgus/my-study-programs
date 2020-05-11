@@ -15,6 +15,11 @@ public class MyBST<T>
     }
 
 
+    Node<T> getRoot() {
+        return root;
+    }
+
+
     public void addElement(T element)
     {
         if (element == null)
@@ -61,13 +66,33 @@ public class MyBST<T>
         if (curNode == null)
             throw new IllegalArgumentException("Element was not found");
 
-        return upper(curNode).element;
+        Node<T> result = upper(curNode);
+        return result == null ? null : result.element;
     }
 
 
     private Node<T> upper(Node<T> baseNode)
     {
-        // TODO: check if baseNode is not null
+        if (baseNode == null)
+            throw new NullPointerException("Base node cannot be null");
+
+        // if right subtree is not null, upper (successor) is the minimum in this subtree
+        if (baseNode.rightChild != null)
+            return getMinimum(baseNode.rightChild);
+
+        // Find a node, which is left child of it's parent
+        Node<T> tempParent = baseNode.parent;
+        while (tempParent != null && baseNode == tempParent.rightChild)
+        {
+            baseNode = tempParent;
+            tempParent = tempParent.parent;
+        }
+
+        return tempParent;
+
+
+
+/*  REMOVE IF ABOVE IS WORKING
 
         // if right is not null, then successor is min in the right subtree
         if (baseNode.rightChild != null)
@@ -91,10 +116,11 @@ public class MyBST<T>
                 break;
         }
 
-        return successor;
+        return successor;*/
     }
 
 
+/*
     public T lower(T element)
     {
         if (root == null)
@@ -115,7 +141,7 @@ public class MyBST<T>
 
         // if has a left child, left
         // TODO: square it away
-    }
+    }*/
 
 
     public void delete(T element)
@@ -199,27 +225,35 @@ public class MyBST<T>
         // delete the replacing node from the old place (this will only detach it from the tree)
         delete(replacingNode);
 
-        // replace the deleted node with replacingNode
-        replacingNode.parent = nodeToDelete.parent;
-        replacingNode.rightChild = nodeToDelete.rightChild;
-        replacingNode.leftChild = nodeToDelete.leftChild;
+        // now only need to change the element inside the deleted node (parent and children remain unchanged)
+        nodeToDelete.element = replacingNode.element;
     }
 
 
-    public T minimum()
+    public T getMinimum()
     {
-        return minimum(root).element;
+        return getMinimum(root).element;
     }
 
-    private Node<T> minimum(Node<T> localRoot)
+    private Node<T> getMinimum(Node<T> localRoot)
     {
-        Node<T> current = localRoot;
-
-        while (current.leftChild != null)
-            current = current.leftChild;
-
-        return current;
+        while (localRoot.leftChild != null)
+            localRoot = localRoot.leftChild;
+        return localRoot;
     }
+
+    public T getMaximum()
+    {
+        return getMaximum(root).element;
+    }
+
+    private Node<T> getMaximum(Node<T> localRoot)
+    {
+        while (localRoot.rightChild != null)
+            localRoot = localRoot.rightChild;
+        return localRoot;
+    }
+
 
     private Node<T> search(T element, Node<T> localRoot)
     {
@@ -244,7 +278,7 @@ public class MyBST<T>
 
 
 
-    private class Node<T>
+    static class Node<T>
     {
         private Node<T> parent;
         private Node<T> rightChild;
@@ -266,6 +300,15 @@ public class MyBST<T>
             this.leftChild = leftChild;
         }
 
+        /*
+        public Node(Node<T> initNode)
+        {
+            this.parent = initNode.parent;
+            this.element = initNode.element;
+            this.rightChild = initNode.rightChild;
+            this.leftChild = initNode.leftChild;
+        }*/
+
 
         public boolean isLeaf() {
             return (leftChild == null && rightChild == null);
@@ -284,5 +327,16 @@ public class MyBST<T>
                 return rightChild;
         }
 
+        public Node<T> getLeftChild() {
+            return leftChild;
+        }
+
+        public Node<T> getRightChild() {
+            return rightChild;
+        }
+
+        public T getElement() {
+            return element;
+        }
     }
 }
