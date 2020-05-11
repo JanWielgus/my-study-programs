@@ -204,6 +204,14 @@ public class MyBST<T>
 
     private void deleteWithOnlyChild(Node<T> nodeToDelete, Node<T> childNode)
     {
+        // If this is root
+        if (nodeToDelete.parent == null)
+        {
+            root = childNode;
+            childNode.parent = null;
+            return;
+        }
+
         Node<T> localParent = nodeToDelete.parent;
         childNode.parent = localParent;
 

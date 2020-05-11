@@ -207,7 +207,7 @@ public class MyBST_Test
         bst.delete(4);
         System.out.println("usuniete: 4");
 
-        System.out.println(MyBST_toList.get(bst, MyBST_toList.Order.PRE_ORDER));
+        System.out.println(MyBST_toList.get(bst, MyBST_toList.Order.IN_ORDER));
 
         bst.delete(7);
         System.out.println("usuniete: 7");
@@ -216,7 +216,7 @@ public class MyBST_Test
         Assertions.assertEquals(6, bst.upper(5));
 
         List<Integer> list = MyBST_toList.get(bst, MyBST_toList.Order.PRE_ORDER);
-        Assertions.assertEquals(new Integer[] {6, 5}, list.toArray());
+        Assertions.assertArrayEquals(new Integer[] {6, 5}, list.toArray());
     }
 
 
