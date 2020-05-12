@@ -12,6 +12,7 @@ namespace SO_4_FrameAssignmentSimulator
 		private List<Page> localPageList = null;
 		private int lastCalledPageIdx;
 		private int localPageFaultCounter;
+		private int tempLocPageFaultCtr;
 		private VirtualMemory virtualMemory;
 		private Random rand;
 
@@ -21,6 +22,7 @@ namespace SO_4_FrameAssignmentSimulator
 			ProcessSize = processSize;
 			remainingMemoryAccesses = ProcessSize;
 			localPageFaultCounter = 0;
+			tempLocPageFaultCtr = 0;
 
 			rand = new Random();
 		}
@@ -48,6 +50,11 @@ namespace SO_4_FrameAssignmentSimulator
 			return remainingMemoryAccesses;
 		}
 
+		public int getProcessSize()
+		{
+			return ProcessSize;
+		}
+
 
 		// Return false, if process was fully executed and can be removed
 		public bool execute()
@@ -59,7 +66,7 @@ namespace SO_4_FrameAssignmentSimulator
 
 			// Prepare page to access
 			Page pageToAccess;
-			int randNum = rand.Next(0, 1);
+			int randNum = rand.Next(0, 2);
 			// 50% chance to use last page again
 			if (randNum == 0)
 				pageToAccess = localPageList[lastCalledPageIdx];
@@ -69,12 +76,16 @@ namespace SO_4_FrameAssignmentSimulator
 				pageToAccess = localPageList[randNum];
 				lastCalledPageIdx = randNum;
 			}
+			//Console.WriteLine("Page to access: " + pageToAccess.getID());
 
 
 			// Simulate memory access
 			bool memResult = virtualMemory.simulateGetDataByPage(pageToAccess);
 			if (memResult == false)
+			{
 				localPageFaultCounter++;
+				tempLocPageFaultCtr++;
+			}
 
 			// Decrease remaining memory accesses
 			remainingMemoryAccesses--;
@@ -94,6 +105,17 @@ namespace SO_4_FrameAssignmentSimulator
 		public int getLocalPageFaultCounter()
 		{
 			return localPageFaultCounter;
+		}
+
+
+		public int getTempLocalPageFltCtr()
+		{
+			return tempLocPageFaultCtr;
+		}
+
+		public void resetTempLocalPageFltCtr()
+		{
+			tempLocPageFaultCtr = 0;
 		}
 	}
 }
