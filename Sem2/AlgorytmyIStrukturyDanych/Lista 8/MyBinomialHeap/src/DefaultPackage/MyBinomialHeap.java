@@ -37,10 +37,11 @@ public class MyBinomialHeap <T extends Comparable<? super T>>
 
     public T extractMin()
     {
+        // Find minimum node
         Node minNode = minimumNode();
         T elementToReturn = minNode.data;
 
-        // remove minimum element from the heap
+        // remove minimum element from the heap (it is in the root array)
         removeRootNode(minNode);
 
         return elementToReturn;

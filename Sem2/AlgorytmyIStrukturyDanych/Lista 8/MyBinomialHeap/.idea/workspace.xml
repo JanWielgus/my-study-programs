@@ -38,7 +38,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MyBinomialHeapTest.decreaseKeyTest">
+  <component name="RunManager" selected="JUnit.MyBinomialHeapTest">
     <configuration name="MyBinomialHeapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyBinomialHeap" />
       <extension name="coverage">
@@ -120,10 +120,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MyBinomialHeapTest" />
         <item itemvalue="JUnit.MyBinomialHeapTest.decreaseKeyTest" />
         <item itemvalue="JUnit.MyBinomialHeapTest.unionTest" />
         <item itemvalue="JUnit.MyBinomialHeapTest.extractMinimumTest" />
-        <item itemvalue="JUnit.MyBinomialHeapTest" />
         <item itemvalue="JUnit.MyBinomialHeapTest.deleteTest" />
       </list>
     </recent_temporary>
