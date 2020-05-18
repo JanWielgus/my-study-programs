@@ -183,6 +183,8 @@ public class MyBinomialHeap <T extends Comparable<? super T>>
     }
 
 
+    // Return node which contains the data
+    // or null if not found
     private Node findElementInNode(Node localRoot, T data)
     {
         if (localRoot == null)
@@ -207,6 +209,8 @@ public class MyBinomialHeap <T extends Comparable<? super T>>
         return null;
     }
 
+
+    // Used to remove node (only for the root nodes)
     private void removeRootNode(Node node)
     {
         // remove node from root array
@@ -250,9 +254,7 @@ public class MyBinomialHeap <T extends Comparable<? super T>>
 
 
 
-
-
-
+    
 
     class Node
     {
@@ -316,8 +318,6 @@ public class MyBinomialHeap <T extends Comparable<? super T>>
             return result;
         }
     }
-
-
 
 
 }
