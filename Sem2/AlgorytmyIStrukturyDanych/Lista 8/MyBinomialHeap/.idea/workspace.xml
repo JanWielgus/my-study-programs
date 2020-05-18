@@ -38,9 +38,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MyBinomialHeapTest.deleteTest">
-    <configuration name="MainClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DefaultPackage.MainClass" />
+  <component name="RunManager" selected="JUnit.MyBinomialHeapTest.decreaseKeyTest">
+    <configuration name="MyBinomialHeapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyBinomialHeap" />
       <extension name="coverage">
         <pattern>
@@ -48,6 +47,25 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="DefaultPackage" />
+      <option name="MAIN_CLASS_NAME" value="DefaultPackage.MyBinomialHeapTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyBinomialHeapTest.decreaseKeyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyBinomialHeap" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DefaultPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DefaultPackage" />
+      <option name="MAIN_CLASS_NAME" value="DefaultPackage.MyBinomialHeapTest" />
+      <option name="METHOD_NAME" value="decreaseKeyTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -68,7 +86,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyBinomialHeapTest.minimumElementTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MyBinomialHeapTest.extractMinimumTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyBinomialHeap" />
       <extension name="coverage">
         <pattern>
@@ -78,7 +96,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="DefaultPackage" />
       <option name="MAIN_CLASS_NAME" value="DefaultPackage.MyBinomialHeapTest" />
-      <option name="METHOD_NAME" value="minimumElementTest" />
+      <option name="METHOD_NAME" value="extractMinimumTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyBinomialHeapTest.unionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyBinomialHeap" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DefaultPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DefaultPackage" />
+      <option name="MAIN_CLASS_NAME" value="DefaultPackage.MyBinomialHeapTest" />
+      <option name="METHOD_NAME" value="unionTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -86,9 +120,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MyBinomialHeapTest.decreaseKeyTest" />
+        <item itemvalue="JUnit.MyBinomialHeapTest.unionTest" />
+        <item itemvalue="JUnit.MyBinomialHeapTest.extractMinimumTest" />
+        <item itemvalue="JUnit.MyBinomialHeapTest" />
         <item itemvalue="JUnit.MyBinomialHeapTest.deleteTest" />
-        <item itemvalue="Application.MainClass" />
-        <item itemvalue="JUnit.MyBinomialHeapTest.minimumElementTest" />
       </list>
     </recent_temporary>
   </component>

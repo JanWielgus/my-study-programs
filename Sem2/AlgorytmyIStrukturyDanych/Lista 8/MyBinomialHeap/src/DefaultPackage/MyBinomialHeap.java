@@ -31,24 +31,19 @@ public class MyBinomialHeap <T extends Comparable<? super T>>
 
     public T minimum()
     {
-        if (roots.size() == 0)
-            throw new IllegalStateException("Heap is empty and has no minimum element");
-
-        T min = roots.get(0).data;
-
-        for (int i=1; i<roots.size(); i++)
-        {
-            if (roots.get(i).data.compareTo(min) < 0)
-                min = roots.get(i).data;
-        }
-
-        return min;
+        return minimumNode().data;
     }
 
 
     public T extractMin()
     {
-        return null;
+        Node minNode = minimumNode();
+        T elementToReturn = minNode.data;
+
+        // remove minimum element from the heap
+        removeRootNode(minNode);
+
+        return elementToReturn;
     }
 
 
@@ -232,6 +227,24 @@ public class MyBinomialHeap <T extends Comparable<? super T>>
 
         // merge trees if there more than one of each degree
         repairRootsArray();
+    }
+
+
+    private Node minimumNode()
+    {
+        if (roots.size() == 0)
+            throw new IllegalStateException("Heap is empty and has no minimum element");
+
+        // Assume that fist in array is the lowest
+        Node minNode = roots.get(0);
+
+        for (int i=1; i<roots.size(); i++)
+        {
+            if (roots.get(i).data.compareTo(minNode.data) < 0)
+                minNode = roots.get(i);
+        }
+
+        return minNode;
     }
 
 
