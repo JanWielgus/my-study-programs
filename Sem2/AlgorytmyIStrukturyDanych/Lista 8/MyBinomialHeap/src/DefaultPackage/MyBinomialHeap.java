@@ -105,10 +105,33 @@ public class MyBinomialHeap <T extends Comparable<? super T>>
 
     public void delete(T valueToDelete)
     {
-        // usuwamy wartosc
-        // wszystkie dzieci ida do roota
+        if (valueToDelete == null)
+            throw new NullPointerException("Value to delete cannot be null");
 
+        // find node with that element
+        Node elementNode = null;
 
+        // find node with that element in all root nodes
+        for (Node node: roots)
+        {
+            elementNode = findElementInNode(node, valueToDelete);
+            if (elementNode != null)
+                break;
+        }
+
+        // If such element was not found
+        if (elementNode == null)
+            throw new IllegalArgumentException("There is no such element in heap");
+
+        // Move this value to the top
+        while (elementNode.parent != null)
+        {
+            elementNode.parent.swap(elementNode);
+            elementNode = elementNode.parent;
+        }
+
+        // Remove node from root
+        removeRootNode(elementNode);
     }
 
 
@@ -186,6 +209,29 @@ public class MyBinomialHeap <T extends Comparable<? super T>>
 
         // return null if not found
         return null;
+    }
+
+    private void removeRootNode(Node node)
+    {
+        // remove node from root array
+        roots.remove(node);
+
+        // promote all children to the root array
+        // Put them in roots array in ascending order
+        int lastID = 0;
+        for (Node child: node.getChildrenList())
+        {
+            // find place
+            while (lastID < roots.size() && roots.get(lastID).degree <= node.degree)
+                lastID++;
+
+            roots.add(child);
+            child.parent = null;
+            lastID++;
+        }
+
+        // merge trees if there more than one of each degree
+        repairRootsArray();
     }
 
 
