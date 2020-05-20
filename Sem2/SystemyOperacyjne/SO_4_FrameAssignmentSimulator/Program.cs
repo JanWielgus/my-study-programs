@@ -10,8 +10,8 @@ namespace SO_4_FrameAssignmentSimulator
 		private static readonly int RamSize = 5; // Less than process list size
 		private static readonly int ProcessListSize = 10;
 
-		private static readonly int PropPageAmt = 5; // Amt of pages for each process in equal method
-		private static readonly int PageFaultBorder = 3; // Only for page fault steering method
+		private static readonly int PropPageAmt = 3; // Amt of pages for each process in equal method
+		private static readonly int PageFaultBorder = 5; // Only for page fault steering method
 
 
 

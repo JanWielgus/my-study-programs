@@ -67,6 +67,8 @@ namespace SO_4_FrameAssignmentSimulator
 				// Show process size
 				//Console.WriteLine("Process " + i + " size: " + processList[i].getProcessSize());
 			}
+
+			
 		}
 
 
