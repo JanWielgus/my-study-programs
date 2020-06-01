@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class MyUndirectedGraph <V extends Comparable> extends MyDirectedGraph <V>
+public class MyUndirectedGraph <V extends Comparable<V>> extends MyDirectedGraph <V>
 {
     public MyUndirectedGraph()
     {
@@ -28,7 +28,7 @@ public class MyUndirectedGraph <V extends Comparable> extends MyDirectedGraph <V
     public List<Edge> getMinimumSpanningTree()
     {
         List<Edge> resultEdgeList = new ArrayList<>();
-        List<Edge> allEdgeList = new ArrayList<>(); // list of all edges (from adjacency matrix)
+        List<UndirectedEdge> allEdgeList = new ArrayList<>(); // list of all edges (from adjacency matrix)
         DisjointSets<V> disjointSets = new DisjointSets<V>();
 
         // put each vertex to separate set
@@ -38,7 +38,7 @@ public class MyUndirectedGraph <V extends Comparable> extends MyDirectedGraph <V
 
             // Convert adjacency matrix to edge list
             for (WeightDestVertex destVertex: adjacencyMatrix.get(sourceVertex))
-                allEdgeList.add(new Edge(sourceVertex, destVertex.getDestVertex(), destVertex.getWeight()));
+                allEdgeList.add(new UndirectedEdge<>(sourceVertex, destVertex.getDestVertex(), destVertex.getWeight()));
         }
 
         // Sort edges by weight ascending
@@ -46,7 +46,7 @@ public class MyUndirectedGraph <V extends Comparable> extends MyDirectedGraph <V
 
         for (int i=0; i<allEdgeList.size(); i++)
         {
-            Edge curEdge = allEdgeList.get(i);
+            UndirectedEdge<V> curEdge = allEdgeList.get(i);
 
             if (disjointSets.findSet(curEdge.getSource()) != disjointSets.findSet(curEdge.getDestination()))
             {
@@ -60,45 +60,24 @@ public class MyUndirectedGraph <V extends Comparable> extends MyDirectedGraph <V
 
 
 
-/*
-    public class Edge implements Comparable<Edge> {
-        private V source;
-        private V destination;
-        private float weight;
 
-        public Edge(V source, V destination, float weight)
-        {
-            this.source = source;
-            this.destination = destination;
-            this.weight = weight;
-        }
-
-        public V getSource()
-        {
-            return source;
-        }
-
-        public V getDestination()
-        {
-            return destination;
-        }
-
-        public float getWeight()
-        {
-            return weight;
+    private static class UndirectedEdge <V> extends Edge<V> implements Comparable<UndirectedEdge>
+    {
+        public UndirectedEdge(V source, V destination, float weight) {
+            super(source, destination, weight);
         }
 
 
         @Override
-        public int compareTo(Edge o)
+        public int compareTo(UndirectedEdge o)
         {
-            boolean temp1 = source == o.source && destination == o.destination;
-            boolean temp2 = source == o.destination && destination == o.source;
+            boolean temp1 = getSource() == o.getSource() && getDestination() == o.getDestination();
+            boolean temp2 = getSource() == o.getDestination() && getDestination() == o.getSource();
 
             if (temp1 || temp2)
                 return 0;
-            else
-                return (int)(weight - o.weight + 0.5f);
+
+            return getWeight() > o.getWeight() ? 1 : -1;
         }
-    }*/
+    }
 }

@@ -9,4 +9,5 @@ public interface MyGraphInterface <V>
     Edge<V> getEdge(V sourceVertex, V destinationVertex);
     List<V> getVertexList();
     List<Edge<V>> getEdgeList();
+    boolean hasEdge(V source, V destination);
 }

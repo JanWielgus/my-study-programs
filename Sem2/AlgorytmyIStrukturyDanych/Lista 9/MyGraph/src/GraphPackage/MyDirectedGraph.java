@@ -1,13 +1,10 @@
 package GraphPackage;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MyDirectedGraph<V> implements MyGraphInterface<V>
 {
-    private Map<V, List<WeightDestVertex> > adjacencyMatrix;
+    protected Map<V, List<WeightDestVertex> > adjacencyMatrix;
 
 
     public MyDirectedGraph()
@@ -25,6 +22,7 @@ public class MyDirectedGraph<V> implements MyGraphInterface<V>
         adjacencyMatrix.put(vertex, new LinkedList<>());
     }
 
+
     @Override
     public void addEdge(V source, V destination, float weight)
     {
@@ -41,6 +39,50 @@ public class MyDirectedGraph<V> implements MyGraphInterface<V>
     }
 
 
+    @Override
+    public Edge<V> getEdge(V sourceVertex, V destinationVertex)
+    {
+        // Find list of destination vertexes from this source vertex
+        List<WeightDestVertex> destVertexesList = adjacencyMatrix.get(sourceVertex);
+
+        if (destinationVertex == null)
+            return null;
+
+        // Find destination vertex if exist
+        for (WeightDestVertex destVertex: destVertexesList)
+        {
+            if (destVertex.getDestVertex() == destinationVertex)
+                return new Edge<>(sourceVertex, destinationVertex, destVertex.getWeight());
+        }
+
+        return null;
+    }
+
+
+    @Override
+    public List<V> getVertexList()
+    {
+        return new ArrayList<>(adjacencyMatrix.keySet());
+    }
+
+
+    @Override
+    public List<Edge<V>> getEdgeList()
+    {
+        List<Edge<V>> edgeList = new ArrayList<>();
+
+        for (V sourceVertex: adjacencyMatrix.keySet())
+        {
+            // Convert adjacency matrix to edge list
+            for (WeightDestVertex destVertex: adjacencyMatrix.get(sourceVertex))
+                edgeList.add(new Edge<>(sourceVertex, destVertex.getDestVertex(), destVertex.getWeight()));
+        }
+
+        return edgeList;
+    }
+
+
+    @Override
     public boolean hasEdge(V source, V destination)
     {
         return adjacencyMatrix.get(source).contains(destination);
