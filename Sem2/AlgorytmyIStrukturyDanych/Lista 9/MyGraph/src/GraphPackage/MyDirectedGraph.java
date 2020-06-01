@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class MyDirectedGraph<V> implements MyGraphInterface<V>
 {
-    private Map<V, List<VertexConnection> > adjacencyMatrix;
+    private Map<V, List<WeightDestVertex> > adjacencyMatrix;
 
 
     public MyDirectedGraph()
@@ -37,7 +37,7 @@ public class MyDirectedGraph<V> implements MyGraphInterface<V>
 
         // create new edge in the adjacency matrix
         if (!hasEdge(source, destination)) // check if this edge don't exist already
-            adjacencyMatrix.get(source).add(new VertexConnection(destination, weight));
+            adjacencyMatrix.get(source).add(new WeightDestVertex(destination, weight));
     }
 
 
@@ -51,12 +51,12 @@ public class MyDirectedGraph<V> implements MyGraphInterface<V>
 
 
 
-    protected class VertexConnection
+    protected class WeightDestVertex // weighted destination vertex
     {
         private V vertex;
         private int weight;
 
-        public VertexConnection(V vertex, int weight)
+        public WeightDestVertex(V vertex, int weight)
         {
             this.vertex = vertex;
             this.weight = weight;
