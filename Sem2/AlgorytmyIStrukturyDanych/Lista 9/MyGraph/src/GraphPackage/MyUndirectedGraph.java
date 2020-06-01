@@ -25,6 +25,7 @@ public class MyUndirectedGraph <V extends Comparable<V>> extends MyDirectedGraph
 
 
 
+    // Kruskal's Minimum Spanning Tree algorithm
     public List<Edge> getMinimumSpanningTree()
     {
         List<Edge> resultEdgeList = new ArrayList<>();
