@@ -80,8 +80,11 @@ public class DisjointSets <T extends Comparable>
         for (int i=0; i<disjointSets.size(); i++)
         {
             List<T> curList = disjointSets.get(i);
-            if (curList.contains(element))
-                return curList;
+
+            // check if this list contain given element
+            for (int j=0; j<curList.size(); j++)
+                if (element.compareTo(curList.get(j)) == 0)
+                    return curList;
         }
         return null;
     }
