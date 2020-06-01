@@ -26,10 +26,10 @@ public class MyUndirectedGraph <V extends Comparable<V>> extends MyDirectedGraph
 
 
     // Kruskal's Minimum Spanning Tree algorithm
-    public List<Edge> getMinimumSpanningTree()
+    public List<Edge<V>> getMinimumSpanningTree()
     {
-        List<Edge> resultEdgeList = new ArrayList<>();
-        List<UndirectedEdge> allEdgeList = new ArrayList<>(); // list of all edges (from adjacency matrix)
+        List<Edge<V>> resultEdgeList = new ArrayList<>();
+        List<UndirectedEdge<V>> allEdgeList = new ArrayList<>(); // list of all edges (from adjacency matrix)
         DisjointSets<V> disjointSets = new DisjointSets<V>();
 
         // put each vertex to separate set
@@ -62,7 +62,7 @@ public class MyUndirectedGraph <V extends Comparable<V>> extends MyDirectedGraph
 
 
 
-    private static class UndirectedEdge <V> extends Edge<V> implements Comparable<UndirectedEdge>
+    public static class UndirectedEdge <V> extends Edge<V>
     {
         public UndirectedEdge(V source, V destination, float weight) {
             super(source, destination, weight);
@@ -70,13 +70,18 @@ public class MyUndirectedGraph <V extends Comparable<V>> extends MyDirectedGraph
 
 
         @Override
-        public int compareTo(UndirectedEdge o)
+        public int compareTo(Edge o)
         {
-            boolean temp1 = getSource() == o.getSource() && getDestination() == o.getDestination();
-            boolean temp2 = getSource() == o.getDestination() && getDestination() == o.getSource();
+            if (getWeight() == o.getWeight())
+            {
+                boolean temp1 = getSource() == o.getSource() &&
+                        getDestination() == o.getDestination();
+                boolean temp2 = getSource() == o.getDestination() &&
+                        getDestination() == o.getSource();
 
-            if (temp1 || temp2)
-                return 0;
+                if (temp1 || temp2)
+                    return 0;
+            }
 
             return getWeight() > o.getWeight() ? 1 : -1;
         }

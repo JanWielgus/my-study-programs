@@ -39,7 +39,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MyUndirectedGraphTest.tempTest1">
+  <component name="RunManager" selected="JUnit.MyUndirectedGraphTest">
     <configuration name="DisjointSetsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyGraph" />
       <extension name="coverage">
@@ -55,17 +55,48 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DisjointSetsTest.simpleTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MyUndirectedGraphTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyGraph" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="MyBSTPackage.*" />
+          <option name="PATTERN" value="GraphPackage.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="DisjointSetsPackage" />
-      <option name="MAIN_CLASS_NAME" value="DisjointSetsPackage.DisjointSetsTest" />
-      <option name="METHOD_NAME" value="simpleTest1" />
+      <option name="PACKAGE_NAME" value="GraphPackage" />
+      <option name="MAIN_CLASS_NAME" value="GraphPackage.MyUndirectedGraphTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyUndirectedGraphTest.minSpanningTreeTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyGraph" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GraphPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="GraphPackage" />
+      <option name="MAIN_CLASS_NAME" value="GraphPackage.MyUndirectedGraphTest" />
+      <option name="METHOD_NAME" value="minSpanningTreeTest1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyUndirectedGraphTest.minSpanningTreeTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyGraph" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GraphPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="GraphPackage" />
+      <option name="MAIN_CLASS_NAME" value="GraphPackage.MyUndirectedGraphTest" />
+      <option name="METHOD_NAME" value="minSpanningTreeTest2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -89,9 +120,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MyUndirectedGraphTest" />
+        <item itemvalue="JUnit.MyUndirectedGraphTest.minSpanningTreeTest2" />
+        <item itemvalue="JUnit.MyUndirectedGraphTest.minSpanningTreeTest1" />
         <item itemvalue="JUnit.MyUndirectedGraphTest.tempTest1" />
         <item itemvalue="JUnit.DisjointSetsTest" />
-        <item itemvalue="JUnit.DisjointSetsTest.simpleTest1" />
       </list>
     </recent_temporary>
   </component>

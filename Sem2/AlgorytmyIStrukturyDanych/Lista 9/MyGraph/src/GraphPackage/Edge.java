@@ -1,6 +1,7 @@
 package GraphPackage;
 
-public class Edge <V>
+
+public class Edge <V> implements Comparable<Edge>
 {
     private V source;
     private V destination;
@@ -26,5 +27,16 @@ public class Edge <V>
     public float getWeight()
     {
         return weight;
+    }
+
+    @Override
+    public int compareTo(Edge o)
+    {
+        if (getSource() == o.getSource() &&
+                getDestination() == o.getDestination() &&
+                getWeight() == o.getWeight())
+            return 0;
+
+        return getWeight() > o.getWeight() ? 1 : -1;
     }
 }
