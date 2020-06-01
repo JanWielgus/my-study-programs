@@ -8,6 +8,11 @@ namespace SO_5_DistributedAlgorithmSimulator
 	{
 		private uint currentTime;
 
+		public GlobalClock()
+		{
+			reset();
+		}
+
 		public uint getCurrentTime()
 		{
 			return currentTime;
