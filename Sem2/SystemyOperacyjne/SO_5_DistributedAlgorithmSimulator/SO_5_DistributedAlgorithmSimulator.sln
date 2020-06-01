@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SO_5_DistributedAlgorithmSimulator", "SO_5_DistributedAlgorithmSimulator.csproj", "{C3150BE8-93A5-4915-8DB8-6F372CAE9BF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3150BE8-93A5-4915-8DB8-6F372CAE9BF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3150BE8-93A5-4915-8DB8-6F372CAE9BF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3150BE8-93A5-4915-8DB8-6F372CAE9BF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3150BE8-93A5-4915-8DB8-6F372CAE9BF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4228760D-C54F-42AE-B3F7-B06092F8981F}
+	EndGlobalSection
+EndGlobal
