@@ -1,4 +1,4 @@
-package GraphPackage;
+package DisjointSetsPackage;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,6 +31,10 @@ public class DisjointSetsTest
         testDisSet.union(5, 10);
 
         Assertions.assertEquals(3, testDisSet.getDisjointSets().size());
+        Assertions.assertEquals(testDisSet.findSet(7), testDisSet.findSet(10));
+        Assertions.assertEquals(testDisSet.findSet(5), testDisSet.findSet(10));
+        Assertions.assertNotEquals(testDisSet.findSet(5), testDisSet.findSet(50));
+        Assertions.assertNotEquals(testDisSet.findSet(15), testDisSet.findSet(1));
 
         testDisSet.union(7, 1);
         Assertions.assertEquals(2, testDisSet.getDisjointSets().size());
@@ -38,6 +42,8 @@ public class DisjointSetsTest
         testDisSet.union(50, 1);
         Assertions.assertEquals(1, testDisSet.getDisjointSets().size());
         Assertions.assertEquals(6, testDisSet.getDisjointSets().get(0).size());
+        Assertions.assertEquals(testDisSet.findSet(1), testDisSet.findSet(50));
+        Assertions.assertEquals(testDisSet.findSet(7), testDisSet.findSet(15));
     }
 
 

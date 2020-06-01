@@ -1,11 +1,11 @@
-package GraphPackage;
+package DisjointSetsPackage;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class DisjointSets <T>
+public class DisjointSets <T extends Comparable>
 {
     private List< List<T> > disjointSets;
 
@@ -20,6 +20,10 @@ public class DisjointSets <T>
     {
         if (element == null)
             throw new NullPointerException("Element to make set cannot be null");
+
+        // check if this element was already added
+        if (getSetByItsElement(element) != null)
+            return;
 
         List<T> tempList = new LinkedList<>();
         tempList.add(element);
@@ -49,7 +53,7 @@ public class DisjointSets <T>
         List<T> list2 = getSetByItsElement(second);
 
         // if elements already are in the same set, do nothing
-        if (list1 == list2)
+        if (list1.get(0).compareTo(list2.get(0)) == 0) // check the set representatives
             return;
 
         // merge, put all elements from second list to the first one
