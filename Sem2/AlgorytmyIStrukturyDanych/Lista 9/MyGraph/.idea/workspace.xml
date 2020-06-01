@@ -39,7 +39,22 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.DisjointSetsTest">
+    <configuration name="DisjointSetsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyGraph" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DisjointSetsPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DisjointSetsPackage" />
+      <option name="MAIN_CLASS_NAME" value="DisjointSetsPackage.DisjointSetsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DisjointSetsTest.simpleTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyGraph" />
       <extension name="coverage">
@@ -48,8 +63,8 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="GraphPackage" />
-      <option name="MAIN_CLASS_NAME" value="GraphPackage.DisjointSetsTest" />
+      <option name="PACKAGE_NAME" value="DisjointSetsPackage" />
+      <option name="MAIN_CLASS_NAME" value="DisjointSetsPackage.DisjointSetsTest" />
       <option name="METHOD_NAME" value="simpleTest1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -58,6 +73,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DisjointSetsTest" />
         <item itemvalue="JUnit.DisjointSetsTest.simpleTest1" />
       </list>
     </recent_temporary>
