@@ -9,7 +9,7 @@ public class MyUndirectedGraph <V> extends MyDirectedGraph <V>
 
 
     @Override
-    public void addEdge(V source, V destination, int weight)
+    public void addEdge(V source, V destination, float weight)
     {
         // Add edges in both directions
         super.addEdge(source, destination, weight);

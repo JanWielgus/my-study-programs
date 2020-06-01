@@ -26,7 +26,7 @@ public class MyDirectedGraph<V> implements MyGraphInterface<V>
     }
 
     @Override
-    public void addEdge(V source, V destination,int weight)
+    public void addEdge(V source, V destination, float weight)
     {
         if (source == null || destination == null)
             throw new NullPointerException("Any vertex cannot be null");
@@ -53,13 +53,23 @@ public class MyDirectedGraph<V> implements MyGraphInterface<V>
 
     protected class WeightDestVertex // weighted destination vertex
     {
-        private V vertex;
-        private int weight;
+        private V vertex; // destination vertex
+        private float weight;
 
-        public WeightDestVertex(V vertex, int weight)
+        public WeightDestVertex(V vertex, float weight)
         {
             this.vertex = vertex;
             this.weight = weight;
+        }
+
+        public V getDestVertex()
+        {
+            return vertex;
+        }
+
+        public float getWeight()
+        {
+            return weight;
         }
     }
 }
