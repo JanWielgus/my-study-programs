@@ -27,6 +27,7 @@ namespace SO_5_DistributedAlgorithmSimulator
 		public readonly float askingThreshold = 15;		// value between 0 and 100
 
 		// my config values
-		public readonly float percentOfTasksToTransfer = 10;	// value between 0 and 100
+		public readonly float percentOfTasksToTransfer = 10;    // value between 0 and 100
+		public readonly int averageTimeBetweenNewTask = 3;		// 3 time units average between new task is added
 	}
 }
