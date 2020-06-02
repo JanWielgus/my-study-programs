@@ -7,7 +7,7 @@ namespace SO_5_DistributedAlgorithmSimulator
 	class SimulationStats
 	{
 		// singleton
-		private SimulationStats instance = null;
+		private static SimulationStats instance = null;
 		private SimulationStats() // private constructor
 		{
 			processorLoadAverage = new Average();
@@ -15,7 +15,7 @@ namespace SO_5_DistributedAlgorithmSimulator
 			processorLoadsList = new List<float>();
 			processorQuerriesCounter = 0;
 		}
-		public SimulationStats getInstance()
+		public static SimulationStats getInstance()
 		{
 			if (instance == null)
 				instance = new SimulationStats();

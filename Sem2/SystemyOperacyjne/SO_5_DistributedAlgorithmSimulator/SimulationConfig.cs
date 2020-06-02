@@ -7,12 +7,12 @@ namespace SO_5_DistributedAlgorithmSimulator
 	class SimulationConfig
 	{
 		// Singleton
-		private SimulationConfig instance = null;
+		private static SimulationConfig instance = null;
 		private SimulationConfig() // private constructor
 		{
 
 		}
-		public SimulationConfig getInstance()
+		public static SimulationConfig getInstance()
 		{
 			if (instance == null)
 				instance = new SimulationConfig();

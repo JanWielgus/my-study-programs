@@ -6,12 +6,23 @@ namespace SO_5_DistributedAlgorithmSimulator
 {
 	class GlobalClock
 	{
-		private uint currentTime;
-
-		public GlobalClock()
+		// singleton
+		private static GlobalClock instance = null;
+		public static GlobalClock getInstance()
+		{
+			if (instance == null)
+				instance = new GlobalClock();
+			return instance;
+		}
+		private GlobalClock()
 		{
 			reset();
 		}
+
+
+		// other componemets
+		private uint currentTime;
+	
 
 		public uint getCurrentTime()
 		{
