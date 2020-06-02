@@ -10,4 +10,6 @@ public interface MyGraphInterface <V>
     List<V> getVertexList();
     List<Edge<V>> getEdgeList();
     boolean hasEdge(V source, V destination);
+    List<Path<V>> getShortestPathsFromSource(V source);
+    Path<V> getShortestPath(V source, V destination);
 }
