@@ -2,14 +2,16 @@ package GraphPackage;
 
 import java.util.*;
 
-public class MyDirectedGraph<V> implements MyGraphInterface<V>
+public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterface<V>
 {
     protected Map<V, List<WeightDestVertex> > adjacencyMatrix;
+    protected Edge.DirectionType directionType; // can only be changed in constructor
 
 
     public MyDirectedGraph()
     {
         adjacencyMatrix = new HashMap<>();
+        directionType = Edge.DirectionType.DIRECTED;
     }
 
 
@@ -52,7 +54,7 @@ public class MyDirectedGraph<V> implements MyGraphInterface<V>
         for (WeightDestVertex destVertex: destVertexesList)
         {
             if (destVertex.getDestVertex() == destinationVertex)
-                return new Edge<>(sourceVertex, destinationVertex, destVertex.getWeight());
+                return new Edge<>(sourceVertex, destinationVertex, destVertex.getWeight(), directionType);
         }
 
         return null;
@@ -75,7 +77,7 @@ public class MyDirectedGraph<V> implements MyGraphInterface<V>
         {
             // Convert adjacency matrix to edge list
             for (WeightDestVertex destVertex: adjacencyMatrix.get(sourceVertex))
-                edgeList.add(new Edge<>(sourceVertex, destVertex.getDestVertex(), destVertex.getWeight()));
+                edgeList.add(new Edge<>(sourceVertex, destVertex.getDestVertex(), destVertex.getWeight(), directionType));
         }
 
         return edgeList;
@@ -89,7 +91,81 @@ public class MyDirectedGraph<V> implements MyGraphInterface<V>
     }
 
 
+    // Dijkstra single source shortest path algorithm
+    @Override
+    public List<Path<V>> getShortestPathsFromSource(V source)
+    {
+        List<Path<V>> resultPathList = new ArrayList<>();
+        //List<Float> tempLengthList = new ArrayList<>(); // array with potentially shortest path, infinity at the beginning
+        List<V> vertexList = getVertexList();
+        List<V> completedVertexList = new ArrayList<>();
 
+        // Check if vertex list contain the given source
+        if (!checkIfContainVertex(vertexList, source))
+            throw new IllegalStateException("This graph do not contain such source vertex");
+
+        // add source vertex to completed vertex list
+        completedVertexList.add(source);
+
+        // setup all other vertexes for searching
+        int tempIndex = 0;
+        for (V curVertex: vertexList)
+        {
+            // Skip source vertex
+            if (curVertex.compareTo(source) == 0)
+                continue;
+
+            Edge<V> tempEdge = getEdge(source, curVertex);
+            if (tempEdge != null) // if exist
+                tempLengthList.add(tempEdge.getWeight());
+            else
+                tempLengthList.add(Float.MAX_VALUE); // infinity
+
+            resultPathList.add(new Path<>(source));
+        }
+
+
+        while (completedVertexList.size() != vertexList.size())
+        {
+            // find vertex with shortest past path
+            int smallestID = 0;
+            for (int i=1; i<tempLengthList.size(); i++)
+            {
+                if (tempLengthList.get(i).compareTo(tempLengthList.get(smallestID)) < 0)
+                    smallestID = i;
+            }
+
+            // add this vertex to completed array
+            completedVertexList.add()
+        }
+
+        return null;
+    }
+
+
+    @Override
+    public Path<V> getShortestPath(V source, V destination)
+    {
+        return null;
+    }
+
+
+    @Override
+    public Edge.DirectionType getGraphType()
+    {
+        return directionType;
+    }
+
+
+
+
+    protected boolean checkIfContainVertex(List<V> list, V vertex)
+    {
+        for (V ver: list)
+            if (ver.compareTo(vertex) == 0)
+                return true;
+        return false;
+    }
 
 
 

@@ -18,8 +18,22 @@ public class Path <V extends Comparable<V>>
         destination = null;
     }
 
+    public Path(V source)
+    {
+        edgeList = new ArrayList<>();
+
+        setSource(source);
+    }
+
     public Path(V source, List<Edge<V>> edgeList)
     {
+        if (source == null)
+            throw new NullPointerException("Source vertex cannot be null");
+        if (edgeList == null)
+            throw new NullPointerException("Edge list cannot be null");
+        if (edgeList.size() == 0)
+            throw new IllegalArgumentException("Edge list have to contain at least one edge. Check other constructors");
+
         setPath(source, edgeList);
     }
 
@@ -46,6 +60,10 @@ public class Path <V extends Comparable<V>>
 
     public void setSource(V source)
     {
+        edgeList.clear();
+        length = 0;
+        destination = null;
+
         this.source = source;
     }
 
