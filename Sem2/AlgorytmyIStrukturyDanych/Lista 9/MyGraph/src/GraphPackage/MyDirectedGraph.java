@@ -109,12 +109,14 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
 
         // setup all other vertexes for searching
         int tempIndex = 0;
-        for (V curVertex: destVertexList)
+        for (int i=0; i<destVertexList.size(); i++)
         {
+            V curVertex = destVertexList.get(i);
             // Remove source vertex
             if (curVertex.compareTo(source) == 0)
             {
-                destVertexList.remove(curVertex);
+                destVertexList.remove(i);
+                i--;
                 continue;
             }
 
@@ -152,19 +154,16 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
             tempPathList.remove(smallestID);
 
 
+
             // update paths for not completed vertexes
-            for (int i=0; i<tempPathList.size(); i++)
+            for (int i=0; i < tempPathList.size(); i++)
             {
                 Path<V> curPath = tempPathList.get(i);
                 float minPathLength = curPath.getLength();
 
                 // check connection with all other not completed vertexes
-                for (int j=0; j<destVertexList.size(); i++)
+                for (int j=i+1; j < destVertexList.size(); j++)
                 {
-                    // skip if this is the same vertex
-                    if (i == j)
-                        continue;
-
                     V iVertex = destVertexList.get(i);
                     V jVertex = destVertexList.get(j);
                     Edge<V> ijEdge = getEdge(iVertex, jVertex);
