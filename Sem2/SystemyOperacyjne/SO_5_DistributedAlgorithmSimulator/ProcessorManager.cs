@@ -9,6 +9,7 @@ namespace SO_5_DistributedAlgorithmSimulator
 		private List<Processor> processorList;
 		private GlobalProcessQueue processQueue;
 		private GlobalClock clock = GlobalClock.getInstance();
+		private SimulationStats stats = SimulationStats.getInstance();
 		private Random rand;
 		private int nextProcessorToGetNewProcess = 0;
 
@@ -50,7 +51,14 @@ namespace SO_5_DistributedAlgorithmSimulator
 
 			// Execute processors
 			foreach (Processor proc in processorList)
+			{
+				// execute processor once
 				proc.executeOnce();
+
+				// update stats
+				stats.addNewProcesssorLoad(proc.getCurrentLoad());
+			}
+				
 
 
 			// Tick a clock

@@ -12,7 +12,7 @@ namespace SO_5_DistributedAlgorithmSimulator
 		private int processRemainingSize;
 		private float loadOnProcessor;
 
-		
+
 		public Process(int processSize, float loadOnProcessor)
 		{
 			processID = lastID++;
@@ -23,6 +23,13 @@ namespace SO_5_DistributedAlgorithmSimulator
 			this.loadOnProcessor = loadOnProcessor;
 		}
 
+		public Process(Process toCopy)
+		{
+			this.processID = toCopy.processID;
+			this.processSize = toCopy.processSize;
+			this.processRemainingSize = toCopy.processRemainingSize;
+			this.loadOnProcessor = toCopy.loadOnProcessor;
+		}
 
 		public void compute(int amountComputed)
 		{

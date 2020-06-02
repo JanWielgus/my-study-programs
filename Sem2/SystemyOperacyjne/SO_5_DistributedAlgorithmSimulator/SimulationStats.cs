@@ -69,5 +69,14 @@ namespace SO_5_DistributedAlgorithmSimulator
 		{
 			return processorQuerriesCounter;
 		}
+
+
+		public void reset()
+		{
+			processorLoadAverage.reset();
+			processorLoadVariationAverage.reset();
+			processorLoadsList.Clear();
+			processorQuerriesCounter = 0;
+		}
 	}
 }

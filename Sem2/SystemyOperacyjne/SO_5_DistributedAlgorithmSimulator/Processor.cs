@@ -6,9 +6,10 @@ namespace SO_5_DistributedAlgorithmSimulator
 {
 	abstract class Processor
 	{
-		private List<Process> processList;
-		private ProcessorManager processorManager;
-		private SimulationConfig config = SimulationConfig.getInstance();
+		protected List<Process> processList;
+		protected ProcessorManager processorManager;
+		protected SimulationConfig config = SimulationConfig.getInstance();
+		protected SimulationStats stats = SimulationStats.getInstance();
 
 
 		public Processor(ProcessorManager processorManager)
@@ -22,10 +23,8 @@ namespace SO_5_DistributedAlgorithmSimulator
 		{
 			float load = 0;
 
-			foreach (Process process in processList)
-			{
-				load += process.getLoadOnProcessor();
-			}
+			for (int i=0; i<processList.Count; i++)
+				load += processList[i].getLoadOnProcessor();
 
 			return load;
 		}
@@ -36,10 +35,20 @@ namespace SO_5_DistributedAlgorithmSimulator
 
 		public void executeOnce()
 		{
-			foreach (Process process in processList)
+			for (int i=0; i<processList.Count; i++)
 			{
-				float mult = process.getLoadOnProcessor() / 100f;
-				process.compute((int)(config.maxProcessSize * mult));
+				Process curProc = processList[i];
+
+				// compute process
+				float mult = curProc.getLoadOnProcessor() / 100f;
+				curProc.compute((int)(config.maxProcessSize * mult));
+
+				// Remove if fully computed
+				if (curProc.isDone())
+				{
+					processList.RemoveAt(i);
+					i--;
+				}
 			}
 		}
 
