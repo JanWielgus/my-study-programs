@@ -29,7 +29,7 @@ public class MyUndirectedGraph <V extends Comparable<V>> extends MyDirectedGraph
     public List<Edge<V>> getMinimumSpanningTree()
     {
         List<Edge<V>> resultEdgeList = new ArrayList<>();
-        List<UndirectedEdge<V>> allEdgeList = new ArrayList<>(); // list of all edges (from adjacency matrix)
+        List<Edge<V>> allEdgeList = new ArrayList<>(); // list of all edges (from adjacency matrix)
         DisjointSets<V> disjointSets = new DisjointSets<V>();
 
         // put each vertex to separate set
@@ -39,7 +39,7 @@ public class MyUndirectedGraph <V extends Comparable<V>> extends MyDirectedGraph
 
             // Convert adjacency matrix to edge list
             for (WeightDestVertex destVertex: adjacencyMatrix.get(sourceVertex))
-                allEdgeList.add(new UndirectedEdge<>(sourceVertex, destVertex.getDestVertex(), destVertex.getWeight()));
+                allEdgeList.add(new Edge<>(sourceVertex, destVertex.getDestVertex(), destVertex.getWeight(), Edge.DirectionType.UNDIRECTED));
         }
 
         // Sort edges by weight ascending
@@ -47,7 +47,7 @@ public class MyUndirectedGraph <V extends Comparable<V>> extends MyDirectedGraph
 
         for (int i=0; i<allEdgeList.size(); i++)
         {
-            UndirectedEdge<V> curEdge = allEdgeList.get(i);
+            Edge<V> curEdge = allEdgeList.get(i);
 
             if (disjointSets.findSet(curEdge.getSource()) != disjointSets.findSet(curEdge.getDestination()))
             {
@@ -59,31 +59,4 @@ public class MyUndirectedGraph <V extends Comparable<V>> extends MyDirectedGraph
         return resultEdgeList;
     }
 
-
-
-
-    public static class UndirectedEdge <V> extends Edge<V>
-    {
-        public UndirectedEdge(V source, V destination, float weight) {
-            super(source, destination, weight);
-        }
-
-
-        @Override
-        public int compareTo(Edge o)
-        {
-            if (getWeight() == o.getWeight())
-            {
-                boolean temp1 = getSource() == o.getSource() &&
-                        getDestination() == o.getDestination();
-                boolean temp2 = getSource() == o.getDestination() &&
-                        getDestination() == o.getSource();
-
-                if (temp1 || temp2)
-                    return 0;
-            }
-
-            return getWeight() > o.getWeight() ? 1 : -1;
-        }
-    }
 }

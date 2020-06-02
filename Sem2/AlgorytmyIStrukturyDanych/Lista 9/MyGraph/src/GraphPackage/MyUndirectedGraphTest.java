@@ -37,9 +37,9 @@ public class MyUndirectedGraphTest
 
         // Create list of edges that should occur
         List<Edge<Integer>> expectedEdges = new ArrayList<>();
-        expectedEdges.add(new Edge<>(2, 3, 4));
-        expectedEdges.add(new Edge<>(0, 3, 5));
-        expectedEdges.add(new Edge<>(0, 1, 10));
+        expectedEdges.add(new Edge<>(2, 3, 4, Edge.DirectionType.UNDIRECTED));
+        expectedEdges.add(new Edge<>(0, 3, 5, Edge.DirectionType.UNDIRECTED));
+        expectedEdges.add(new Edge<>(0, 1, 10, Edge.DirectionType.UNDIRECTED));
 
         // check if all edges are in the mst result list
         for (Edge<Integer> edge: expectedEdges)
@@ -86,13 +86,13 @@ public class MyUndirectedGraphTest
 
         // Create list of edges that should occur
         List<Edge<String>> expectedEdges = new ArrayList<>();
-        expectedEdges.add(new Edge<>("g", "d", 5));
-        expectedEdges.add(new Edge<>("a", "d", 2));
-        expectedEdges.add(new Edge<>("a", "e", 3));
-        expectedEdges.add(new Edge<>("b", "e", 3));
-        expectedEdges.add(new Edge<>("e", "h", 1));
-        expectedEdges.add(new Edge<>("b", "c", 2));
-        expectedEdges.add(new Edge<>("f", "h", 7));
+        expectedEdges.add(new Edge<>("d", "g", 5, Edge.DirectionType.UNDIRECTED));
+        expectedEdges.add(new Edge<>("a", "d", 2, Edge.DirectionType.UNDIRECTED));
+        expectedEdges.add(new Edge<>("a", "e", 3, Edge.DirectionType.UNDIRECTED));
+        expectedEdges.add(new Edge<>("b", "e", 3, Edge.DirectionType.UNDIRECTED));
+        expectedEdges.add(new Edge<>("e", "h", 1, Edge.DirectionType.UNDIRECTED));
+        expectedEdges.add(new Edge<>("b", "c", 2, Edge.DirectionType.UNDIRECTED));
+        expectedEdges.add(new Edge<>("f", "h", 7, Edge.DirectionType.UNDIRECTED));
 
 
         // check if all edges are in the mst result list

@@ -121,8 +121,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.MyUndirectedGraphTest" />
-        <item itemvalue="JUnit.MyUndirectedGraphTest.minSpanningTreeTest2" />
         <item itemvalue="JUnit.MyUndirectedGraphTest.minSpanningTreeTest1" />
+        <item itemvalue="JUnit.MyUndirectedGraphTest.minSpanningTreeTest2" />
         <item itemvalue="JUnit.MyUndirectedGraphTest.tempTest1" />
         <item itemvalue="JUnit.DisjointSetsTest" />
       </list>
