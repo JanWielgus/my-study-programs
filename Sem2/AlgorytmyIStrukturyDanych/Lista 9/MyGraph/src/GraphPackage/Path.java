@@ -58,6 +58,15 @@ public class Path <V extends Comparable<V>>
             addEdge(edge);
     }
 
+
+    public void setPath(Path<V> path)
+    {
+        this.edgeList = new ArrayList<>(path.edgeList);
+        this.length = path.length;
+        this.source = path.source;
+        this.length = path.length;
+    }
+
     public void setSource(V source)
     {
         edgeList.clear();

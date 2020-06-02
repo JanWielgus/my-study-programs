@@ -95,13 +95,13 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
     @Override
     public List<Path<V>> getShortestPathsFromSource(V source)
     {
-        List<Path<V>> resultPathList = new ArrayList<>();
-        //List<Float> tempLengthList = new ArrayList<>(); // array with potentially shortest path, infinity at the beginning
-        List<V> vertexList = getVertexList();
+        List<Path<V>> tempPathList = new ArrayList<>();
+        List<Path<V>> completedPathList = new ArrayList<>();
+        List<V> destVertexList = getVertexList();
         List<V> completedVertexList = new ArrayList<>();
 
         // Check if vertex list contain the given source
-        if (!checkIfContainVertex(vertexList, source))
+        if (!checkIfContainVertex(destVertexList, source))
             throw new IllegalStateException("This graph do not contain such source vertex");
 
         // add source vertex to completed vertex list
@@ -109,37 +109,82 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
 
         // setup all other vertexes for searching
         int tempIndex = 0;
-        for (V curVertex: vertexList)
+        for (V curVertex: destVertexList)
         {
-            // Skip source vertex
+            // Remove source vertex
             if (curVertex.compareTo(source) == 0)
+            {
+                destVertexList.remove(curVertex);
                 continue;
+            }
 
+
+            Path<V> newPath = new Path<>(source);
             Edge<V> tempEdge = getEdge(source, curVertex);
             if (tempEdge != null) // if exist
-                tempLengthList.add(tempEdge.getWeight());
-            else
-                tempLengthList.add(Float.MAX_VALUE); // infinity
+                newPath.addEdge(tempEdge);
 
-            resultPathList.add(new Path<>(source));
+            tempPathList.add(newPath);
         }
 
 
-        while (completedVertexList.size() != vertexList.size())
+        while (completedVertexList.size() != destVertexList.size())
         {
             // find vertex with shortest past path
             int smallestID = 0;
-            for (int i=1; i<tempLengthList.size(); i++)
+            for (int i=1; i<tempPathList.size(); i++)
             {
-                if (tempLengthList.get(i).compareTo(tempLengthList.get(smallestID)) < 0)
+                Path<V> curPath = tempPathList.get(i);
+                // If is greater than zero and smaller than current smallest
+                // Length == zero is same as infinity
+                if (curPath.getLength() > 0 &&
+                        curPath.getLength() < tempPathList.get(smallestID).getLength())
                     smallestID = i;
             }
 
-            // add this vertex to completed array
-            completedVertexList.add()
+
+            // add this vertex to completed array and remove it from destination vertex list
+            completedVertexList.add(destVertexList.get(smallestID));
+            destVertexList.remove(smallestID);
+
+            // move path to the completed path list and remove it from old list
+            completedPathList.add(tempPathList.get(smallestID));
+            tempPathList.remove(smallestID);
+
+
+            // update paths for not completed vertexes
+            for (int i=0; i<tempPathList.size(); i++)
+            {
+                Path<V> curPath = tempPathList.get(i);
+                float minPathLength = curPath.getLength();
+
+                // check connection with all other not completed vertexes
+                for (int j=0; j<destVertexList.size(); i++)
+                {
+                    // skip if this is the same vertex
+                    if (i == j)
+                        continue;
+
+                    V iVertex = destVertexList.get(i);
+                    V jVertex = destVertexList.get(j);
+                    Edge<V> ijEdge = getEdge(iVertex, jVertex);
+                    if (ijEdge != null)
+                    {
+                        // check if path from jVertex + edge weight is less than current path
+                        float throughJLen = tempPathList.get(j).getLength() + ijEdge.getWeight();
+                        if (throughJLen < minPathLength)
+                        {
+                            minPathLength = throughJLen;
+                            tempPathList.get(i).setPath(tempPathList.get(j));
+                            tempPathList.get(i).addEdge(ijEdge);
+                        }
+                    }
+                }
+            }
         }
 
-        return null;
+
+        return completedPathList;
     }
 
 
