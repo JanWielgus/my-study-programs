@@ -59,7 +59,10 @@ namespace SO_5_DistributedAlgorithmSimulator
 			float averageLoad = getAveragePorcessorLoading();
 			processorLoadVariationAverage.reset();
 			foreach (float value in processorLoadsList)
-				processorLoadVariationAverage.addNewValue(value - averageLoad);
+			{
+				float curVariation = Math.Abs(value - averageLoad);
+				processorLoadVariationAverage.addNewValue(curVariation);
+			}
 
 			return (float)processorLoadVariationAverage.getAverage();
 		}
