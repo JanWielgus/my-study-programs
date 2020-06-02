@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a562cde7-8c30-4852-b2f7-2edb86f69ef0" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectId" id="1ccfKeyfY79NjMt5RFa6tKXB0VO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.MyUndirectedGraphTest.shortestPathsFromOneSourceTest1">
+    <configuration name="MyUndirectedGraphTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyGraph" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GraphPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="GraphPackage" />
+      <option name="MAIN_CLASS_NAME" value="GraphPackage.MyUndirectedGraphTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyUndirectedGraphTest.minSpanningTreeTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyGraph" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GraphPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="GraphPackage" />
+      <option name="MAIN_CLASS_NAME" value="GraphPackage.MyUndirectedGraphTest" />
+      <option name="METHOD_NAME" value="minSpanningTreeTest1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyUndirectedGraphTest.minSpanningTreeTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyGraph" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GraphPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="GraphPackage" />
+      <option name="MAIN_CLASS_NAME" value="GraphPackage.MyUndirectedGraphTest" />
+      <option name="METHOD_NAME" value="minSpanningTreeTest2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyUndirectedGraphTest.shortestPathsFromOneSourceTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyGraph" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GraphPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="GraphPackage" />
+      <option name="MAIN_CLASS_NAME" value="GraphPackage.MyUndirectedGraphTest" />
+      <option name="METHOD_NAME" value="shortestPathsFromOneSourceTest1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyUndirectedGraphTest.tempTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyGraph" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GraphPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="GraphPackage" />
+      <option name="MAIN_CLASS_NAME" value="GraphPackage.MyUndirectedGraphTest" />
+      <option name="METHOD_NAME" value="tempTest1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MyUndirectedGraphTest.shortestPathsFromOneSourceTest1" />
+        <item itemvalue="JUnit.MyUndirectedGraphTest" />
+        <item itemvalue="JUnit.MyUndirectedGraphTest.minSpanningTreeTest1" />
+        <item itemvalue="JUnit.MyUndirectedGraphTest.minSpanningTreeTest2" />
+        <item itemvalue="JUnit.MyUndirectedGraphTest.tempTest1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a562cde7-8c30-4852-b2f7-2edb86f69ef0" name="Default Changelist" comment="" />
+      <created>1590832739627</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590832739627</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
