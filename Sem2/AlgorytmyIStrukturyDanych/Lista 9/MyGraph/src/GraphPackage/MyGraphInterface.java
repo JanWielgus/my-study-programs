@@ -2,7 +2,7 @@ package GraphPackage;
 
 import java.util.List;
 
-public interface MyGraphInterface <V>
+public interface MyGraphInterface <V extends Comparable<V>>
 {
     void addVertex(V vertex);
     void addEdge(V source, V destination, float weight);

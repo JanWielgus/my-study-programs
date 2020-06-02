@@ -101,6 +101,50 @@ public class MyUndirectedGraphTest
     }
 
 
+    @Test
+    void shortestPathsFromOneSourceTest1()
+    {
+        MyUndirectedGraph<String> stringGraph = new MyUndirectedGraph<>();
+
+        stringGraph.addVertex("a");
+        stringGraph.addVertex("b");
+        stringGraph.addVertex("c");
+        stringGraph.addVertex("d");
+        stringGraph.addVertex("e");
+        stringGraph.addVertex("f");
+        stringGraph.addVertex("g");
+        stringGraph.addVertex("h");
+
+        stringGraph.addEdge("a", "b", 2);
+        stringGraph.addEdge("a", "c", 5);
+        stringGraph.addEdge("b", "d", 3);
+        stringGraph.addEdge("b", "e", 4);
+        stringGraph.addEdge("c", "d", 5);
+        stringGraph.addEdge("c", "f", 6);
+        stringGraph.addEdge("d", "e", 3);
+        stringGraph.addEdge("d", "f", 1);
+        stringGraph.addEdge("e", "f", 4);
+        stringGraph.addEdge("e", "g", 8);
+        stringGraph.addEdge("e", "h", 2);
+        stringGraph.addEdge("f", "g", 7);
+        stringGraph.addEdge("g", "h", 1);
+
+
+        List<Path<String>> shortestPathsList = stringGraph.getShortestPathsFromSource("a");
+
+
+        for (Path<String> path: shortestPathsList)
+        {
+            System.out.println("Src: " + path.getSource() +
+                    " Dest: " + path.getDestination() +
+                    " Len: " + path.getLength());
+        }
+    }
+
+
+
+
+
 
 
     <V> boolean contain(List<Edge<V>> list, Edge<V> edge)
