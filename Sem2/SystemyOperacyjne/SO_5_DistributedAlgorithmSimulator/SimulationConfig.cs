@@ -28,6 +28,10 @@ namespace SO_5_DistributedAlgorithmSimulator
 
 		// my config values
 		public readonly float percentOfTasksToTransfer = 10;    // value between 0 and 100
-		public readonly int averageTimeBetweenNewTask = 3;		// 3 time units average between new task is added
+		public readonly int averageTimeBetweenNewTask = 3;      // 3 time units average between new task is added
+		public readonly int maxProcessSize = 40; // assuming that maximum sized process can be computed in one cycle if use 100% load
+
+		public readonly float minProcessLoad = 0.5f;
+		public readonly float maxProcessLoad = 8;
 	}
 }
