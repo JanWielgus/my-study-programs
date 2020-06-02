@@ -47,7 +47,7 @@ namespace SO_5_DistributedAlgorithmSimulator
 
 				// compute process
 				float mult = curProc.getLoadOnProcessor() / 100f;
-				curProc.compute((int)(config.maxProcessSize * mult));
+				curProc.compute((int)(config.maxProcessSize * mult + 0.5));
 
 				// Remove if fully computed
 				if (curProc.isDone())

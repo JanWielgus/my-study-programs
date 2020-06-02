@@ -56,7 +56,8 @@ namespace SO_5_DistributedAlgorithmSimulator
 				proc.executeOnce();
 
 				// update stats
-				stats.addNewProcesssorLoad(proc.getCurrentLoad());
+				//if (proc.getCurrentLoad() != 0.0)
+					stats.addNewProcesssorLoad(proc.getCurrentLoad());
 			}
 				
 

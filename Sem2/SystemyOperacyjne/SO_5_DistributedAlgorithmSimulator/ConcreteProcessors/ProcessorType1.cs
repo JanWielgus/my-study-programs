@@ -33,6 +33,7 @@ namespace SO_5_DistributedAlgorithmSimulator.ConcreteProcessors
 				if (randomProc.getCurrentLoad() < config.loadThreshold_p)
 				{
 					randomProc.forceAddProcess(process);
+					stats.incrementProcessorQueriesCounter();
 					return;
 				}
 			}
