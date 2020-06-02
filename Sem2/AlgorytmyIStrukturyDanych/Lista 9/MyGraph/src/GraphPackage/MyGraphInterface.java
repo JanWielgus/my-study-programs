@@ -12,4 +12,5 @@ public interface MyGraphInterface <V>
     boolean hasEdge(V source, V destination);
     List<Path<V>> getShortestPathsFromSource(V source);
     Path<V> getShortestPath(V source, V destination);
+    Edge.DirectionType getGraphType();
 }

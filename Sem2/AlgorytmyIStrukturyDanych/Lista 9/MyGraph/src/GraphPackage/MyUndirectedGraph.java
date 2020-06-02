@@ -12,6 +12,7 @@ public class MyUndirectedGraph <V extends Comparable<V>> extends MyDirectedGraph
     public MyUndirectedGraph()
     {
         super();
+        directionType = Edge.DirectionType.UNDIRECTED; // override direction type
     }
 
 

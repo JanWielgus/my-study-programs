@@ -3,7 +3,7 @@ package GraphPackage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Path <V>
+public class Path <V extends Comparable<V>>
 {
     private List<Edge<V>> edgeList;
     float length;
@@ -18,21 +18,106 @@ public class Path <V>
         destination = null;
     }
 
-    public Path(V source, V destination, List<Edge<V>> edgeList)
+    public Path(V source, List<Edge<V>> edgeList)
     {
-        setupPath(source, destination, edgeList);
+        setPath(source, edgeList);
     }
 
-    public void setupPath(V source, V destination, List<Edge<V>> edgeList)
+
+    // Edge list have to be consistent
+    public void setPath(V source, List<Edge<V>> edgeList)
+    {
+        if (source == null || destination == null)
+            throw new NullPointerException("Source and destination cannot be null");
+        if (edgeList == null)
+            throw new NullPointerException("Edge list cannot be null");
+        if (edgeList.size() == 0)
+            throw new IllegalStateException("Edge list have to contain at least ove edge");
+
+
+        setSource(source);
+        destination = null;
+        length = 0;
+        edgeList.clear();
+
+        for (Edge<V> edge: edgeList)
+            addEdge(edge);
+    }
+
+    public void setSource(V source)
     {
         this.source = source;
-        this.destination = destination;
-        this.edgeList = edgeList;
+    }
 
-        // calculate total length
-        length = 0;
-        for (Edge<V> edge: edgeList)
-            length += edge.getWeight();
+
+    // Add source vertex before the first edge
+    public void addEdge(Edge<V> edge)
+    {
+        // Prevent from adding edge to path without source
+        if (source == null)
+            throw new IllegalStateException("There is no source vertex");
+
+        boolean result = false;
+
+        // If this is the first edge
+        if (destination == null)
+        {
+            // Check destination conditions
+
+            if (edge.getDirectionType() == Edge.DirectionType.DIRECTED)
+            {
+                // have to match to this source
+                if (edge.getSource().compareTo(this.source) == 0)
+                {
+                    this.destination = edge.getDestination();
+                    edgeList.add(edge);
+                    length += edge.getWeight();
+                }
+                else
+                    throw new IllegalStateException("Given edge has different source than this path");
+            }
+            else // undirected edge
+            {
+                // Any vertex can match source
+
+                if (edge.getSource().compareTo(this.source) == 0)
+                    this.destination = edge.getDestination();
+                else if (edge.getDestination().compareTo(this.source) == 0)
+                    this.destination = edge.getSource();
+
+                edgeList.add(edge);
+                length += edge.getWeight();
+            }
+        }
+
+        // If this is not the first edge
+        else // destination != null
+        {
+            if (edge.getDirectionType() == Edge.DirectionType.DIRECTED)
+            {
+                // edge source have to match to previous destination
+                if (this.destination.compareTo(edge.getSource()) == 0)
+                {
+                    this.destination = edge.getDestination();
+                    edgeList.add(edge);
+                    length += edge.getWeight();
+                }
+                else
+                    throw new IllegalStateException("Given edge has different source than last destination");
+            }
+            else // undirected
+            {
+                // edge source or destination can match to last destination
+                if (edge.getSource().compareTo(this.destination) == 0)
+                    this.destination = edge.getDestination();
+                else if (edge.getDestination().compareTo(this.destination) == 0)
+                    this.destination = edge.getSource();
+
+                edgeList.add(edge);
+                length += edge.getWeight();
+            }
+        }
+
     }
 
 

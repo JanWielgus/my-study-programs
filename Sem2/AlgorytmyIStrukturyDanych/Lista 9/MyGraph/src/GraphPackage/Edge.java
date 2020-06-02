@@ -37,6 +37,11 @@ public class Edge <V> implements Comparable<Edge>
         return weight;
     }
 
+    public DirectionType getDirectionType()
+    {
+        return directionType;
+    }
+
 
     @Override
     public int compareTo(Edge o)
