@@ -29,13 +29,14 @@ namespace SO_5_DistributedAlgorithmSimulator.ConcreteProcessors
 				// update stats
 				stats.incrementProcessorQueriesCounter();
 
+				
 				if (randomProc.getCurrentLoad() < config.loadThreshold_p)
 				{
-					randomProc.addProcess(process);
+					randomProc.forceAddProcess(process);
 					return;
 				}
 			}
-
+			
 			// If was not already sent to different processor, add to this processor
 			processList.Add(process);
 		}

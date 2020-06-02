@@ -33,6 +33,12 @@ namespace SO_5_DistributedAlgorithmSimulator
 		public abstract void addProcess(Process process);
 
 
+		public void forceAddProcess(Process processs)
+		{
+			processList.Add(processs);
+		}
+
+
 		public void executeOnce()
 		{
 			for (int i=0; i<processList.Count; i++)
