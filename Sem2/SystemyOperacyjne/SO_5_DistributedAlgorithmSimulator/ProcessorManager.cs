@@ -57,9 +57,10 @@ namespace SO_5_DistributedAlgorithmSimulator
 
 				// update stats
 				//if (proc.getCurrentLoad() != 0.0)
-					stats.addNewProcesssorLoad(proc.getCurrentLoad());
+					//stats.addNewProcesssorLoad(proc.getCurrentLoad());
 			}
-				
+			stats.addNewProcesssorLoad(processorList[0].getCurrentLoad()); // average load on the first processor
+
 
 
 			// Tick a clock

@@ -43,14 +43,14 @@ namespace SO_5_DistributedAlgorithmSimulator
 		{
 			for (int i=0; i<processList.Count; i++)
 			{
-				Process curProc = processList[i];
+				Process curProcess = processList[i];
 
 				// compute process
-				float mult = curProc.getLoadOnProcessor() / 100f;
-				curProc.compute((int)(config.maxProcessSize * mult + 0.5));
+				float mult = curProcess.getLoadOnProcessor() / 100f;
+				curProcess.compute((int)(100 * mult + 0.5));
 
 				// Remove if fully computed
-				if (curProc.isDone())
+				if (curProcess.isDone())
 				{
 					processList.RemoveAt(i);
 					i--;

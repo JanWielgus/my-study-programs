@@ -61,6 +61,8 @@ namespace SO_5_DistributedAlgorithmSimulator
 			SimulationStats stats = SimulationStats.getInstance();
 			stats.reset();
 
+			GlobalClock.getInstance().reset();
+
 			SimulationConfig config = SimulationConfig.getInstance();
 
 			List<Processor> processorList = new List<Processor>();
