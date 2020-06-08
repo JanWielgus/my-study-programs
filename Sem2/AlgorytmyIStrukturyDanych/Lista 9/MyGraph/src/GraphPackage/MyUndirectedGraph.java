@@ -3,7 +3,6 @@ package GraphPackage;
 import DisjointSetsPackage.DisjointSets;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,12 +33,12 @@ public class MyUndirectedGraph <V extends Comparable<V>> extends MyDirectedGraph
         DisjointSets<V> disjointSets = new DisjointSets<V>();
 
         // put each vertex to separate set
-        for (V sourceVertex: adjacencyMatrix.keySet())
+        for (V sourceVertex: adjacencyList.keySet())
         {
             disjointSets.makeSet(sourceVertex);
 
             // Convert adjacency matrix to edge list
-            for (WeightDestVertex destVertex: adjacencyMatrix.get(sourceVertex))
+            for (WeightDestVertex destVertex: adjacencyList.get(sourceVertex))
                 allEdgeList.add(new Edge<>(sourceVertex, destVertex.getDestVertex(), destVertex.getWeight(), Edge.DirectionType.UNDIRECTED));
         }
 

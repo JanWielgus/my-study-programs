@@ -39,7 +39,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MyUndirectedGraphTest.shortestPathsFromOneSourceTest1">
+  <component name="RunManager" selected="JUnit.MyUndirectedGraphTest">
     <configuration name="MyUndirectedGraphTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyGraph" />
       <extension name="coverage">
@@ -121,9 +121,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MyUndirectedGraphTest.shortestPathsFromOneSourceTest1" />
         <item itemvalue="JUnit.MyUndirectedGraphTest" />
         <item itemvalue="JUnit.MyUndirectedGraphTest.minSpanningTreeTest1" />
+        <item itemvalue="JUnit.MyUndirectedGraphTest.shortestPathsFromOneSourceTest1" />
         <item itemvalue="JUnit.MyUndirectedGraphTest.minSpanningTreeTest2" />
         <item itemvalue="JUnit.MyUndirectedGraphTest.tempTest1" />
       </list>

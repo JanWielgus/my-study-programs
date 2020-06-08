@@ -4,13 +4,13 @@ import java.util.*;
 
 public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterface<V>
 {
-    protected Map<V, List<WeightDestVertex> > adjacencyMatrix;
+    protected Map<V, List<WeightDestVertex> > adjacencyList;
     protected Edge.DirectionType directionType; // can only be changed in constructor
 
 
     public MyDirectedGraph()
     {
-        adjacencyMatrix = new HashMap<>();
+        adjacencyList = new HashMap<>();
         directionType = Edge.DirectionType.DIRECTED;
     }
 
@@ -21,7 +21,7 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
         if (vertex == null)
             throw new NullPointerException("Passed vertex cannot be null");
 
-        adjacencyMatrix.put(vertex, new LinkedList<>());
+        adjacencyList.put(vertex, new LinkedList<>());
     }
 
 
@@ -32,12 +32,12 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
             throw new NullPointerException("Any vertex cannot be null");
 
         // check if this vertexes exists in graph
-        if (!adjacencyMatrix.containsKey(source) || !adjacencyMatrix.containsKey(destination))
+        if (!adjacencyList.containsKey(source) || !adjacencyList.containsKey(destination))
             throw new IllegalArgumentException("There are no such vertexes to create an edge");
 
         // create new edge in the adjacency matrix
         if (!hasEdge(source, destination)) // check if this edge don't exist already
-            adjacencyMatrix.get(source).add(new WeightDestVertex(destination, weight));
+            adjacencyList.get(source).add(new WeightDestVertex(destination, weight));
     }
 
 
@@ -45,7 +45,7 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
     public Edge<V> getEdge(V sourceVertex, V destinationVertex)
     {
         // Find list of destination vertexes from this source vertex
-        List<WeightDestVertex> destVertexesList = adjacencyMatrix.get(sourceVertex);
+        List<WeightDestVertex> destVertexesList = adjacencyList.get(sourceVertex);
 
         if (destinationVertex == null)
             return null;
@@ -64,7 +64,7 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
     @Override
     public List<V> getVertexList()
     {
-        return new ArrayList<>(adjacencyMatrix.keySet());
+        return new ArrayList<>(adjacencyList.keySet());
     }
 
 
@@ -73,10 +73,10 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
     {
         List<Edge<V>> edgeList = new ArrayList<>();
 
-        for (V sourceVertex: adjacencyMatrix.keySet())
+        for (V sourceVertex: adjacencyList.keySet())
         {
             // Convert adjacency matrix to edge list
-            for (WeightDestVertex destVertex: adjacencyMatrix.get(sourceVertex))
+            for (WeightDestVertex destVertex: adjacencyList.get(sourceVertex))
                 edgeList.add(new Edge<>(sourceVertex, destVertex.getDestVertex(), destVertex.getWeight(), directionType));
         }
 
@@ -87,7 +87,7 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
     @Override
     public boolean hasEdge(V source, V destination)
     {
-        return adjacencyMatrix.get(source).contains(destination);
+        return adjacencyList.get(source).contains(destination);
     }
 
 
