@@ -5,7 +5,7 @@ import java.util.List;
 
 public class KMP_PatternMatching
 {
-    static List<Integer> search(String pattern, String text)
+    static List<Integer> search(String text, String pattern)
     {
         int textLength = text.length();
         int patternLength = pattern.length();
