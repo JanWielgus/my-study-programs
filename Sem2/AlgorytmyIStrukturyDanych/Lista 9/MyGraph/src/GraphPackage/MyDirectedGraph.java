@@ -140,7 +140,6 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
         List<V> uncheckedVertexList = getVertexList();
         List<V> checkedVertexList = new ArrayList<>();
         Map<V, Float> pathsWeights = new HashMap<>();
-        Map<V, V> predecessors = new HashMap<>();
         Map<V, Path<V>> pathMap = new HashMap<>();
 
         // Prepare
@@ -149,9 +148,6 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
             // set paths weights to infinity except for source vertex
             pathsWeights.put(vertex, Float.POSITIVE_INFINITY);
             pathsWeights.replace(source, 0.0f);
-
-            // set all predecessors to null
-            predecessors.put(vertex, null);
 
             // create new path for each vertex
             // and set source to source vertex
@@ -193,12 +189,13 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
                 float adjacentVertPathWeight = pathsWeights.get(adjacentVert);
                 Edge<V> checkedEdge = getEdge(lowestWeightVertex, adjacentVert); // edge from lowest weight vertex to current adjacent vertex
                 float potentialNewPathWeight = toLowestVertPathWeight + checkedEdge.getWeight();
+                // Check if path through current lowestWeightVertex is shorter
                 if (adjacentVertPathWeight > potentialNewPathWeight)
                 {
+                    // Set adjacent vertex pathWeight to new lower value
                     pathsWeights.replace(adjacentVert, potentialNewPathWeight);
-                    predecessors.replace(adjacentVert, lowestWeightVertex);
 
-                    // Set new path
+                    // Set new path (through lowestWeightVertex)
                     Path<V> tempPath = pathMap.get(adjacentVert);
                     tempPath.setPath(pathMap.get(lowestWeightVertex));
                     tempPath.addEdge(checkedEdge);

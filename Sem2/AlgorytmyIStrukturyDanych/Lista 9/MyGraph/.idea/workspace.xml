@@ -39,7 +39,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MyUndirectedGraphTest.shortestPathsFromOneSourceTest1">
+  <component name="RunManager" selected="JUnit.MyUndirectedGraphTest">
     <configuration name="MyUndirectedGraphTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyGraph" />
       <extension name="coverage">
@@ -71,7 +71,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PathTest.addNotMatchingEdgeExceptionTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PathTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyGraph" />
       <extension name="coverage">
         <pattern>
@@ -81,8 +81,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="GraphPackage" />
       <option name="MAIN_CLASS_NAME" value="GraphPackage.PathTest" />
-      <option name="METHOD_NAME" value="addNotMatchingEdgeExceptionTest1" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -121,11 +120,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MyUndirectedGraphTest.shortestPathsFromOneSourceTest1" />
         <item itemvalue="JUnit.MyUndirectedGraphTest" />
+        <item itemvalue="JUnit.PathTest" />
+        <item itemvalue="JUnit.MyUndirectedGraphTest.shortestPathsFromOneSourceTest1" />
         <item itemvalue="JUnit.PathTest.edgeListTest1" />
         <item itemvalue="JUnit.PathTest.interfaceTest1" />
-        <item itemvalue="JUnit.PathTest.addNotMatchingEdgeExceptionTest1" />
       </list>
     </recent_temporary>
   </component>
