@@ -32,6 +32,26 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="KMP_TimeTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DefaultPackage.KMP_TimeTests" />
+      <module name="KMP_PatternMatching" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DefaultPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.KMP_TimeTests" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
