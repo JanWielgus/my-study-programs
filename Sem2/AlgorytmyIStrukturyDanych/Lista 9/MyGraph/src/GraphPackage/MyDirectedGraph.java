@@ -174,26 +174,22 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
             checkedVertexList.add(lowestWeightVertex);
 
 
-            // update pathsWeights in remaining unchecked vertex list
-            for (V vert: uncheckedVertexList)
+            // for all adjacent vertexes with lowest weight vertex
+            List<V> adjacentVertexList = getAdjacentVertexesList(lowestWeightVertex);
+            float toLowestVertPathWeight = pathsWeights.get(lowestWeightVertex);
+            for (V adjacentVert: adjacentVertexList)
             {
-                // for all adjacent vertexes
-                List<V> adjacentVertexList = getAdjacentVertexesList(vert);
-                float toVertPathWeight = pathsWeights.get(vert);
-                for (V adjacentVert: adjacentVertexList)
-                {
-                    // skip for checked adjacent vertexes
-                    if (checkedVertexList.contains(adjacentVert))
-                        continue;
+                // skip for checked adjacent vertexes
+                if (checkedVertexList.contains(adjacentVert))
+                    continue;
 
-                    float adjacentVertPathWeight = pathsWeights.get(adjacentVert);
-                    Edge<V> checkedEdge = getEdge(vert, adjacentVert); // edge from vert to current adjacent vertex
-                    float potentialNewPathWeight = toVertPathWeight + checkedEdge.getWeight();
-                    if (adjacentVertPathWeight > potentialNewPathWeight)
-                    {
-                        pathsWeights.replace(adjacentVert, potentialNewPathWeight);
-                        predecessors.replace(adjacentVert, vert);
-                    }
+                float adjacentVertPathWeight = pathsWeights.get(adjacentVert);
+                Edge<V> checkedEdge = getEdge(lowestWeightVertex, adjacentVert); // edge from lowest weight vertex to current adjacent vertex
+                float potentialNewPathWeight = toLowestVertPathWeight + checkedEdge.getWeight();
+                if (adjacentVertPathWeight > potentialNewPathWeight)
+                {
+                    pathsWeights.replace(adjacentVert, potentialNewPathWeight);
+                    predecessors.replace(adjacentVert, lowestWeightVertex);
                 }
             }
         }
