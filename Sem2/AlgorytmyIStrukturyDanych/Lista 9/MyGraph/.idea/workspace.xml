@@ -39,7 +39,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MyUndirectedGraphTest">
+  <component name="RunManager" selected="JUnit.MyUndirectedGraphTest.interfaceTest1">
     <configuration name="MyUndirectedGraphTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyGraph" />
       <extension name="coverage">
@@ -51,6 +51,22 @@
       <option name="PACKAGE_NAME" value="GraphPackage" />
       <option name="MAIN_CLASS_NAME" value="GraphPackage.MyUndirectedGraphTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyUndirectedGraphTest.interfaceTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyGraph" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GraphPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="GraphPackage" />
+      <option name="MAIN_CLASS_NAME" value="GraphPackage.MyUndirectedGraphTest" />
+      <option name="METHOD_NAME" value="interfaceTest1" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -103,29 +119,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyUndirectedGraphTest.tempTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MyGraph" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="GraphPackage.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="GraphPackage" />
-      <option name="MAIN_CLASS_NAME" value="GraphPackage.MyUndirectedGraphTest" />
-      <option name="METHOD_NAME" value="tempTest1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MyUndirectedGraphTest.interfaceTest1" />
         <item itemvalue="JUnit.MyUndirectedGraphTest" />
         <item itemvalue="JUnit.MyUndirectedGraphTest.minSpanningTreeTest1" />
         <item itemvalue="JUnit.MyUndirectedGraphTest.shortestPathsFromOneSourceTest1" />
         <item itemvalue="JUnit.MyUndirectedGraphTest.minSpanningTreeTest2" />
-        <item itemvalue="JUnit.MyUndirectedGraphTest.tempTest1" />
       </list>
     </recent_temporary>
   </component>

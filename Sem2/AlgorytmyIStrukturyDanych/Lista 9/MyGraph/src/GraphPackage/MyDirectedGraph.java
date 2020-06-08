@@ -96,11 +96,33 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
         List<V> adjacentVertexesList = new ArrayList<>();
         List<WeightDestVertex> destinationVertexes = adjacencyList.get(source);
 
+        if (destinationVertexes == null)
+            throw new IllegalArgumentException("Passed source vertex doesn't exist in graph");
+
         // copy adjacent vertexes from source vertex to new array
         for (WeightDestVertex destVertex: destinationVertexes)
             adjacentVertexesList.add(destVertex.getDestVertex());
 
         return adjacentVertexesList;
+    }
+
+    @Override
+    public List<Edge<V>> getAdjacentEdgeList(V source)
+    {
+        if (source == null)
+            throw new NullPointerException("Source vertex cannot be null");
+
+        List<Edge<V>> adjacentEdgeList = new ArrayList<>();
+        List<WeightDestVertex> destinationVertexes = adjacencyList.get(source);
+
+        if (destinationVertexes == null)
+            throw new IllegalArgumentException("Passed source vertex doesn't exist in graph");
+
+        // create adjacent edges list
+        for (WeightDestVertex destVertex: destinationVertexes)
+            adjacentEdgeList.add(new Edge<>(source, destVertex.getDestVertex(), destVertex.getWeight(), getGraphType()));
+
+        return adjacentEdgeList;
     }
 
 
@@ -115,7 +137,7 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
     @Override
     public List<Path<V>> getShortestPathsFromSource(V source)
     {
-
+        return null;
     }
 
 

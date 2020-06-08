@@ -101,6 +101,63 @@ public class MyUndirectedGraphTest
     }
 
 
+
+    @Test
+    void interfaceTest1()
+    {
+        MyUndirectedGraph<String> secondTestGraph = new MyUndirectedGraph<>();
+
+        secondTestGraph.addVertex("a");
+        secondTestGraph.addVertex("b");
+        secondTestGraph.addVertex("c");
+        secondTestGraph.addVertex("d");
+        secondTestGraph.addVertex("e");
+        secondTestGraph.addVertex("f");
+        secondTestGraph.addVertex("g");
+        secondTestGraph.addVertex("h");
+
+        secondTestGraph.addEdge("a", "b", 4);
+        secondTestGraph.addEdge("a", "d", 2);
+        secondTestGraph.addEdge("a", "e", 3);
+        secondTestGraph.addEdge("b", "e", 3);
+        secondTestGraph.addEdge("b", "h", 4);
+        secondTestGraph.addEdge("b", "f", 8);
+        secondTestGraph.addEdge("b", "c", 2);
+        secondTestGraph.addEdge("c", "f", 9);
+        secondTestGraph.addEdge("d", "g", 5);
+        secondTestGraph.addEdge("e", "g", 5);
+        secondTestGraph.addEdge("e", "h", 1);
+        secondTestGraph.addEdge("f", "h", 7);
+        secondTestGraph.addEdge("g", "h", 6);
+
+
+
+        // Check edge getter
+        Edge<String> expectedEdge = new Edge<>("d", "g", 5, Edge.DirectionType.UNDIRECTED);
+        Assertions.assertTrue(secondTestGraph.getEdge("g", "d").compareTo(expectedEdge) == 0);
+
+
+        // Check vertex list getter
+        Assertions.assertArrayEquals(secondTestGraph.getVertexList().toArray(), new String[]{"a", "b", "c", "d", "e", "f", "g", "h"});
+
+
+        // Check adjacent vertex list getter
+        Assertions.assertArrayEquals(secondTestGraph.getAdjacentVertexesList("e").toArray(), new String[]{"a", "b", "g", "h"});
+        Assertions.assertArrayEquals(secondTestGraph.getAdjacentVertexesList("c").toArray(), new String[]{"b", "f"});
+
+
+        // Check adjacent edge list getter
+        List<Edge<String>> expectedEdgeList = new ArrayList<>();
+        expectedEdgeList.add(new Edge<String>("h", "b", 4, Edge.DirectionType.UNDIRECTED));
+        expectedEdgeList.add(new Edge<String>("e", "h", 1, Edge.DirectionType.UNDIRECTED));
+        expectedEdgeList.add(new Edge<String>("f", "h", 7, Edge.DirectionType.UNDIRECTED));
+        expectedEdgeList.add(new Edge<String>("g", "h", 6, Edge.DirectionType.UNDIRECTED));
+        List<Edge<String>> actualEdgeList = secondTestGraph.getAdjacentEdgeList("h");
+        for (int i=0; i<actualEdgeList.size(); i++)
+            Assertions.assertEquals(0, actualEdgeList.get(i).compareTo(expectedEdgeList.get(i)));
+    }
+
+
     /*
     @Test
     void shortestPathsFromOneSourceTest1()
