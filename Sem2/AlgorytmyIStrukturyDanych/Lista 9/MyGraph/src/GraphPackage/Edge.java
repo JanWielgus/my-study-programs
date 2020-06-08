@@ -1,6 +1,8 @@
 package GraphPackage;
 
 
+import java.util.Map;
+
 public class Edge <V> implements Comparable<Edge>
 {
     public enum DirectionType
@@ -40,6 +42,13 @@ public class Edge <V> implements Comparable<Edge>
     public DirectionType getDirectionType()
     {
         return directionType;
+    }
+
+    public void reverse()
+    {
+        V temp = source;
+        source = destination;
+        destination = temp;
     }
 
 

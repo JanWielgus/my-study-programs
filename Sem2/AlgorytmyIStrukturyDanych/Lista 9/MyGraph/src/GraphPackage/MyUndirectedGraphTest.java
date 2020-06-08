@@ -158,7 +158,7 @@ public class MyUndirectedGraphTest
     }
 
 
-    /*
+
     @Test
     void shortestPathsFromOneSourceTest1()
     {
@@ -190,14 +190,37 @@ public class MyUndirectedGraphTest
 
         List<Path<String>> shortestPathsList = stringGraph.getShortestPathsFromSource("a");
 
+        // correct data
+        List<String> correctDestinationsList = new ArrayList<>();
+        List<Float> correctPathLenList = new ArrayList<>();
+        correctDestinationsList.add("b");
+        correctDestinationsList.add("c");
+        correctDestinationsList.add("d");
+        correctDestinationsList.add("e");
+        correctDestinationsList.add("f");
+        correctDestinationsList.add("g");
+        correctDestinationsList.add("h");
+        correctPathLenList.add(2.0f);
+        correctPathLenList.add(5.0f);
+        correctPathLenList.add(5.0f);
+        correctPathLenList.add(6.0f);
+        correctPathLenList.add(6.0f);
+        correctPathLenList.add(9.0f);
+        correctPathLenList.add(8.0f);
 
-        for (Path<String> path: shortestPathsList)
+        for (int i=0; i<shortestPathsList.size(); i++)
         {
-            System.out.println("Src: " + path.getSource() +
-                    " Dest: " + path.getDestination() +
-                    " Len: " + path.getLength());
+            Path<String> currentPath = shortestPathsList.get(i);
+
+            Assertions.assertEquals(correctDestinationsList.get(i), currentPath.getDestination());
+            Assertions.assertEquals(correctPathLenList.get(i), currentPath.getLength());
+
+            /*
+            System.out.println("Src: " + currentPath.getSource() +
+                    " Dest: " + currentPath.getDestination() +
+                    " Len: " + currentPath.getLength());*/
         }
-    }*/
+    }
 
 
 

@@ -50,7 +50,7 @@ public class Path <V extends Comparable<V>>
 
 
         setSource(source);
-        destination = null;
+        destination = source;
         length = 0;
         edgeList.clear();
 
@@ -64,16 +64,16 @@ public class Path <V extends Comparable<V>>
         this.edgeList = new ArrayList<>(path.edgeList);
         this.length = path.length;
         this.source = path.source;
-        this.length = path.length;
+        this.destination = path.destination;
     }
 
     public void setSource(V source)
     {
         edgeList.clear();
         length = 0;
-        destination = null;
 
         this.source = source;
+        this.destination = source; // zero length path
     }
 
 
@@ -84,67 +84,38 @@ public class Path <V extends Comparable<V>>
         if (source == null)
             throw new IllegalStateException("There is no source vertex");
 
-        boolean result = false;
+        if (edge == null)
+            throw new NullPointerException("Passed edge cannot be null");
 
-        // If this is the first edge
-        if (destination == null)
+
+        if (edge.getDirectionType() == Edge.DirectionType.DIRECTED)
         {
-            // Check destination conditions
-
-            if (edge.getDirectionType() == Edge.DirectionType.DIRECTED)
+            // edge source have to match to previous destination
+            if (this.destination.compareTo(edge.getSource()) == 0)
             {
-                // have to match to this source
-                if (edge.getSource().compareTo(this.source) == 0)
-                {
-                    this.destination = edge.getDestination();
-                    edgeList.add(edge);
-                    length += edge.getWeight();
-                }
-                else
-                    throw new IllegalStateException("Given edge has different source than this path");
-            }
-            else // undirected edge
-            {
-                // Any vertex can match source
-
-                if (edge.getSource().compareTo(this.source) == 0)
-                    this.destination = edge.getDestination();
-                else if (edge.getDestination().compareTo(this.source) == 0)
-                    this.destination = edge.getSource();
-
+                this.destination = edge.getDestination();
                 edgeList.add(edge);
                 length += edge.getWeight();
             }
+            else
+                throw new IllegalStateException("Given edge has different source than last destination");
         }
-
-        // If this is not the first edge
-        else // destination != null
+        else // undirected
         {
-            if (edge.getDirectionType() == Edge.DirectionType.DIRECTED)
+            // edge source or destination can match to last destination
+            if (edge.getSource().compareTo(this.destination) == 0)
+                this.destination = edge.getDestination();
+            else if (edge.getDestination().compareTo(this.destination) == 0)
             {
-                // edge source have to match to previous destination
-                if (this.destination.compareTo(edge.getSource()) == 0)
-                {
-                    this.destination = edge.getDestination();
-                    edgeList.add(edge);
-                    length += edge.getWeight();
-                }
-                else
-                    throw new IllegalStateException("Given edge has different source than last destination");
+                this.destination = edge.getSource();
+                edge.reverse(); // swap source and destination
             }
-            else // undirected
-            {
-                // edge source or destination can match to last destination
-                if (edge.getSource().compareTo(this.destination) == 0)
-                    this.destination = edge.getDestination();
-                else if (edge.getDestination().compareTo(this.destination) == 0)
-                    this.destination = edge.getSource();
+            else
+                throw new IllegalStateException("Given edge do not match to the path destination");
 
-                edgeList.add(edge);
-                length += edge.getWeight();
-            }
+            edgeList.add(edge);
+            length += edge.getWeight();
         }
-
     }
 
 

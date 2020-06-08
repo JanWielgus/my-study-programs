@@ -141,6 +141,7 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
         List<V> checkedVertexList = new ArrayList<>();
         Map<V, Float> pathsWeights = new HashMap<>();
         Map<V, V> predecessors = new HashMap<>();
+        Map<V, Path<V>> pathMap = new HashMap<>();
 
         // Prepare
         for (V vertex: uncheckedVertexList)
@@ -151,6 +152,12 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
 
             // set all predecessors to null
             predecessors.put(vertex, null);
+
+            // create new path for each vertex
+            // and set source to source vertex
+            Path<V> newPath = new Path<>();
+            newPath.setSource(source);
+            pathMap.put(vertex, newPath);
         }
 
 
@@ -190,23 +197,27 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
                 {
                     pathsWeights.replace(adjacentVert, potentialNewPathWeight);
                     predecessors.replace(adjacentVert, lowestWeightVertex);
+
+                    // Set new path
+                    Path<V> tempPath = pathMap.get(adjacentVert);
+                    tempPath.setPath(pathMap.get(lowestWeightVertex));
+                    tempPath.addEdge(checkedEdge);
                 }
             }
         }
 
-/*
-        // Generate shortest paths list
-        List<Path<V>> shortestPathsList = new ArrayList<>();
 
-        // fill the path list
-        for (V destinationVertex: checkedVertexList)
-        {
-            // skip source vertex
-            if (destinationVertex.compareTo(source) == 0)
-                continue;
+        // Generate results
+        List<Path<V>> pathList = new ArrayList<>(pathMap.values());
+        // remove path from source to source
+        for (int i=0; i<pathList.size(); i++)
+            if (pathList.get(i).getSource().compareTo(source) == 0)
+            {
+                pathList.remove(i);
+                break;
+            }
 
-            Stack<V>
-        }*/
+        return pathList;
     }
 
 
