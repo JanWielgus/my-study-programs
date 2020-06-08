@@ -85,6 +85,20 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
 
 
     @Override
+    public List<V> getAdjacentVertexesList(V source)
+    {
+        List<V> adjacentVertexesList = new ArrayList<>();
+        List<WeightDestVertex> destinationVertexes = adjacencyList.get(source);
+
+        // copy adjacent vertexes from source vertex to new array
+        for (WeightDestVertex destVertex: destinationVertexes)
+            adjacentVertexesList.add(destVertex.getDestVertex());
+
+        return adjacentVertexesList;
+    }
+
+
+    @Override
     public boolean hasEdge(V source, V destination)
     {
         return adjacencyList.get(source).contains(destination);

@@ -9,6 +9,7 @@ public interface MyGraphInterface <V extends Comparable<V>>
     Edge<V> getEdge(V sourceVertex, V destinationVertex);
     List<V> getVertexList();
     List<Edge<V>> getEdgeList();
+    List<V> getAdjacentVertexesList(V source);
     boolean hasEdge(V source, V destination);
     List<Path<V>> getShortestPathsFromSource(V source);
     Path<V> getShortestPath(V source, V destination);
