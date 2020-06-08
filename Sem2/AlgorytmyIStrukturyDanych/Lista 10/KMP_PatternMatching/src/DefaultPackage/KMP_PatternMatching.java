@@ -18,7 +18,7 @@ public class KMP_PatternMatching
         for (int i=0; i<textLength; i++)
         {
             while (q > 0 && pattern.charAt(q+1) != text.charAt(i))
-                q = pi[q];
+                q = pi[q-1];
 
             if (pattern.charAt(q+1) == text.charAt(i))
                 q++;
@@ -26,7 +26,7 @@ public class KMP_PatternMatching
             if (q == patternLength)
             {
                 matchingIndexes.add(i - patternLength);
-                q = pi[q];
+                q = pi[q-1];
             }
         }
 
