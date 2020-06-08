@@ -44,10 +44,13 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
     @Override
     public Edge<V> getEdge(V sourceVertex, V destinationVertex)
     {
+        if (sourceVertex == null || destinationVertex == null)
+            throw new NullPointerException("Passed vertexes cannot be null");
+
         // Find list of destination vertexes from this source vertex
         List<WeightDestVertex> destVertexesList = adjacencyList.get(sourceVertex);
 
-        if (destinationVertex == null)
+        if (destVertexesList == null)
             return null;
 
         // Find destination vertex if exist
@@ -87,6 +90,9 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
     @Override
     public List<V> getAdjacentVertexesList(V source)
     {
+        if (source == null)
+            throw new NullPointerException("Source vertex cannot be null");
+
         List<V> adjacentVertexesList = new ArrayList<>();
         List<WeightDestVertex> destinationVertexes = adjacencyList.get(source);
 
@@ -109,7 +115,7 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
     @Override
     public List<Path<V>> getShortestPathsFromSource(V source)
     {
-        
+
     }
 
 
