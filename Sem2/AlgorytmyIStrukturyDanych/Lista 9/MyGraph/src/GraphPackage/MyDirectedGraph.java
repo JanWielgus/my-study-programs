@@ -137,7 +137,75 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
     @Override
     public List<Path<V>> getShortestPathsFromSource(V source)
     {
-        return null;
+        List<V> uncheckedVertexList = getVertexList();
+        List<V> checkedVertexList = new ArrayList<>();
+        Map<V, Float> pathsWeights = new HashMap<>();
+        Map<V, V> predecessors = new HashMap<>();
+
+        // Prepare
+        for (V vertex: uncheckedVertexList)
+        {
+            // set paths weights to infinity except for source vertex
+            pathsWeights.put(vertex, Float.POSITIVE_INFINITY);
+            pathsWeights.replace(source, 0.0f);
+
+            // set all predecessors to null
+            predecessors.put(vertex, null);
+        }
+
+
+        while (uncheckedVertexList.size() > 0)
+        {
+            // find vertex with the lowest pathWeight (from unchecked vertex list)
+            float lowestWeight = Float.POSITIVE_INFINITY;
+            V lowestWeightVertex = null;
+            for (V vert: uncheckedVertexList)
+            {
+                float curWeight = pathsWeights.get(vert);
+                if (curWeight < lowestWeight)
+                {
+                    lowestWeight = curWeight;
+                    lowestWeightVertex = vert;
+                }
+            }
+
+            // move found vertex from unchecked to checked vertex list
+            uncheckedVertexList.remove(lowestWeightVertex);
+            checkedVertexList.add(lowestWeightVertex);
+
+
+            // update pathsWeights in remaining unchecked vertex list
+            for (V vert: uncheckedVertexList)
+            {
+                // for all adjacent vertexes
+                List<V> adjacentVertexList = getAdjacentVertexesList(vert);
+                float toVertPathWeight = pathsWeights.get(vert);
+                for (V adjacentVert: adjacentVertexList)
+                {
+                    float adjacentVertPathWeight = pathsWeights.get(adjacentVert);
+                    float potentialNewPathWeight = toVertPathWeight + getEdge(vert, adjacentVert).getWeight();
+                    if (adjacentVertPathWeight > potentialNewPathWeight)
+                    {
+                        pathsWeights.replace(adjacentVert, potentialNewPathWeight);
+                        predecessors.replace(adjacentVert, vert);
+                    }
+                }
+            }
+        }
+
+/*
+        // Generate shortest paths list
+        List<Path<V>> shortestPathsList = new ArrayList<>();
+
+        // fill the path list
+        for (V destinationVertex: checkedVertexList)
+        {
+            // skip source vertex
+            if (destinationVertex.compareTo(source) == 0)
+                continue;
+
+            Stack<V>
+        }*/
     }
 
 
