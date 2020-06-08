@@ -121,8 +121,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.MyUndirectedGraphTest" />
-        <item itemvalue="JUnit.PathTest" />
         <item itemvalue="JUnit.MyUndirectedGraphTest.shortestPathsFromOneSourceTest1" />
+        <item itemvalue="JUnit.PathTest" />
         <item itemvalue="JUnit.PathTest.edgeListTest1" />
         <item itemvalue="JUnit.PathTest.interfaceTest1" />
       </list>

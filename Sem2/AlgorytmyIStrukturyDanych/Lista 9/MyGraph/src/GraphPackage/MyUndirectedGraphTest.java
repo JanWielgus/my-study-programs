@@ -159,7 +159,7 @@ public class MyUndirectedGraphTest
 
 
     @Test
-    void shortestPathsFromOneSourceTest1()
+    void shortestPathTest1()
     {
         MyUndirectedGraph<String> stringGraph = new MyUndirectedGraph<>();
 
@@ -219,6 +219,15 @@ public class MyUndirectedGraphTest
                     " Dest: " + currentPath.getDestination() +
                     " Len: " + currentPath.getLength());*/
         }
+
+
+
+
+        Assertions.assertEquals(6, stringGraph.getShortestPath("h", "f").getLength());
+        Assertions.assertEquals(4, stringGraph.getShortestPath("f", "b").getLength());
+        Assertions.assertEquals(6, stringGraph.getShortestPath("g", "d").getLength());
+        Assertions.assertEquals(6, stringGraph.getShortestPath("a", "f").getLength());
+        Assertions.assertEquals(3, stringGraph.getShortestPath("g", "e").getLength());
     }
 
 

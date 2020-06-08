@@ -137,6 +137,9 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
     @Override
     public List<Path<V>> getShortestPathsFromSource(V source)
     {
+        if (source == null)
+            throw new NullPointerException("Source vertex cannot be null");
+
         List<V> uncheckedVertexList = getVertexList();
         List<V> checkedVertexList = new ArrayList<>();
         Map<V, Float> pathsWeights = new HashMap<>();
@@ -221,6 +224,19 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
     @Override
     public Path<V> getShortestPath(V source, V destination)
     {
+        if (source == null)
+            throw new NullPointerException("Source vertex cannot be null");
+        if (destination == null)
+            throw new NullPointerException("Destination vertex cannot be null");
+
+        List<Path<V>> shortestPathsFromSource = getShortestPathsFromSource(source);
+
+        // find path with proper destination
+        for (Path<V> path: shortestPathsFromSource)
+            if (path.getDestination().compareTo(destination) == 0)
+                return path;
+
+        // If not found such path
         return null;
     }
 
