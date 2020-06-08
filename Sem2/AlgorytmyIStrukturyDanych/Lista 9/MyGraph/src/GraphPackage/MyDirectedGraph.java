@@ -182,8 +182,13 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
                 float toVertPathWeight = pathsWeights.get(vert);
                 for (V adjacentVert: adjacentVertexList)
                 {
+                    // skip for checked adjacent vertexes
+                    if (checkedVertexList.contains(adjacentVert))
+                        continue;
+
                     float adjacentVertPathWeight = pathsWeights.get(adjacentVert);
-                    float potentialNewPathWeight = toVertPathWeight + getEdge(vert, adjacentVert).getWeight();
+                    Edge<V> checkedEdge = getEdge(vert, adjacentVert); // edge from vert to current adjacent vertex
+                    float potentialNewPathWeight = toVertPathWeight + checkedEdge.getWeight();
                     if (adjacentVertPathWeight > potentialNewPathWeight)
                     {
                         pathsWeights.replace(adjacentVert, potentialNewPathWeight);
