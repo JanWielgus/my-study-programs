@@ -9,7 +9,8 @@ public class KMP_TimeTests
         System.out.println("dziala");
         String text = "AABAACAADAABAABA";
         String pattern = "AABA";
-        List<Integer> testList = KMP_PatternMatching.search(text, pattern);
+        List<Integer> testList;
+        testList = KMP_PatternMatching.search(text, pattern);
         System.out.println(testList);
     }
 }
