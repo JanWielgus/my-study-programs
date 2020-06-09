@@ -20,6 +20,12 @@
   </component>
   <component name="ProjectId" id="1d2u4FjD1UwR8ZqZF3nLggrSx0x" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -32,7 +38,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.KMP_TimeTests">
     <configuration name="KMP_TimeTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DefaultPackage.KMP_TimeTests" />
       <module name="KMP_PatternMatching" />
@@ -46,9 +52,76 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="KMP_Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KMP_PatternMatching" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DefaultPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DefaultPackage" />
+      <option name="MAIN_CLASS_NAME" value="DefaultPackage.KMP_Test" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="KMP_Test.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KMP_PatternMatching" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DefaultPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DefaultPackage" />
+      <option name="MAIN_CLASS_NAME" value="DefaultPackage.KMP_Test" />
+      <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="KMP_Test.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KMP_PatternMatching" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DefaultPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DefaultPackage" />
+      <option name="MAIN_CLASS_NAME" value="DefaultPackage.KMP_Test" />
+      <option name="METHOD_NAME" value="test2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="KMP_Test.test3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KMP_PatternMatching" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DefaultPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DefaultPackage" />
+      <option name="MAIN_CLASS_NAME" value="DefaultPackage.KMP_Test" />
+      <option name="METHOD_NAME" value="test3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.KMP_TimeTests" />
+        <item itemvalue="JUnit.KMP_Test" />
+        <item itemvalue="JUnit.KMP_Test.test3" />
+        <item itemvalue="JUnit.KMP_Test.test2" />
+        <item itemvalue="JUnit.KMP_Test.test1" />
       </list>
     </recent_temporary>
   </component>
@@ -70,7 +143,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

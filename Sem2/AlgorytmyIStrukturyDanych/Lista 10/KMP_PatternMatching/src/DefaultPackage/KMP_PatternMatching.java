@@ -7,17 +7,23 @@ public class KMP_PatternMatching
 {
     static List<Integer> search(String text, String pattern)
     {
+        if (text == null)
+            throw new NullPointerException("Passed text cannot be null");
+        if (pattern == null)
+            throw new NullPointerException("Passed pattern cannot be null");
+
         int textLength = text.length();
         int patternLength = pattern.length();
         List<Integer> matchingIndexes = new ArrayList<>();
 
         // pre-processing
         int[] pi = computePrefixFunction(pattern);
-        for (int p: pi)
-            System.out.println(p);
+        //for (int p: pi)
+            //System.out.println(p);
 
         int q = 0; // index in pattern
         int i = 0; // index in text
+
         while (i < textLength)
         {
             // If letters are equal, increment indexes
@@ -38,8 +44,6 @@ public class KMP_PatternMatching
             }
             else if (pattern.charAt(q) != text.charAt(i))
             {
-                // Do not match lps[0..lps[q-1]] characters,
-                // they will match anyway
                 if (q != 0)
                     q = pi[q - 1];
                 else
@@ -55,10 +59,10 @@ public class KMP_PatternMatching
     private static int[] computePrefixFunction(String pattern)
     {
         int patternLength = pattern.length();
-        int[] prefFuncVal = new int[patternLength]; // return array
+        int[] pi = new int[patternLength]; // return array
 
         int lastLen = 0; // len of the previous longest prefix suffix
-        prefFuncVal[0] = 0;
+        pi[0] = 0;
 
         int i = 1;
         while (i < patternLength)
@@ -66,21 +70,21 @@ public class KMP_PatternMatching
             if (pattern.charAt(i) == pattern.charAt(lastLen))
             {
                 lastLen++;
-                prefFuncVal[i] = lastLen;
+                pi[i] = lastLen;
                 i++;
             }
-            else // (pat[i] != pat[len])
+            else // (pattern[i] != pattern[len])
             {
                 if (lastLen == 0)
                 {
-                    prefFuncVal[i] = lastLen;
+                    pi[i] = lastLen;
                     i++;
                 }
                 else
-                    lastLen = prefFuncVal[lastLen - 1];
+                    lastLen = pi[lastLen - 1];
             }
         }
 
-        return prefFuncVal;
+        return pi;
     }
 }
