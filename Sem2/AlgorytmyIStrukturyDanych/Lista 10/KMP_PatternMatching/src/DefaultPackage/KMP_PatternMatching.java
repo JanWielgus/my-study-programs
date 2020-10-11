@@ -5,7 +5,7 @@ import java.util.List;
 
 public class KMP_PatternMatching
 {
-    static List<Integer> search(String text, String pattern)
+    public static List<Integer> search(String text, String pattern)
     {
         if (text == null)
             throw new NullPointerException("Passed text cannot be null");

@@ -211,11 +211,11 @@ public class MyDirectedGraph<V extends Comparable<V>> implements MyGraphInterfac
         List<Path<V>> pathList = new ArrayList<>(pathMap.values());
         // remove path from source to source
         for (int i=0; i<pathList.size(); i++)
-            if (pathList.get(i).getSource().compareTo(source) == 0)
-            {
-                pathList.remove(i);
-                break;
-            }
+        if (pathList.get(i).getSource().compareTo(source) == 0)
+        {
+            pathList.remove(i);
+            break;
+        }
 
         return pathList;
     }

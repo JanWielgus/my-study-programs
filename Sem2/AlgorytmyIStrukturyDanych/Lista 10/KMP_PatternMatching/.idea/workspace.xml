@@ -38,7 +38,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.KMP_TimeTests">
+  <component name="RunManager" selected="JUnit.KMP_Test">
     <configuration name="KMP_TimeTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DefaultPackage.KMP_TimeTests" />
       <module name="KMP_PatternMatching" />
@@ -117,8 +117,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.KMP_TimeTests" />
         <item itemvalue="JUnit.KMP_Test" />
+        <item itemvalue="Application.KMP_TimeTests" />
         <item itemvalue="JUnit.KMP_Test.test3" />
         <item itemvalue="JUnit.KMP_Test.test2" />
         <item itemvalue="JUnit.KMP_Test.test1" />
