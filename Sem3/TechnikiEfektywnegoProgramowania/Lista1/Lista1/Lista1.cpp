@@ -3,6 +3,7 @@
 // Date: 08.10.2020
 
 #include <iostream>
+#include "CTable.h"
 
 using std::cout;
 using std::endl;
@@ -12,6 +13,8 @@ const int ArraySizeX = 5;
 const int ArraySizeY = 3;
 
 
+// exercise 1 - 3
+// Better option for table is array, but left as in exercise
 void allocTableAdd5(int size);
 bool allocTable2Dim(int*** table, int sizeX, int sizeY);
 bool deallocTable2Dim(int** table, int sizeX);
@@ -21,6 +24,10 @@ void showIntArray(int* array, int size);
 void fill2DimArray(int** array, int sizeX, int sizeY);
 void show2DimArray(int** array, int sizeX, int sizeY);
 void showDebugMessage(const char* prefix, bool flag);
+
+// exercise 4
+void modificate_tab(CTable* tab, int newSize); // will modify
+void modificate_tab(CTable tab, int newSize); // won't modify
 
 
 int main()
@@ -147,5 +154,21 @@ void showDebugMessage(const char* prefix, bool flag)
     else
         cout << "unsuccessful";
     cout << endl;
+}
+
+
+
+
+
+void modificate_tab(CTable* tab, int newSize)
+{
+    tab->setNewSize(newSize);
+}
+
+
+
+void modificate_tab(CTable tab, int newSize)
+{
+    tab.setNewSize(newSize);
 }
 
