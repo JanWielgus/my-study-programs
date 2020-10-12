@@ -13,6 +13,7 @@ const string CTable::CopyNameSuffix = "_copy";
 
 CTable::CTable()
 {
+	array = NULL; // this is bad
 	setName(DefaultName);
 	setNewSize(DefaultArraySize);
 	printTextAndName("bezparametrowy");
@@ -21,6 +22,7 @@ CTable::CTable()
 
 CTable::CTable(string name, int arrayLength)
 {
+	array = NULL; // this is bad
 	setName(name);
 	setNewSize(arrayLength);
 	printTextAndName("z parametrami");
@@ -29,6 +31,8 @@ CTable::CTable(string name, int arrayLength)
 
 CTable::CTable(const CTable& other)
 {
+	array = NULL; // this is bad
+
 	setName(other.name + CopyNameSuffix);
 
 	setNewSize(other.arraySize);
@@ -41,7 +45,7 @@ CTable::CTable(const CTable& other)
 
 CTable::~CTable()
 {
-	if (array != nullptr)
+	if (!array) // !!! should be: if (array != nullptr)
 		delete[] array;
 
 	printTextAndName("usuwam");
@@ -71,7 +75,7 @@ void CTable::setName(string name)
 
 bool CTable::setNewSize(int arrayLength)
 {
-	if (array != nullptr)
+	if (!array) // should be: if (array != nullptr)
 		delete[] array;
 
 	arraySize = arrayLength;
