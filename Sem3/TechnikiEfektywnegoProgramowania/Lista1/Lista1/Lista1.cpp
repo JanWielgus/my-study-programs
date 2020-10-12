@@ -29,6 +29,8 @@ void showDebugMessage(const char* prefix, bool flag);
 void modificate_tab(CTable* tab, int newSize); // will modify
 void modificate_tab(CTable tab, int newSize); // won't modify
 
+void testCTableStaticAndDynamicAllocation();
+
 
 int main()
 {
@@ -45,6 +47,12 @@ int main()
     show2DimArray(twoDimArray, ArraySizeX, ArraySizeY);
     bool deallocationFlag = deallocTable2Dim(twoDimArray, ArraySizeX);
     showDebugMessage("Two dimensional array deallocation", deallocationFlag);
+
+
+    cout << endl;
+
+
+    testCTableStaticAndDynamicAllocation();
 }
 
 
@@ -170,5 +178,23 @@ void modificate_tab(CTable* tab, int newSize)
 void modificate_tab(CTable tab, int newSize)
 {
     tab.setNewSize(newSize);
+}
+
+
+void testCTableStaticAndDynamicAllocation()
+{
+    cout << "Statyczna alokacja" << endl;
+    CTable test1;
+    CTable test2("Nazwa obiektu 2", 7);
+    CTable test3(test1);
+
+    cout << "Dynamiczna alokacja" << endl;
+    CTable* dynamicTest1 = new CTable("Obiekt dynamiczny 1", 123);
+    CTable* dynamicArray1 = new CTable[3];
+    cout << "Dealokacja obiektow zaalokowanych dynamicznie" << endl;
+    delete dynamicTest1;
+    delete[] dynamicArray1;
+
+    cout << "Koniec funkcji testujacej" << endl;
 }
 
