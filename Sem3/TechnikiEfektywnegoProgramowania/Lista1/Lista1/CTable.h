@@ -9,15 +9,17 @@ private:
 	int* array;
 	int arraySize;
 
-	static const string DefaultName;
+	static const std::string DefaultName;
 	static const int DefaultArraySize;
-	static const string CopyNameSuffix;
+	static const std::string CopyNameSuffix;
 
 public:
 	CTable();
 	CTable(std::string name, int arrayLength);
 	CTable(const CTable& other);
 	~CTable();
+	
+	CTable& operator=(const CTable& other); // should go in pair with copy constructor
 
 	void setName(std::string name);
 	bool setNewSize(int arrayLength);

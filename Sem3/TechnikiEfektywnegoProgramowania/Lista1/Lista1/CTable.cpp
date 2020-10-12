@@ -48,6 +48,21 @@ CTable::~CTable()
 }
 
 
+CTable& CTable::operator=(const CTable& other)
+{
+	if (this != &other)
+	{
+		setName(other.name + CopyNameSuffix);
+
+		setNewSize(other.arraySize);
+		for (int i = 0; i < arraySize; i++)
+			array[i] = other.array[i];
+	}
+
+	return *this;
+}
+
+
 void CTable::setName(string name)
 {
 	this->name = name;
@@ -75,7 +90,7 @@ CTable* CTable::clone()
 
 
 
-void CTable::printTextAndName(std::string text)
+void CTable::printTextAndName(string text)
 {
 	cout << text << ": '" << name << '\'' << endl;
 }
