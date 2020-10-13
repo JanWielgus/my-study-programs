@@ -1,5 +1,6 @@
 #include "CTable.h"
 #include <iostream>
+#include "DmbConstants.h"
 
 using std::string;
 using std::cout;
@@ -16,7 +17,7 @@ CTable::CTable()
 	array = NULL; // this is bad
 	setName(DefaultName);
 	setNewSize(DefaultArraySize);
-	printTextAndName("bezparametrowy");
+	printTextAndName(DmbConsts::DefaultCtorMsg);
 }
 
 
@@ -25,7 +26,7 @@ CTable::CTable(string name, int arrayLength)
 	array = NULL; // this is bad
 	setName(name);
 	setNewSize(arrayLength);
-	printTextAndName("z parametrami");
+	printTextAndName(DmbConsts::ParametrizedCtorMsg);
 }
 
 
@@ -39,7 +40,7 @@ CTable::CTable(const CTable& other)
 	for (int i = 0; i < arraySize; i++)
 		array[i] = other.array[i];
 
-	printTextAndName("kopiujacy");
+	printTextAndName(DmbConsts::CopyCtorMsg);
 }
 
 
@@ -48,7 +49,7 @@ CTable::~CTable()
 	if (!array) // !!! should be: if (array != nullptr)
 		delete[] array;
 
-	printTextAndName("usuwam");
+	printTextAndName(DmbConsts::DeletingMsg);
 }
 
 
@@ -96,5 +97,6 @@ CTable* CTable::clone()
 
 void CTable::printTextAndName(string text)
 {
-	cout << text << ": '" << name << '\'' << endl;
+	using namespace DmbConsts;
+	cout << text << ColonWithSpace << SingleQuoteSign << name << SingleQuoteSign << endl;
 }

@@ -4,13 +4,14 @@
 
 #include <iostream>
 #include "CTable.h"
+#include "DmbConstants.h"
 
 using std::cout;
 using std::endl;
 
 
-const int ArraySizeX = 5;
-const int ArraySizeY = 3;
+static const int ArraySizeX = 5;
+static const int ArraySizeY = 3;
 
 
 // exercise 1 - 3
@@ -34,7 +35,7 @@ void testCTableStaticAndDynamicAllocation();
 
 int main()
 {
-    allocTableAdd5(10);
+    allocTableAdd5(DmbConsts::TestArraySize);
 
 
     cout << endl << endl;
@@ -66,7 +67,7 @@ void allocTableAdd5(int size)
 
     int* array = new int[size];
 
-    fillIntArrayAscending(array, size, 5);
+    fillIntArrayAscending(array, size, DmbConsts::FiveValue);
     showIntArray(array, size);
 
     delete[] array;
@@ -120,9 +121,9 @@ void fillIntArrayAscending(int* array, int size, int initialValue = 0)
 
 void showIntArray(int* array, int size)
 {
-    cout << "Array with address of first element " << array << endl;
+    cout << DmbConsts::IntArrayShowMsg << array << endl;
     for (int i = 0; i < size; i++)
-        cout << i + 1 << ". " << array[i] << endl;
+        cout << i + 1 << DmbConsts::DotWithSpace << array[i] << endl;
 }
 
 
@@ -158,9 +159,9 @@ void showDebugMessage(const char* prefix, bool flag)
 {
     cout << prefix << " ";
     if (flag)
-        cout << "successful";
+        cout << DmbConsts::SuccessfulText;
     else
-        cout << "unsuccessful";
+        cout << DmbConsts::UnsuccessfulText;
     cout << endl;
 }
 
@@ -183,18 +184,18 @@ void modificate_tab(CTable tab, int newSize)
 
 void testCTableStaticAndDynamicAllocation()
 {
-    cout << "Statyczna alokacja" << endl;
+    cout << DmbConsts::StaticAllocationText << endl;
     CTable test1;
-    CTable test2("Nazwa obiektu 2", 7);
+    CTable test2(DmbConsts::StaticTestObject2Name, 7);
     CTable test3(test1);
 
-    cout << "Dynamiczna alokacja" << endl;
-    CTable* dynamicTest1 = new CTable("Obiekt dynamiczny 1", 123);
+    cout << DmbConsts::DynamicAllocationText << endl;
+    CTable* dynamicTest1 = new CTable(DmbConsts::DynamicTestObject1Name, 123);
     CTable* dynamicArray1 = new CTable[3];
-    cout << "Dealokacja obiektow zaalokowanych dynamicznie" << endl;
+    cout << DmbConsts::DeallocationMsg << endl;
     delete dynamicTest1;
     delete[] dynamicArray1;
 
-    cout << "Koniec funkcji testujacej" << endl;
+    cout << DmbConsts::TestFunctionEndMsg << endl;
 }
 
