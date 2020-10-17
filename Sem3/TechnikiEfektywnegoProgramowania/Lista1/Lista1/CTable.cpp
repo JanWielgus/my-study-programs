@@ -81,7 +81,7 @@ bool CTable::setNewSize(int newArraySize)
 	if (newArraySize == arraySize)
 		return true;
 
-	int* newArray = new(std::nothrow) int[arraySize];
+	int* newArray = new(std::nothrow) int[newArraySize];
 	if (!newArray) // if (array == nullptr)
 		return false;
 
@@ -94,6 +94,7 @@ bool CTable::setNewSize(int newArraySize)
 	}
 
 	array = newArray;
+	arraySize = newArraySize;
 	return true;
 }
 
