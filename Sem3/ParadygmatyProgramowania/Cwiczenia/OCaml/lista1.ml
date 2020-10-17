@@ -43,15 +43,11 @@ replicate ("la",3) = ["la"; "la"; "la"];;
 
 
 
-(*Cw, lista 1, zad 4
-zobacz czy wszystkie przypadki brzegowe*)
-
-let rec sqrList a = 
-  match a with
-  | [] -> []
-  | [elem] -> [elem * elem]
-  | head :: tail -> (head * head) :: sqrList tail
-  ;;
+(*zadanie 4*)
+let rec sqrList a =
+    if a = [] then []
+    else ((List.hd a) * (List.hd a)) :: sqrList (List.tl a)
+    ;;
 
 sqrList [1;2;3;-4] = [1; 4; 9; 16];;
 sqrList [] = [];;
@@ -59,9 +55,7 @@ sqrList [-10] = [100];;
 
 
 
-(*Cw, lista 1, zad 5
-zobacz czy wszystkie przypadki brzegowe*)
-
+(*zadanie 5*)
 let palindrome a =
   if a = [] then true
   else a = List.rev a
@@ -77,16 +71,11 @@ palindrome ['a'; 'l'; 'b'] = false;;
 
 
 
-
-(*Cw, lista 1, zad 6
-zobacz czy wszystkie przypadki brzegowe*)
-
+(*zadanie 6*)
 let rec listLength a =
-  match a with
-  | [] -> 0
-  | [_] -> 1
-  | head :: tail -> 1 + listLength tail
-  ;;
+    if a = [] then 0
+    else 1 + listLength (List.tl a)
+    ;;
 
 listLength [5] = 1;;
 listLength ["asdf"] == 1;;
