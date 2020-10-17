@@ -1,7 +1,6 @@
 #include "CTable.h"
 #include <iostream>
 #include "DmbConstants.h"
-#include <algorithm>
 
 using std::string;
 using std::cout;
@@ -16,7 +15,7 @@ const string CTable::CopyNameSuffix = "_copy";
 
 CTable::CTable()
 {
-	array = NULL; // this is bad
+	array = NULL; // nullptr
 	setName(DefaultName);
 	setNewSize(DefaultArraySize);
 	printTextAndName(DmbConsts::DefaultCtorMsg);
@@ -25,16 +24,22 @@ CTable::CTable()
 
 CTable::CTable(string name, int arrayLength)
 {
-	array = NULL; // this is bad
+	array = NULL; // nullptr
 	setName(name);
-	setNewSize(arrayLength);
+
+	if (setNewSize(arrayLength) == false)
+	{
+		array = NULL; // nullptr
+		arraySize = 0;
+	}
+
 	printTextAndName(DmbConsts::ParametrizedCtorMsg);
 }
 
 
 CTable::CTable(const CTable& other)
 {
-	array = NULL; // this is bad
+	array = NULL; // nullptr
 
 	setName(other.name + CopyNameSuffix);
 
@@ -48,7 +53,7 @@ CTable::CTable(const CTable& other)
 
 CTable::~CTable()
 {
-	if (!array) // !!! should be: if (array != nullptr)
+	if (array) // !!! if (array != nullptr)
 		delete[] array;
 
 	printTextAndName(DmbConsts::DeletingMsg);
@@ -78,6 +83,9 @@ void CTable::setName(string name)
 
 bool CTable::setNewSize(int newArraySize)
 {
+	if (newArraySize <= 0)
+		return false;
+
 	if (newArraySize == arraySize)
 		return true;
 
@@ -87,7 +95,8 @@ bool CTable::setNewSize(int newArraySize)
 
 	if (array) // if (array  != nullptr)
 	{
-		for (int i = 0; i < min(newArraySize, arraySize); i++)
+		int copyUpperBound = newArraySize < arraySize ? newArraySize : arraySize;
+		for (int i = 0; i < copyUpperBound; i++)
 			newArray[i] = array[i];
 
 		delete[] array;
