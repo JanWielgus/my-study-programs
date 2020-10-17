@@ -1,10 +1,12 @@
 #include "CTable.h"
 #include <iostream>
 #include "DmbConstants.h"
+#include <algorithm>
 
 using std::string;
 using std::cout;
 using std::endl;
+using std::min;
 
 
 const string CTable::DefaultName = "no_name";
@@ -74,16 +76,24 @@ void CTable::setName(string name)
 }
 
 
-bool CTable::setNewSize(int arrayLength)
+bool CTable::setNewSize(int newArraySize)
 {
-	if (!array) // should be: if (array != nullptr)
-		delete[] array;
+	if (newArraySize == arraySize)
+		return true;
 
-	arraySize = arrayLength;
-	array = new(std::nothrow) int[arraySize];
-
-	if (!array)
+	int* newArray = new(std::nothrow) int[arraySize];
+	if (!newArray) // if (array == nullptr)
 		return false;
+
+	if (array) // if (array  != nullptr)
+	{
+		for (int i = 0; i < min(newArraySize, arraySize); i++)
+			newArray[i] = array[i];
+
+		delete[] array;
+	}
+
+	array = newArray;
 	return true;
 }
 

@@ -22,7 +22,7 @@ public:
 	CTable& operator=(const CTable& other); // should go in pair with copy constructor
 
 	void setName(std::string name);
-	bool setNewSize(int arrayLength);
+	bool setNewSize(int newArraySize);
 	CTable* clone(); // !!! this method should not exist and is really dangerous for the code !!!
 
 
