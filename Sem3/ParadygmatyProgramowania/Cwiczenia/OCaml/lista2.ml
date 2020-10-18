@@ -27,10 +27,10 @@ let rec fibTail n =
     ;;
       
 fibTail 42 = 267914296;;
-fib 10 = 55;;
-fib 0 = 0;;
-fib 1 = 1;;
-fib 2 = 1;;
+fibTail 10 = 55;;
+fibTail 0 = 0;;
+fibTail 1 = 1;;
+fibTail 2 = 1;;
 (*fibTail -5 throw exception *)
 
 
@@ -67,15 +67,11 @@ x = 0;;
 (*zadanie 5*)
 let rec initSegment (a, b) =
     if a = b then true
-    else
-        let rec initSegmentIter (a, b) =
-            if a = [] then true
-            else if b = [] then false
-            else if List.hd a = (List.hd b)
-                then initSegmentIter(List.tl a, List.tl b)
-            else false
-        in
-        initSegmentIter(a, b)
+    else if a = [] then true
+    else if b = [] then false
+    else if List.hd a = (List.hd b)
+        then initSegment(List.tl a, List.tl b)
+    else false
     ;;
 
 initSegment([1; 2; 3], [1; 2; 3; 4; 5]) = true;;

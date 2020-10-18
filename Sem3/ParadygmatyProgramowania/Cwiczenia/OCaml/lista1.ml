@@ -35,7 +35,7 @@ let rec replicate (thing, amt) =
     else thing :: replicate (thing, (amt-1))
     ;;
 
-(*replicate ('a', -5)*)
+(*replicate ('a', -5) raise failure*)
 replicate ("ab", 0) = [];;
 replicate (5, 1) = [5];;
 replicate ('g', 2) = ['g'; 'g'];;
