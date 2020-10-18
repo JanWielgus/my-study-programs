@@ -51,9 +51,10 @@ int main()
 
 
     cout << endl;
-
-
     testCTableStaticAndDynamicAllocation();
+
+
+    cout << endl << DmbConsts::ProgramEndMessage << endl;
 }
 
 
@@ -65,7 +66,9 @@ void allocTableAdd5(int size)
     if (size <= 0)
         return;
 
-    int* array = new int[size];
+    int* array = new(std::nothrow) int[size];
+    if (!array) // if (array == nullptr)
+        return;
 
     fillIntArrayAscending(array, size, DmbConsts::FiveValue);
     showIntArray(array, size);
@@ -191,7 +194,9 @@ void testCTableStaticAndDynamicAllocation()
 
     cout << DmbConsts::DynamicAllocationText << endl;
     CTable* dynamicTest1 = new CTable(DmbConsts::DynamicTestObject1Name, 123);
+    dynamicTest1->setNewSize(5);
     CTable* dynamicArray1 = new CTable[3];
+    dynamicArray1[1].setNewSize(100);
     cout << DmbConsts::DeallocationMsg << endl;
     delete dynamicTest1;
     delete[] dynamicArray1;

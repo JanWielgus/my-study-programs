@@ -10,8 +10,8 @@ private:
 	int arraySize;
 
 	static const std::string DefaultName;
-	static const int DefaultArraySize;
 	static const std::string CopyNameSuffix;
+	static const int DefaultArraySize;
 
 public:
 	CTable();

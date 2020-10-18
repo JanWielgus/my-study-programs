@@ -9,37 +9,34 @@ using std::min;
 
 
 const string CTable::DefaultName = "no_name";
-const int CTable::DefaultArraySize = 10;
 const string CTable::CopyNameSuffix = "_copy";
+const int CTable::DefaultArraySize = 10;
 
 
 CTable::CTable()
 {
-	array = NULL; // nullptr
+	array = NULL; // array = nullptr
+	arraySize = 0;
 	setName(DefaultName);
 	setNewSize(DefaultArraySize);
 	printTextAndName(DmbConsts::DefaultCtorMsg);
 }
 
 
-CTable::CTable(string name, int arrayLength)
+CTable::CTable(string name, int arraySize)
 {
-	array = NULL; // nullptr
+	this->array = NULL; // this->array = nullptr
+	this->arraySize = 0;
 	setName(name);
-
-	if (setNewSize(arrayLength) == false)
-	{
-		array = NULL; // nullptr
-		arraySize = 0;
-	}
-
+	setNewSize(arraySize) == false;
 	printTextAndName(DmbConsts::ParametrizedCtorMsg);
 }
 
 
 CTable::CTable(const CTable& other)
 {
-	array = NULL; // nullptr
+	array = NULL; // array = nullptr
+	arraySize = 0;
 
 	setName(other.name + CopyNameSuffix);
 
@@ -95,7 +92,7 @@ bool CTable::setNewSize(int newArraySize)
 
 	if (array) // if (array  != nullptr)
 	{
-		int copyUpperBound = newArraySize < arraySize ? newArraySize : arraySize;
+		int copyUpperBound = newArraySize < arraySize ? newArraySize : arraySize; // min
 		for (int i = 0; i < copyUpperBound; i++)
 			newArray[i] = array[i];
 

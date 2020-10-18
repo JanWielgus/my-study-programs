@@ -18,6 +18,7 @@ namespace DmbConsts
 	ConstTextType DeallocationMsg = "Deallocation of dynamically allocated objects";
 	ConstTextType TestFunctionEndMsg = "End of test function";
 	ConstTextType DotWithSpace = ". ";
+	ConstTextType ProgramEndMessage = "Code execution successful";
 
 
 	// CTable constants
