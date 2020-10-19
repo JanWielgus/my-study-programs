@@ -45,10 +45,9 @@ replicate ("la",3) == List("la", "la", "la")
 
 
 // zadanie 4
-def sqrList (xs: List[Int]): List[Int] = {
+def sqrList (xs: List[Int]): List[Int] =
     if (xs == Nil) Nil
     else (xs.head * xs.head) :: sqrList(xs.tail)
-}
 
 sqrList(List(1, 2, 3, -4)) == List(1, 4, 9, 16)
 sqrList(Nil) == Nil
@@ -56,11 +55,11 @@ sqrList(List(-10)) == List(100)
 
 
 
+
+
 // Zadanie 5
-def palindrome [A] (xs: List[A]): Boolean = {
-    if (xs == Nil) true
-    else xs == xs.reverse
-}
+def palindrome [A] (xs: List[A]): Boolean =
+    xs == xs.reverse
 
 palindrome (List('a', 'l', 'a')) == true
 palindrome (Nil) == true
@@ -73,10 +72,9 @@ palindrome (List('a', 'l', 'b')) == false
 
 
 // zadanie 6
-def listLength [A](xs: List[A]): Int = {
+def listLength [A](xs: List[A]): Int =
     if (xs == Nil) 0
     else 1 + listLength(xs.tail);
-}
 
 listLength (List(5)) == 1
 listLength (List("asdf")) == 1
