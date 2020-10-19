@@ -88,7 +88,7 @@ bool allocTable2Dim(int*** table, int sizeX, int sizeY)
 
     for (int i = 0; i < sizeX; i++)
     {
-        (*table)[i] = new int[sizeY];
+        (*table)[i] = new(std::nothrow) int[sizeY];
 
         if (!(*table)[i])
         {
