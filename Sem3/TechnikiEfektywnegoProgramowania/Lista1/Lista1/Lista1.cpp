@@ -83,14 +83,14 @@ bool allocTable2Dim(int*** table, int sizeX, int sizeY)
         return false;
 
     *table = new(std::nothrow) int*[sizeX];
-    if (!(*table))
+    if (!(*table)) // if (*table == nullptr)
         return false;
 
     for (int i = 0; i < sizeX; i++)
     {
         (*table)[i] = new(std::nothrow) int[sizeY];
 
-        if (!(*table)[i])
+        if (!(*table)[i]) // if ((*table)[i] == nullptr
         {
             deallocTable2Dim(*table, i);
             return false;
