@@ -82,19 +82,15 @@ let rec mergesort pred xs =
         let split = splitListRev len ys [] [] in
         (List.rev(fst split), List.rev(snd split))
         in
-    
-    (*Merge lists and return reversed merged list*)
-    let rec mergeListsRev l1 l2 acc =
-        match (l1, l2) with
-        | ([], []) -> acc
-        | ([], _) -> mergeListsRev [] (List.tl l2) (List.hd l2 :: acc) (* If l1 is empty, add from l2*)
-        | (_, []) -> mergeListsRev (List.tl l1) [] (List.hd l1 :: acc) (* If l2 is empty, add from l1*)
-        | (hd1::tl1, hd2::tl2) -> if pred hd1 hd2 then mergeListsRev tl1 tl2 (hd2 :: hd1 :: acc)
-                                    else mergeListsRev tl1 tl2 (hd1 :: hd2 :: acc)
-        in
-    
+
+
     let rec mergeLists l1 l2 =
-        List.rev(mergeListsRev l1 l2 [])
+        match (l1, l2) with
+        | ([], []) -> []
+        | ([], _) -> l2
+        | (_, []) -> l1
+        | (hd1::tl1, hd2::tl2) -> if pred hd1 hd2 then hd1 :: mergeLists tl1 l2
+                                    else hd2 :: mergeLists l1 tl2
         in
     
     match xs with
@@ -106,18 +102,18 @@ let rec mergesort pred xs =
     ;;
 
 
-mergesort (fun a b -> a < b) [3; 1; 5; 2; 4];;
-mergesort (fun a b -> a < b) [4; 4; 8; 1; -1; 4; -1];;
-mergesort (fun a b -> a > b) [5; 2; -5; 0; 5; 2; -10];;
+mergesort (fun a b -> a < b) [3; 1; 5; 2; 4] = [1; 2; 3; 4; 5];;
+mergesort (fun a b -> a < b) [4; 4; 8; 1; -1; 4; -1] = [-1; -1; 1; 4; 4; 4; 8];;
+mergesort (fun a b -> a > b) [5; 2; -5; 0; 5; 2; -10] = [5; 5; 2; 2; 0; -5; -10];;
 mergesort (fun a b -> a < b) [] = [];;
 mergesort (fun a b -> a < b) [3] = [3];;
 
 
 let testPred = fun a b -> a < b;;
 mergesort testPred [2; 1] = [1; 2];;
-mergesort testPred [3; 2; 1];;
-mergesort testPred [3; 1; 2];;
-mergesort testPred [1; 3; 2];;
-mergesort testPred [4; 3; 2; 1];;
+mergesort testPred [3; 2; 1] = [1; 2; 3];;
+mergesort testPred [3; 1; 2] = [1; 2; 3];;
+mergesort testPred [1; 3; 2] = [1; 2; 3];;
+mergesort testPred [4; 3; 2; 1] = [1; 2; 3; 4];;
 
 
