@@ -70,17 +70,11 @@ insertionSort (fun a b -> a < b) [3] = [3];;
 let rec mergesort pred xs =
     let xsLen = List.length xs in
 
-    let rec splitListRev remain ys half1 half2 =
-        match remain with
-        | 0 -> (half1, half2)
-        | _ -> if remain > xsLen/2
-                    then splitListRev (remain - 1) (List.tl ys) (List.hd ys :: half1) half2
-                else splitListRev (remain - 1) (List.tl ys) half1 (List.hd ys :: half2)
-        in
-    
-    let splitList len ys =
-        let split = splitListRev len ys [] [] in
-        (List.rev(fst split), List.rev(snd split))
+    let rec splitList fstHalfSize ys =
+        if fstHalfSize <= 0 then ([], ys)
+        else
+            let temp = splitList (fstHalfSize - 1) (List.tl ys) in
+            ((List.hd ys) :: fst temp, snd temp)
         in
 
 
@@ -97,7 +91,7 @@ let rec mergesort pred xs =
     | [] -> []
     | [elem] -> [elem]
     | _ ->
-        let split = splitList xsLen xs in
+        let split = splitList (xsLen / 2) xs in
         mergeLists (mergesort pred (fst split)) (mergesort pred (snd split))
     ;;
 

@@ -42,3 +42,23 @@ let rec mergesort pred xs =
       mergeLists (mergesort pred (fst split)) (mergesort pred (snd split))
   }
   ;;
+
+
+
+
+
+let rec splitList2 fstHalfSize ys =
+    if fstHalfSize <= 0 then ([], ys)
+    else
+        let temp = splitList2 (fstHalfSize - 1) (List.tl ys) in
+        ((List.hd ys) :: fst temp, snd temp)
+    ;;
+
+
+splitList2 3 [1; 2; 3; 4; 5; 6];;
+splitList2 2 [1; 2; 3; 4; 5; 6];;
+splitList2 5 [1; 2; 3; 4; 5];;
+splitList2 0 [1; 2; 3; 4; 5];;
+
+splitList2 1 [1; 2; 3; 4; 5; 6];;
+splitList2 1 [1; 2; 3; 4; 5];;
