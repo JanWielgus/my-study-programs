@@ -5,7 +5,6 @@
 using std::string;
 using std::cout;
 using std::endl;
-using std::min;
 
 
 const string CTable::DefaultName = "no_name";
@@ -28,7 +27,7 @@ CTable::CTable(string name, int arraySize)
 	this->array = NULL; // this->array = nullptr
 	this->arraySize = 0;
 	setName(name);
-	setNewSize(arraySize) == false;
+	setNewSize(arraySize);
 	printTextAndName(DmbConsts::ParametrizedCtorMsg);
 }
 
