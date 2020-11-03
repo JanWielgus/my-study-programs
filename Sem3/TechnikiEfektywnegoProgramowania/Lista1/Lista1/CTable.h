@@ -2,7 +2,7 @@
 #include <string>
 
 
-class CTable
+class Table
 {
 private:
 	std::string name;
@@ -14,16 +14,22 @@ private:
 	static const int DefaultArraySize;
 
 public:
-	CTable();
-	CTable(std::string name, int arrayLength);
-	CTable(const CTable& other);
-	~CTable();
+	Table();
+	Table(std::string name, int arrayLength);
+	Table(const Table& other);
+	~Table();
 	
-	CTable& operator=(const CTable& other); // should go in pair with copy constructor
+	Table& operator=(const Table& other); // should go in pair with copy constructor
+	Table operator+(const Table& other);
 
 	void setName(std::string name);
 	bool setNewSize(int newArraySize);
-	CTable* clone(); // !!! this method should not exist and is really dangerous for the code !!!
+	Table* clone(); // !!! this method should not exist and is really dangerous for the code !!!
+
+	bool setValueAt(int index, int newValue);
+	void print();
+
+	int getSize();
 
 
 private:

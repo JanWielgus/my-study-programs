@@ -7,22 +7,22 @@ using std::cout;
 using std::endl;
 
 
-const string CTable::DefaultName = "no_name";
-const string CTable::CopyNameSuffix = "_copy";
-const int CTable::DefaultArraySize = 10;
+const string Table::DefaultName = "no_name";
+const string Table::CopyNameSuffix = "_copy";
+const int Table::DefaultArraySize = 10;
 
 
-CTable::CTable()
+Table::Table()
 {
 	array = NULL; // array = nullptr
-	arraySize = 0;
+	arraySize = 0; 
 	setName(DefaultName);
 	setNewSize(DefaultArraySize);
 	printTextAndName(DmbConsts::DefaultCtorMsg);
 }
 
 
-CTable::CTable(string name, int arraySize)
+Table::Table(string name, int arraySize)
 {
 	this->array = NULL; // this->array = nullptr
 	this->arraySize = 0;
@@ -32,7 +32,7 @@ CTable::CTable(string name, int arraySize)
 }
 
 
-CTable::CTable(const CTable& other)
+Table::Table(const Table& other)
 {
 	array = NULL; // array = nullptr
 	arraySize = 0;
@@ -47,7 +47,7 @@ CTable::CTable(const CTable& other)
 }
 
 
-CTable::~CTable()
+Table::~Table()
 {
 	if (array) // !!! if (array != nullptr)
 		delete[] array;
@@ -56,7 +56,7 @@ CTable::~CTable()
 }
 
 
-CTable& CTable::operator=(const CTable& other)
+Table& Table::operator=(const Table& other)
 {
 	if (this != &other)
 	{
@@ -71,13 +71,28 @@ CTable& CTable::operator=(const CTable& other)
 }
 
 
-void CTable::setName(string name)
+Table Table::operator+(const Table& other)
+{
+	Table newTable;
+	newTable.setNewSize(arraySize + other.arraySize);
+	
+	for (int i = 0; i < arraySize; i++)
+		newTable.array[i] = array[i];
+
+	for (int i = 0; i < other.arraySize; i++)
+		newTable.array[arraySize + i] = other.array[i];
+	
+	return newTable;
+}
+
+
+void Table::setName(string name)
 {
 	this->name = name;
 }
 
 
-bool CTable::setNewSize(int newArraySize)
+bool Table::setNewSize(int newArraySize)
 {
 	if (newArraySize <= 0)
 		return false;
@@ -104,15 +119,42 @@ bool CTable::setNewSize(int newArraySize)
 }
 
 
-CTable* CTable::clone()
+Table* Table::clone()
 {
-	return new CTable(*this); // !!! this should be used in every place where this method is used !!!
+	return new Table(*this); // !!! this should be used in every place where this method is used !!!
+}
+
+
+bool Table::setValueAt(int index, int newValue)
+{
+	if (index >= arraySize)
+		return false;
+
+	array[index] = newValue;
+	return true;
+}
+
+
+void Table::print()
+{
+	using namespace DmbConsts;
+	cout << SingleQuote << name << SingleQuote << endl;
+
+	for (int i = 0; i < arraySize; i++)
+		cout << array[i] << Space << Space;
+	cout << endl;
+}
+
+
+int Table::getSize()
+{
+	return arraySize;
 }
 
 
 
-void CTable::printTextAndName(string text)
+void Table::printTextAndName(string text)
 {
 	using namespace DmbConsts;
-	cout << text << ColonWithSpace << SingleQuoteSign << name << SingleQuoteSign << endl;
+	cout << text << Colon << Space << SingleQuote << name << SingleQuote << endl;
 }

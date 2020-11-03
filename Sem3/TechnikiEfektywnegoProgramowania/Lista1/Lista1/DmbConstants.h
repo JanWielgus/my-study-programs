@@ -26,6 +26,7 @@ namespace DmbConsts
 	ConstTextType ParametrizedCtorMsg = "z parametrami";
 	ConstTextType CopyCtorMsg = "kopiujacy";
 	ConstTextType DeletingMsg = "deleting";
-	ConstTextType ColonWithSpace = ": ";
-	const char SingleQuoteSign = '\'';
+	const char Colon = ':';
+	const char Space = ' ';
+	const char SingleQuote = '\'';
 }

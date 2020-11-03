@@ -27,8 +27,8 @@ void show2DimArray(int** array, int sizeX, int sizeY);
 void showDebugMessage(const char* prefix, bool flag);
 
 // exercise 4
-void modificate_tab(CTable* tab, int newSize); // will modify
-void modificate_tab(CTable tab, int newSize); // won't modify
+void modificate_tab(Table* tab, int newSize); // will modify
+void modificate_tab(Table tab, int newSize); // won't modify
 
 void testCTableStaticAndDynamicAllocation();
 
@@ -55,6 +55,32 @@ int main()
 
 
     cout << endl << DmbConsts::ProgramEndMessage << endl;
+
+
+
+
+
+
+    cout << "List 2 tests" << endl;
+    
+    
+    Table tab0, tab1;
+    tab0.setNewSize(6);
+    tab1.setNewSize(4);
+    
+    for (int i = 0; i < tab0.getSize(); i++)
+        tab0.setValueAt(i, i + 1);
+    for (int i = 0; i < tab1.getSize(); i++)
+        tab1.setValueAt(i, i + 51);
+
+    cout << "Concatenation: " << endl;
+    (tab0 + tab1).print();
+
+    tab0 = tab1;
+    tab1.setValueAt(2, 123);
+    tab0.print();
+    tab1.print();
+
 }
 
 
@@ -172,14 +198,14 @@ void showDebugMessage(const char* prefix, bool flag)
 
 
 
-void modificate_tab(CTable* tab, int newSize)
+void modificate_tab(Table* tab, int newSize)
 {
     tab->setNewSize(newSize);
 }
 
 
 
-void modificate_tab(CTable tab, int newSize)
+void modificate_tab(Table tab, int newSize)
 {
     tab.setNewSize(newSize);
 }
@@ -188,14 +214,14 @@ void modificate_tab(CTable tab, int newSize)
 void testCTableStaticAndDynamicAllocation()
 {
     cout << DmbConsts::StaticAllocationText << endl;
-    CTable test1;
-    CTable test2(DmbConsts::StaticTestObject2Name, 7);
-    CTable test3(test1);
+    Table test1;
+    Table test2(DmbConsts::StaticTestObject2Name, 7);
+    Table test3(test1);
 
     cout << DmbConsts::DynamicAllocationText << endl;
-    CTable* dynamicTest1 = new CTable(DmbConsts::DynamicTestObject1Name, 123);
+    Table* dynamicTest1 = new Table(DmbConsts::DynamicTestObject1Name, 123);
     dynamicTest1->setNewSize(5);
-    CTable* dynamicArray1 = new CTable[3];
+    Table* dynamicArray1 = new Table[3];
     dynamicArray1[1].setNewSize(100);
     cout << DmbConsts::DeallocationMsg << endl;
     delete dynamicTest1;
