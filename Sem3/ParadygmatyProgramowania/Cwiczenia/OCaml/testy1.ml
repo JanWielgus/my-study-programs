@@ -62,3 +62,50 @@ splitList2 0 [1; 2; 3; 4; 5];;
 
 splitList2 1 [1; 2; 3; 4; 5; 6];;
 splitList2 1 [1; 2; 3; 4; 5];;
+
+
+
+let rec przedzial a b = if a > b then []
+                        else b :: (przedzial a (b - 1))
+    ;;
+
+
+przedzial 1 5;;
+
+
+
+
+
+(*
+let rec breadthBT bt =
+    let rec bfs result queue tree =
+        match tree with
+        | Empty -> if tl queue = [] then result
+                    else bfs (result @ [List.hd queue]) List.tl tree
+        | Node(val, n1, n2) -> 
+            
+
+
+
+let rec breadthBT bt =
+    let rec bfs queue tree =
+        match tree with
+        | Empty -> if tl queue = [] then []
+                    else queue
+        | Node(val, n1, n2) ->
+            bfs 
+*)
+
+
+type 'a graph = Graph of ('a -> 'a list);;
+
+let breadthSearch (Graph succ) startNode =
+    let rec search visited queue =
+        match queue with
+        | [] -> []
+        | h::t -> if List.mem h visited then search visited t
+                else h :: search (h :: visited) (t @ succ h)
+        in
+    search [] [startNode]
+    ;;
+  
