@@ -64,6 +64,9 @@ insertionSort (fun a b -> a > b) [5; 2; -5; 0; 5; 2; -10] = [5; 5; 2; 2; 0; -5; 
 insertionSort (fun a b -> a < b) [] = [];;
 insertionSort (fun a b -> a < b) [3] = [3];;
 
+let listsLenOrder = (fun l1 l2 -> List.length l1 < List.length l2);;
+insertionSort listsLenOrder [[1; 2; 3]; [0]; [3; 2; 1]; [4; 5]; [7; 8; 9]] = [[0]; [4; 5]; [1; 2; 3]; [3; 2; 1]; [7; 8; 9]];;
+
 
 
 (*Zadanie 5b*)
@@ -109,5 +112,8 @@ mergesort testPred [3; 2; 1] = [1; 2; 3];;
 mergesort testPred [3; 1; 2] = [1; 2; 3];;
 mergesort testPred [1; 3; 2] = [1; 2; 3];;
 mergesort testPred [4; 3; 2; 1] = [1; 2; 3; 4];;
+
+let listsLenOrder = (fun l1 l2 -> List.length l1 <= List.length l2);;
+mergesort listsLenOrder [[1; 2; 3]; [0]; [3; 2; 1]; [4; 5]; [7; 8; 9]] = [[0]; [4; 5]; [1; 2; 3]; [3; 2; 1]; [7; 8; 9]];;
 
 
