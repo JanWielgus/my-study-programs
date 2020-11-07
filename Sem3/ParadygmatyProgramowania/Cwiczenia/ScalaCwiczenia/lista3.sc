@@ -44,6 +44,9 @@ insertionSort((a:Int) => (b:Int) => a > b, List(5, 2, -5, 0, 5, 2, -10)) == List
 insertionSort((a:Int) => (b:Int) => a < b, Nil) == Nil
 insertionSort((a:Int) => (b:Int) => a < b, List(3)) == List(3)
 
+insertionSort((l1: List[Int]) => (l2: List[Int]) => l1.length < l2.length,
+    List(List(1, 2, 3), List(0), List(3, 2, 1), List(4, 5), List(7, 8, 9))) == List(List(0), List(4, 5), List(1, 2, 3), List(3, 2, 1), List(7, 8, 9))
+
 
 
 
@@ -87,5 +90,8 @@ mergesort((a:Int) => (b:Int) => a < b, List(4, 4, 8, 1, -1, 4, -1)) == List(-1, 
 mergesort((a:Int) => (b:Int) => a > b, List(5, 2, -5, 0, 5, 2, -10)) == List(5, 5, 2, 2, 0, -5, -10)
 mergesort((a:Int) => (b:Int) => a < b, Nil) == Nil
 mergesort((a:Int) => (b:Int) => a < b, List(3)) == List(3)
+
+mergesort((l1: List[Int]) => (l2: List[Int]) => l1.length <= l2.length,
+    List(List(1, 2, 3), List(0), List(3, 2, 1), List(4, 5), List(7, 8, 9))) == List(List(0), List(4, 5), List(1, 2, 3), List(3, 2, 1), List(7, 8, 9))
 
 
