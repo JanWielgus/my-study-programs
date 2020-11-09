@@ -19,7 +19,7 @@ public:
 	Table(const Table& other);
 	~Table();
 	
-	Table& operator=(const Table& other); // should go in pair with copy constructor
+	Table& operator=(const Table& other);
 	Table operator+(const Table& other);
 
 	void setName(std::string name);
