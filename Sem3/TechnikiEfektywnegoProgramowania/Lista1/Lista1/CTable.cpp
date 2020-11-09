@@ -127,7 +127,7 @@ Table* Table::clone()
 
 bool Table::setValueAt(int index, int newValue)
 {
-	if (index >= arraySize)
+	if (index < 0 || index >= arraySize)
 		return false;
 
 	array[index] = newValue;
