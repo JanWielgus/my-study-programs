@@ -138,7 +138,7 @@ bool Table::setValueAt(int index, int newValue)
 void Table::print()
 {
 	using namespace DmbConsts;
-	cout << SingleQuote << name << SingleQuote << endl;
+	cout << SingleQuote << name << SingleQuote << Colon << endl;
 
 	for (int i = 0; i < arraySize; i++)
 		cout << array[i] << Space << Space;

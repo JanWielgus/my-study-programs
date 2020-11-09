@@ -80,7 +80,6 @@ int main()
     tab1.setValueAt(2, 123);
     tab0.print();
     tab1.print();
-
 }
 
 
