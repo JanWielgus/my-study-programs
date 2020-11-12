@@ -22,6 +22,12 @@ public:
 	Table& operator=(const Table& other);
 	Table operator+(const Table& other);
 
+	Table& operator<<(int val);
+	Table& operator>>(int val);
+
+	void shiftLeft();
+	void shiftRight();
+
 	void setName(std::string name);
 	bool setNewSize(int newArraySize);
 	Table* clone(); // !!! this method should not exist and is really dangerous for the code !!!

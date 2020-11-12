@@ -86,6 +86,65 @@ Table Table::operator+(const Table& other)
 }
 
 
+Table& Table::operator<<(int val)
+{
+	if (val == 0)
+		return *this;
+
+	if (val > 0)
+		while (val-- > 0)
+			shiftLeft();
+	else
+		while (val++ < 0)
+			shiftRight();
+
+	return *this;
+}
+
+
+Table& Table::operator>>(int val)
+{
+	if (val == 0)
+		return *this;
+
+	if (val > 0)
+		while (val-- > 0)
+			shiftRight();
+	else
+		while (val++ < 0)
+			shiftLeft();
+
+	return *this;
+}
+
+
+void Table::shiftLeft()
+{
+	if (arraySize == 0)
+		return;
+
+	int temp = array[0];
+
+	for (int i = 1; i < arraySize; i++)
+		array[i - 1] = array[i];
+
+	array[arraySize - 1] = temp;
+}
+
+void Table::shiftRight()
+{
+	if (arraySize == 0)
+		return;
+
+	int temp = array[arraySize-1];
+
+	for (int i = arraySize - 2; i >= 0; i--)
+		array[i + 1] = array[i];
+
+	array[0] = temp;
+}
+
+
 void Table::setName(string name)
 {
 	this->name = name;
