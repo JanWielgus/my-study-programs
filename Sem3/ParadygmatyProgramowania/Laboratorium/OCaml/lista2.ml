@@ -5,7 +5,6 @@
 let rec take x a =
     match a with
     | [] -> []
-    | [elem] -> if x >= 1 then [elem] else []
     | head::tail -> if x >= 1 then head :: take (x-1) tail
         else []
     ;;
@@ -25,7 +24,6 @@ take 0 [4; 5] = [];;
 let rec drop x a =
     match a with
     | [] -> []
-    | [elem] -> if x <= 0 then [elem] else []
     | head::tail -> if x <= 0 then a else drop (x-1) tail
     ;;
 
