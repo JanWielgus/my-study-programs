@@ -1,3 +1,13 @@
+(*
+Wskazowki:
+- sprawdzaj czy wyodrebnione dzialanie dla pojedynczego elementu listy ma sens 
+- jesli operacje sa na wartosciach boolowskich to nie uzywaj ifow tylko operatorow logicznych
+- sprawdzaj czy wszystko jest dokladnie tak jak w specyfikacji
+
+*)
+
+
+
 (*zadanie 1 lista 2*)
 let rec take x a =
   match x with
