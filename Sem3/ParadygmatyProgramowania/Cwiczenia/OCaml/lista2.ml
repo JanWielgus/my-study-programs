@@ -87,11 +87,10 @@ initSegment([], []) = true;;
 let rec replaceNth (a, pos, x) =
     if pos < 0 then raise (Failure "Position cannot be less than zero")
     else if pos >= List.length a then raise (Failure "Position is out of bounds")
-    else match (a, pos, x) with
-        | ([], _, _) -> raise (Failure "List cannot be empyt")
-        | ([elem], 0, x) -> [x]
-        | (head::tail, 0, x) -> x :: tail
-        | (head::tail, pos, x) -> head :: replaceNth (tail, pos - 1, x)
+    else match (a, pos) with
+        | ([], _) -> raise (Failure "List cannot be empty")
+        | (_::tail, 0) -> x :: tail
+        | (head::tail, pos) -> head :: replaceNth (tail, pos - 1, x)
     ;;
 
 replaceNth([1; 2; 3; 4], 1, 22) = [1; 22; 3; 4];;

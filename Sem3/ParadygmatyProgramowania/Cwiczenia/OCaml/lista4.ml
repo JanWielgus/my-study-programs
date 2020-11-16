@@ -103,8 +103,8 @@ outerPathLen (Node(0, Node(1, Empty, Empty), Empty)) = 5;;
 type 'a graph = Graph of ('a -> 'a list);;
 
 let depthSearch (Graph succ) startNode =
-    let rec search visited queue =
-        match queue with
+    let rec search visited stack =
+        match stack with
         | [] -> []
         | h::t -> if List.mem h visited then search visited t
                 else h :: search (h :: visited) (succ h @ t)
