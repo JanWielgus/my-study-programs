@@ -28,3 +28,18 @@ let test = LCons(5, lazy(LCons(1, lazy(LNil))));;
 ltake (10, lrepeat 3 test) = [5; 5; 5; 1; 1; 1];;
 ltake (10, lrepeat 2 (lfrom 4)) = [4; 4; 5; 5; 6; 6; 7; 7; 8; 8];;
 ltake (10, lrepeat 4 LNil) = [];;
+
+
+
+
+(*zadanie 2*)
+let lfib =
+    let rec lfibRec (x2, x1) =
+        LCons(x1+x2, lazy(lfibRec (x1, x1+x2)))
+    in
+    LCons(1, lazy(LCons(1, lazy(lfibRec (1, 1)))))
+    ;;
+
+ltake (10, lfib) = [1; 1; 2; 3; 5; 8; 13; 21; 34; 55];;
+
+
