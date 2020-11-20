@@ -19,6 +19,8 @@ public:
 	void setValue(int newValue);
 	int getChildrenNumber();
 	void addNewChild();
+	bool removeChild(const NodeStatic* childToRemove);
+	NodeStatic* getParent();
 	NodeStatic* getChild(int childOffset);
 
 	void print();
@@ -37,4 +39,6 @@ private:
 public:
 	NodeStatic* getRoot();
 	void printTree();
+
+	static bool moveSubtree(NodeStatic* parentNode, NodeStatic* newChildNode);
 };

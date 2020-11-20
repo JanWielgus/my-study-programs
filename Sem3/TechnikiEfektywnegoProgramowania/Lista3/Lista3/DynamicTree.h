@@ -21,7 +21,7 @@ public:
 	void setValue(int newValue);
 	int getChildrenNumber();
 	void addNewChild();
-	TreeDynamic* getChild(int childOffset);
+	NodeDynamic* getChild(int childOffset);
 
 	void print();
 	void printAllBelow();

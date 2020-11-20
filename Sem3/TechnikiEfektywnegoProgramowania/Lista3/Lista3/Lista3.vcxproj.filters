@@ -21,12 +21,18 @@
     <ClCompile Include="StaticTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DynamicTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StaticTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Consts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

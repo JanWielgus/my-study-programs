@@ -41,7 +41,13 @@ void NodeDynamic::addNewChild()
 }
 
 
-//TODO: getChild
+NodeDynamic* NodeDynamic::getChild(int childOffset)
+{
+	if (childOffset < 0 || childOffset >= children.size())
+		return NULL;
+
+	return children[childOffset];
+}
 
 
 void NodeDynamic::print()
@@ -85,6 +91,7 @@ NodeDynamic* TreeDynamic::getRoot()
 void TreeDynamic::printTree()
 {
 	root->printAllBelow();
+	cout << endl;
 }
 
 

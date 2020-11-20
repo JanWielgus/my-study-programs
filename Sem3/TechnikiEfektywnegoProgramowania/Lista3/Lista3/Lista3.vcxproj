@@ -139,11 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DynamicTree.cpp" />
     <ClCompile Include="Lista3.cpp" />
     <ClCompile Include="StaticTree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Consts.h" />
+    <ClInclude Include="DynamicTree.h" />
     <ClInclude Include="StaticTree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
