@@ -1,9 +1,11 @@
 #include "StaticTree.h"
 #include <iostream>
 #include "Consts.h"
+#include <queue>
 
 using std::cout;
 using std::endl;
+using std::queue;
 
 
 NodeStatic::NodeStatic()
@@ -73,12 +75,18 @@ void NodeStatic::print()
 
 void NodeStatic::printAllBelow()
 {
-	print();
+	queue<NodeStatic*> q;
+	q.push(this);
 
-	for (int i = 0; i < children.size(); i++)
+	while (!q.empty())
 	{
+		NodeStatic* curNode = q.front();
+		curNode->print();
 		cout << Consts::Space;
-		children[i].printAllBelow();
+		q.pop();
+
+		for (int i = 0; i < curNode->children.size(); i++)
+			q.push(&curNode->children[i]);
 	}
 }
 

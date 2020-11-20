@@ -1,9 +1,11 @@
 #include "DynamicTree.h"
 #include <iostream>
 #include "Consts.h"
+#include <queue>
 
 using std::cout;
 using std::endl;
+using std::queue;
 
 
 
@@ -27,6 +29,12 @@ void NodeDynamic::setValue(int newValue)
 }
 
 
+int NodeDynamic::getValue()
+{
+	return value;
+}
+
+
 int NodeDynamic::getChildrenNumber()
 {
 	return children.size();
@@ -35,9 +43,33 @@ int NodeDynamic::getChildrenNumber()
 
 void NodeDynamic::addNewChild()
 {
-	NodeDynamic* newNode = new NodeDynamic();
-	newNode->parentNode = this;
-	children.push_back(newNode);
+	addNewChild(new NodeDynamic());
+}
+
+
+void NodeDynamic::addNewChild(NodeDynamic* nodeToAdd)
+{
+	nodeToAdd->parentNode = this;
+	children.push_back(nodeToAdd);
+}
+
+
+bool NodeDynamic::removeChild(const NodeDynamic* childToRemove)
+{
+	for (int i = 0; i < children.size(); i++)
+		if (children[i] == childToRemove)
+		{
+			children.erase(children.begin() + i);
+			return true;
+		}
+
+	return false;
+}
+
+
+NodeDynamic* NodeDynamic::getParent()
+{
+	return parentNode;
 }
 
 
@@ -58,12 +90,18 @@ void NodeDynamic::print()
 
 void NodeDynamic::printAllBelow()
 {
-	print();
+	queue<NodeDynamic*> q;
+	q.push(this);
 
-	for (int i = 0; i < children.size(); i++)
+	while (!q.empty())
 	{
+		NodeDynamic* curNode = q.front();
+		curNode->print();
 		cout << Consts::Space;
-		children[i]->printAllBelow();
+		q.pop();
+
+		for (int i = 0; i < curNode->children.size(); i++)
+			q.push(curNode->children[i]);
 	}
 }
 
@@ -78,7 +116,8 @@ TreeDynamic::TreeDynamic()
 
 TreeDynamic::~TreeDynamic()
 {
-	delete root;
+	if (root != NULL)
+		delete root;
 }
 
 
@@ -92,6 +131,24 @@ void TreeDynamic::printTree()
 {
 	root->printAllBelow();
 	cout << endl;
+}
+
+
+bool TreeDynamic::moveSubtree(NodeDynamic* parentNode, NodeDynamic*& newChildNode)
+{
+	if (parentNode == newChildNode)
+		return false;
+
+	NodeDynamic* oldParent = newChildNode->getParent();
+
+	parentNode->addNewChild(newChildNode);
+
+	if (oldParent != NULL)
+		oldParent->removeChild(newChildNode);
+	else
+		newChildNode = NULL; // if this is root
+
+	return true;
 }
 
 
