@@ -1,8 +1,10 @@
 #pragma once
 
 #include <vector>
+#include <string>
 
 using std::vector;
+using std::string;
 
 
 class TreeDynamic;
@@ -18,8 +20,8 @@ public:
 	NodeDynamic();
 	~NodeDynamic();
 
-	NodeDynamic(const NodeDynamic& other) = delete;
-	NodeDynamic& operator=(const NodeDynamic& other) = delete;
+	NodeDynamic(const NodeDynamic& other);
+	NodeDynamic& operator=(const NodeDynamic& other);
 
 	void setValue(int newValue);
 	int getValue();
@@ -29,6 +31,7 @@ public:
 	bool removeChild(const NodeDynamic* childToRemove);
 	NodeDynamic* getParent();
 	NodeDynamic* getChild(int childOffset);
+	vector<NodeDynamic*>* getChildren();
 
 	void print();
 	void printAllBelow();
@@ -43,10 +46,11 @@ private:
 
 public:
 	TreeDynamic();
+	TreeDynamic(NodeDynamic* root);
 	~TreeDynamic();
 
-	TreeDynamic(const TreeDynamic& other) = delete;
-	TreeDynamic& operator=(const TreeDynamic& other) = delete;
+	TreeDynamic(const TreeDynamic& other);
+	TreeDynamic& operator=(const TreeDynamic& other);
 
 	NodeDynamic* getRoot();
 	void printTree();

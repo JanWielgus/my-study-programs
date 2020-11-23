@@ -25,6 +25,11 @@ void NodeStatic::setValue(int newValue)
 	value = newValue;
 }
 
+int NodeStatic::getValue()
+{
+	return value;
+}
+
 
 int NodeStatic::getChildrenNumber()
 {
@@ -66,6 +71,11 @@ NodeStatic* NodeStatic::getChild(int childOffset)
 	return &children[childOffset];
 }
 
+vector<NodeStatic>* NodeStatic::getChildren()
+{
+	return &children;
+}
+
 
 void NodeStatic::print()
 {
@@ -103,6 +113,16 @@ void NodeStatic::printUp()
 
 
 
+
+
+TreeStatic::TreeStatic()
+{
+}
+
+TreeStatic::TreeStatic(NodeStatic root)
+{
+	this->root = root;
+}
 
 
 NodeStatic* TreeStatic::getRoot()

@@ -17,11 +17,13 @@ public:
 	~NodeStatic();
 
 	void setValue(int newValue);
+	int getValue();
 	int getChildrenNumber();
 	void addNewChild();
 	bool removeChild(const NodeStatic* childToRemove);
 	NodeStatic* getParent();
 	NodeStatic* getChild(int childOffset);
+	vector<NodeStatic>* getChildren();
 
 	void print();
 	void printAllBelow();
@@ -33,6 +35,10 @@ public:
 
 class TreeStatic
 {
+public:
+	TreeStatic();
+	TreeStatic(NodeStatic root);
+
 private:
 	NodeStatic root;
 

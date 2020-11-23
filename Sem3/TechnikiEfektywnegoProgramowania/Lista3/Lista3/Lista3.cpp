@@ -1,6 +1,7 @@
 #include <iostream>
 #include "StaticTree.h"
 #include "DynamicTree.h"
+#include <vector>
 
 using std::cout;
 using std::endl;
@@ -11,6 +12,16 @@ using std::endl;
 void nodeStaticTest();
 void nodeStaticMoveSubtreeTest();
 void nodeDynamicMoveSubtreeTest();
+
+
+vector<TreeStatic> split_trees(NodeStatic* node);
+vector<TreeDynamic> split_trees(NodeDynamic* node);
+vector<TreeStatic> split_treesGood(NodeStatic* node);
+vector<TreeDynamic> split_treesGood(NodeDynamic* node);
+void badSplitTreesTest();
+void goodSplitTreesTest();
+
+
 
 
 int main()
@@ -24,6 +35,10 @@ int main()
 
     nodeDynamicMoveSubtreeTest();
     cout << endl;
+
+    badSplitTreesTest();
+    goodSplitTreesTest();
+
 
     return 0;
 }
@@ -166,6 +181,137 @@ void nodeDynamicMoveSubtreeTest()
     tree1.printTree();
     cout << "Tree 2 after move: ";
     tree2.printTree();
+}
+
+
+
+
+
+// bad:
+//https://pastebin.com/kun7m3hX
+
+vector<TreeStatic> split_trees(NodeStatic* node)
+{
+    vector<TreeStatic> trees;
+    trees.push_back(TreeStatic(*node));
+
+    vector<NodeStatic>& children = *node->getChildren();
+    for (int i = 0; i < children.size(); i++)
+    {
+        vector<TreeStatic> temp = split_trees(&children[i]);
+        trees.insert(trees.end(), temp.begin(), temp.end());
+    }
+
+    children.clear();
+
+    return trees;
+}
+
+
+vector<TreeDynamic> split_trees(NodeDynamic* node)
+{
+    vector<TreeDynamic> trees;
+    trees.push_back(TreeDynamic(node));
+
+    vector<NodeDynamic*>& children = *node->getChildren();
+    for (int i = 0; i < children.size(); i++)
+    {
+        vector<TreeDynamic> temp = split_trees(children[i]);
+        trees.insert(trees.end(), temp.begin(), temp.end());
+    }
+
+    children.clear();
+
+    return trees;
+}
+
+
+// good:
+
+
+vector<TreeStatic> split_treesGood(NodeStatic* node)
+{
+    vector<TreeStatic> trees;
+
+    while (node->getChildrenNumber() > 0)
+    {
+        NodeStatic* curChild = node->getChild(0);
+        trees.push_back(TreeStatic(*curChild));
+        node->removeChild(curChild);
+    }
+
+    return trees;
+}
+
+
+vector<TreeDynamic> split_treesGood(NodeDynamic* node)
+{
+    vector<TreeDynamic> trees;
+
+    while (node->getChildrenNumber() > 0)
+    {
+        NodeDynamic* curChild = node->getChild(0);
+        trees.push_back(TreeDynamic(curChild));
+        node->removeChild(curChild);
+    }
+
+    return trees;
+}
+
+
+void badSplitTreesTest()
+{
+    cout << "tree split" << endl;
+    NodeStatic root;
+
+    root.addNewChild();
+    root.addNewChild();
+    root.getChild(0)->setValue(1);
+    root.getChild(1)->setValue(2);
+
+    root.getChild(0)->addNewChild();
+    root.getChild(0)->addNewChild();
+    root.getChild(0)->getChild(0)->setValue(11);
+    root.getChild(0)->getChild(1)->setValue(12);
+
+    root.getChild(1)->addNewChild();
+    root.getChild(1)->addNewChild();
+    root.getChild(1)->getChild(0)->setValue(21);
+    root.getChild(1)->getChild(1)->setValue(22);
+
+    vector<TreeStatic> testArray = split_trees(&root);
+    cout << "Bad test: " << endl;
+    for (int i = 0; i < testArray.size(); i++)
+        cout << testArray[i].getRoot()->getValue() << endl;
+    cout << "test end" << endl;
+}
+
+
+void goodSplitTreesTest()
+{
+    cout << "tree split" << endl;
+    NodeStatic root;
+
+    root.addNewChild();
+    root.addNewChild();
+    root.getChild(0)->setValue(1);
+    root.getChild(1)->setValue(2);
+
+    root.getChild(0)->addNewChild();
+    root.getChild(0)->addNewChild();
+    root.getChild(0)->getChild(0)->setValue(11);
+    root.getChild(0)->getChild(1)->setValue(12);
+
+    root.getChild(1)->addNewChild();
+    root.getChild(1)->addNewChild();
+    root.getChild(1)->getChild(0)->setValue(21);
+    root.getChild(1)->getChild(1)->setValue(22);
+
+    vector<TreeStatic> testArray = split_treesGood(&root);
+    cout << "Good test: " << endl;
+    for (int i = 0; i < testArray.size(); i++)
+        cout << testArray[i].getRoot()->getValue() << endl;
+    cout << "test end" << endl;
 }
 
 

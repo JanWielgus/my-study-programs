@@ -23,6 +23,30 @@ NodeDynamic::~NodeDynamic()
 }
 
 
+NodeDynamic::NodeDynamic(const NodeDynamic& other)
+{
+	value = other.value;
+	parentNode = NULL;
+	
+	for (int i = 0; i < other.children.size(); i++)
+		children.push_back(new NodeDynamic(*other.children[i]));
+}
+
+
+NodeDynamic& NodeDynamic::operator=(const NodeDynamic& other)
+{
+	if (this != &other)
+	{
+		value = other.value;
+		parentNode = NULL;
+
+		for (int i = 0; i < other.children.size(); i++)
+			children.push_back(new NodeDynamic(*other.children[i]));
+	}
+	return *this;
+}
+
+
 void NodeDynamic::setValue(int newValue)
 {
 	value = newValue;
@@ -81,6 +105,11 @@ NodeDynamic* NodeDynamic::getChild(int childOffset)
 	return children[childOffset];
 }
 
+vector<NodeDynamic*>* NodeDynamic::getChildren()
+{
+	return &children;
+}
+
 
 void NodeDynamic::print()
 {
@@ -113,11 +142,32 @@ TreeDynamic::TreeDynamic()
 	root = new NodeDynamic();
 }
 
+TreeDynamic::TreeDynamic(NodeDynamic* root)
+{
+	this->root = root;
+}
+
 
 TreeDynamic::~TreeDynamic()
 {
 	if (root != NULL)
 		delete root;
+}
+
+
+TreeDynamic::TreeDynamic(const TreeDynamic& other)
+{
+	root = new NodeDynamic(*other.root);
+}
+
+
+TreeDynamic& TreeDynamic::operator=(const TreeDynamic& other)
+{
+	if (this != &other)
+	{
+		root = new NodeDynamic(*other.root);
+	}
+	return *this;
 }
 
 
