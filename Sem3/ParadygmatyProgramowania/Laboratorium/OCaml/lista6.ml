@@ -91,6 +91,7 @@ let sortujPlik() =
     let _ = idx := 0 in
     while !idx < arrSize do
         let _ = output_string outputStream (string_of_float (arr.(!idx))) in
+        let _ = output_char outputStream '\n' in
         idx := (!idx + 1)
     done;
 
