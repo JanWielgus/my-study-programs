@@ -12,7 +12,7 @@ let rec ltake = function
     ;;
 
 
-type 'a lBT = LEmpty | LNode of 'a * (unit ->'a lBT) * (unit -> 'a lBT)
+type 'a lBT = LEmpty | LNode of 'a * (unit -> 'a lBT) * (unit -> 'a lBT);;
 
 
 
@@ -30,7 +30,7 @@ let lrepeat k lxs =
     lrepeatRec k lxs
     ;;
 
-let test = LCons(5, lazy(LCons(1, lazy(LNil))));;
+let test = LCons(5, lazy(LCons(1, lazy LNil)));;
 ltake (10, lrepeat 3 test) = [5; 5; 5; 1; 1; 1];;
 ltake (10, lrepeat 2 (lfrom 4)) = [4; 4; 5; 5; 6; 6; 7; 7; 8; 8];;
 ltake (10, lrepeat 4 LNil) = [];;
