@@ -43,8 +43,8 @@ ltake (20, lrepeat (fun i -> i*3) LNil) = [];;
 let toLBST xs =
     let rec insertToBST elem bst =
         match bst with
-        | LEmpty -> LNode(elem, lazy(LEmpty), lazy(LEmpty))
-        | LNode(curElem, lazy n1, lazy n2) -> if elem < curElem then LNode(curElem, lazy(insertToBST elem n1), lazy(n2))
+        | LEmpty -> LNode(elem, lazy LEmpty , lazy LEmpty)
+        | LNode(curElem, lazy n1, lazy n2) -> if elem < curElem then LNode(curElem, lazy(insertToBST elem n1), lazy n2)
                                     else LNode(curElem, lazy(n1), lazy(insertToBST elem n2))
     in
 

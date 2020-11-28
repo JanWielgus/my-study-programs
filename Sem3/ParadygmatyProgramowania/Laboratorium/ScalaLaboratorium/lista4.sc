@@ -38,7 +38,7 @@ sumBT(Empty) == 0
 
 
 
-// zadanie 2
+// zadanie 2 // przerobic na postac rozwinieta !!!!! <<<
 def foldBT [A, B](f: (A, (B, B)) => B, tree: BT[A], acc: B): B =
     tree match {
         case Empty => acc
@@ -53,6 +53,8 @@ foldBT[Int, Int]((x, acc) => x + acc._1, t, 0) == 3 // sum only left edge
 
 // zadanie 3a
 def sumBTfold (tree: BT[Int]): Int =
+// zrobic wzorzec dla pary acc w bloku <<<<<<<<<<<< !!
+// przerobic 3 i 4 tak jak w ocamlu (dopasowanie do wzorca)
     foldBT[Int, Int]((x, acc) => x + acc._1 + acc._2, tree, 0)
 
 sumBTfold(t) == 6

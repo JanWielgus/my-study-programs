@@ -57,7 +57,7 @@ foldBT (fun x acc -> x + fst acc) t 0 = 3;;
 
 (*zadanie 3a*)
 let sumBTfold tree =
-    foldBT (fun x acc -> x + fst acc + snd acc) tree 0
+    foldBT (fun x (lAcc, rAcc) -> x + lAcc + rAcc) tree 0
     ;;
 
 sumBTfold t = 6;;
@@ -68,7 +68,7 @@ sumBTfold Empty = 0;;
 
 (*zadanie 3b preorder*)
 let preorderBTfold tree =
-    foldBT (fun x acc -> x :: fst acc @ snd acc) tree []
+    foldBT (fun x (lAcc, rAcc) -> (x :: lAcc) @ rAcc) tree []
     ;;
 
 preorderBTfold tt = [1; 2; 4; 3; 5; 6];;
@@ -78,7 +78,7 @@ preorderBTfold Empty = [];;
 
 (*zadanie 3b inorder*)
 let inorderBTfold tree =
-    foldBT (fun x acc -> fst acc @ [x] @ snd acc) tree []
+    foldBT (fun x (lAcc, rAcc) -> lAcc @ (x :: rAcc)) tree []
     ;;
 
 inorderBTfold tt = [4; 2; 1; 5; 6; 3];;
@@ -89,7 +89,7 @@ inorderBTfold Empty = [];;
 
 (*zadanie 3b postorder*)
 let postorderBTfold tree =
-    foldBT (fun x acc -> fst acc @ snd acc @ [x]) tree []
+    foldBT (fun x (lAcc, rAcc) -> lAcc @ rAcc @ [x]) tree []
     ;;
 
 postorderBTfold tt = [4; 2; 6; 5; 3; 1];;
@@ -102,7 +102,7 @@ postorderBTfold Empty = [];;
 
 (*zadanie 4*)
 let mapBT f tree =
-    foldBT (fun x acc -> Node (f x, fst acc, snd acc)) tree Empty
+    foldBT (fun x (lAcc, rAcc) -> Node (f x, lAcc, rAcc)) tree Empty
     ;;
 
 mapBT (fun v -> 2 * v) t = Node (2, Node (4, Empty, Node (6, Empty, Empty)), Empty);;
