@@ -48,8 +48,8 @@ let rec foldBT f tree acc =
     | Node (value, n1, n2) -> f value (foldBT f n1 acc, foldBT f n2 acc)
     ;;
 
-foldBT (fun x acc -> x + fst acc + snd acc) t 0 = 6;;
-foldBT (fun x acc -> x + fst acc) t 0 = 3;;
+foldBT (fun x (lAcc, rAcc) -> x + lAcc + rAcc) t 0 = 6;;
+foldBT (fun x (lAcc, rAcc) -> x + lAcc) t 0 = 3;;
 
 
 
