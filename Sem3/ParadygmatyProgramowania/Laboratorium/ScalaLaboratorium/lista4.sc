@@ -97,11 +97,11 @@ postorderBTfold(Empty) == Nil
 
 
 // Zadanie 4
-def mapBT [A, B](f: A => B, tree: BT[A]): BT[B] =
-    foldBT((x: A, acc: (BT[B], BT[B])) => Node(f(x), acc._1, acc._2), tree, Empty)
+def mapBT [A, B](f: A => B)(tree: BT[A]): BT[B] =
+    foldBT[A, BT[B]]( (x: A) => (lAcc: BT[B], rAcc: BT[B]) => Node(f(x), lAcc, rAcc) )(tree)(Empty)
 
-mapBT((v: Int) => 2 * v, t) == Node (2, Node (4, Empty, Node (6, Empty, Empty)), Empty)
-mapBT((v: Int) => 3 * v, Empty) == Empty
+mapBT((v: Int) => 2 * v)(t) == Node (2, Node (4, Empty, Node (6, Empty, Empty)), Empty)
+mapBT((v: Int) => 3 * v)(Empty) == Empty
 
 
 
