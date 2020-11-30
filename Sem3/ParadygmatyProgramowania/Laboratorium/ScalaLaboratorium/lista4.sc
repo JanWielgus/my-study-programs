@@ -38,24 +38,24 @@ sumBT(Empty) == 0
 
 
 
-// zadanie 2 // przerobic na postac rozwinieta !!!!! <<<
-def foldBT [A, B](f: (A, (B, B)) => B, tree: BT[A], acc: B): B =
+// zadanie 2
+def foldBT [A, B](f: A => (B, B) => B)(tree: BT[A])(acc: B): B =
     tree match {
         case Empty => acc
-        case Node (value, n1, n2) => f(value, (foldBT(f, n1, acc), foldBT(f, n2, acc)))
+        case Node (value, n1, n2) => f(value)( foldBT(f)(n1)(acc), foldBT(f)(n2)(acc) )
     }
 
-foldBT[Int, Int]((x, acc) => x + acc._1 + acc._2, t, 0) == 6
-foldBT[Int, Int]((x, acc) => x + acc._1, t, 0) == 3 // sum only left edge
+foldBT((x: Int) => (lAcc: Int, rAcc: Int) => x + lAcc + rAcc)(t)(0) == 6
+foldBT((x: Int) => (lAcc: Int, _: Int) => x + lAcc) (t) (0) == 3 // sum only left edge
+
+
 
 
 
 
 // zadanie 3a
 def sumBTfold (tree: BT[Int]): Int =
-// zrobic wzorzec dla pary acc w bloku <<<<<<<<<<<< !!
-// przerobic 3 i 4 tak jak w ocamlu (dopasowanie do wzorca)
-    foldBT[Int, Int]((x, acc) => x + acc._1 + acc._2, tree, 0)
+    foldBT((x:Int) => (lAcc: Int, rAcc: Int) => x + lAcc + rAcc)(tree)(0)
 
 sumBTfold(t) == 6
 sumBTfold(Empty) == 0
@@ -65,16 +65,17 @@ sumBTfold(Empty) == 0
 
 // zadanie 3b preorder
 def preorderBTfold [A](tree: BT[A]): List[A] =
-    foldBT((x: A, acc: (List[A], List[A])) => x :: acc._1 ::: acc._2, tree, Nil)
+    foldBT((x: A) => (lAcc: List[A], rAcc: List[A]) => x :: lAcc ::: rAcc)(tree)(Nil)
 
 preorderBTfold(tt) == List(1, 2, 4, 3 ,5, 6)
 preorderBTfold(Empty) == Nil
 
 
 
+
 // zadanie 3b inorder
 def inorderBTfold [A](tree: BT[A]): List[A] =
-    foldBT((x: A, acc: (List[A], List[A])) => acc._1 ::: List(x) ::: acc._2, tree, Nil)
+    foldBT((x: A) => (lAcc: List[A], rAcc: List[A]) => lAcc ::: (x :: rAcc) )(tree)(Nil)
 
 inorderBTfold(tt) == List(4, 2, 1, 5, 6, 3)
 inorderBTfold(t) == List(2, 3, 1)
@@ -83,9 +84,10 @@ inorderBTfold(Empty) == Nil
 
 
 
+
 // zadanie 3b postorder
 def postorderBTfold [A](tree: BT[A]): List[A] =
-    foldBT((x: A, acc: (List[A], List[A])) => acc._1 ::: acc._2 ::: List(x), tree, Nil)
+    foldBT((x: A) => (lAcc: List[A], rAcc: List[A]) => lAcc ::: rAcc ::: List(x) )(tree)(Nil)
 
 postorderBTfold(tt) == List(4, 2, 6, 5, 3, 1)
 postorderBTfold(Empty) == Nil
