@@ -43,9 +43,8 @@ ltake (10, lrepeat 4 LNil) = [];;
 (*zadanie 2*)
 let lfib =
     let rec lfibRec (x2, x1) =
-        LCons(x1+x2, lazy(lfibRec (x1, x1+x2)))
-    in
-    LCons(1, lazy(LCons(1, lazy(lfibRec (1, 1)))))
+        LCons(x1+x2, lazy(lfibRec (x1, x1+x2))) in
+        LCons(1, lazy(LCons(1, lazy(lfibRec (1, 1)))))
     ;;
 
 ltake (10, lfib) = [1; 1; 2; 3; 5; 8; 13; 21; 34; 55];;
@@ -63,7 +62,6 @@ let lBreadth ltree =
         | LEmpty :: tail -> bfs tail
         | [] -> LNil
     in
-
     bfs [ltree]
     ;;
 
@@ -78,8 +76,10 @@ ltake (10, lBreadth(LEmpty)) = [];;
 
 (*zadanie 3b*)
 let rec lTree n =
-    LNode(n, (fun()-> lTree (2*n)), (fun()-> lTree (2*n+1)))
+    LNode(n, (fun()-> lTree (2*n)), (fun()-> lTree (2*n+1)) )
     ;;
 
 ltake (6, lBreadth (lTree 1)) = [1; 2; 3; 4; 5; 6];;
 ltake (8, lBreadth (lTree 5)) = [5; 10; 11; 20; 21; 22; 23; 40];;
+ltake (9, lBreadth LEmpty) = [];;
+

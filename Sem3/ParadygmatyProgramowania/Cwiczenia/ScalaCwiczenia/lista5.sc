@@ -30,7 +30,8 @@ lrepeat(4)(LazyList()).toList == Nil
 
 
 // Zadanie 2
-def lfib: LazyList[Int] = {
+// Powinno byc od 0
+val lfib: LazyList[Int] = {
     def lfibRec (x2: Int, x1: Int): LazyList[Int] = {
         (x1+x2) #:: lfibRec(x1, x1+x2)
     }
