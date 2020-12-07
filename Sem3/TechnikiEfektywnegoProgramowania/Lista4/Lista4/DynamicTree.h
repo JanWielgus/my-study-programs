@@ -22,7 +22,7 @@ private:
 public:
 	NodeDynamic()
 	{
-		// value = 0; // can't here
+		value = T();
 		parentNode = NULL;
 	}
 
@@ -65,7 +65,7 @@ public:
 		value = newValue;
 	}
 
-	int getValue()
+	T getValue()
 	{
 		return value;
 	}
