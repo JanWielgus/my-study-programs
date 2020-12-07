@@ -54,48 +54,47 @@ struct
 
     let empty() = []
 
-    let rec lookup xs _key =
+    let rec lookup xs key =
         match xs with
         | [] -> None
         | (k, elem)::tail ->
-            (match Key.compare _key k with
+            (match Key.compare key k with
             | LT -> None
             | EQ -> Some elem
-            | GT -> lookup tail _key
+            | GT -> lookup tail key
             )
         
 
-    let rec insert xs (_key, elem) =
-        let _ = raise (DuplicatedKey _key) in
+    let rec insert xs (key, elem) =
         match xs with
-        | [] -> [(_key, elem)]
+        | [] -> [(key, elem)]
         | (k, x)::tail ->
-            (match Key.compare _key k with
-            | LT -> (_key, elem) :: xs
-            | EQ -> raise (DuplicatedKey _key)
-            | GT -> (k, x) :: insert tail (_key, elem)
+            (match Key.compare key k with
+            | LT -> (key, elem) :: xs
+            | EQ -> raise (DuplicatedKey k)
+            | GT -> (k, x) :: insert tail (key, elem)
             )
 
 
-    let rec delete xs _key =
+    let rec delete xs key =
         match xs with
         | [] -> []
         | (k, x)::tail ->
-            (match Key.compare _key k with
+            (match Key.compare key k with
             | LT -> xs
             | EQ -> tail
-            | GT -> (k, x) :: delete tail _key
+            | GT -> (k, x) :: delete tail key
             )
 
     
-    let rec update xs (_key, elem) =
+    let rec update xs (key, elem) =
         match xs with
-        | [] -> [(_key, elem)]
+        | [] -> [(key, elem)]
         | (k, x)::tail ->
-            (match Key.compare _key k with
-            | LT -> xs
-            | EQ -> (_key, elem) :: tail
-            | GT -> (k, x) :: update tail (_key, elem)
+            (match Key.compare key k with
+            | LT -> (key, elem) :: xs
+            | EQ -> (key, elem) :: tail
+            | GT -> (k, x) :: update tail (key, elem)
             )
 
     
@@ -109,14 +108,13 @@ let ( <| ) d (k,x) = StringDict.update d (k,x);;
 
 let dict = StringDict.empty();;
 
-
 let dict = dict <| ("kot","cat")
                 <| ("slon","elephant")
                 <| ("pies","dog")
                 <| ("ptak","bird")
                 ;;
 
-let dict = dict <| ("kot","cat");;
+(* let dict = StringDict.insert dict ("kot","cat");; throws duplicated key exception *)
 
 StringDict.lookup dict "pies";;
 StringDict.lookup dict "papuga";;
@@ -124,5 +122,26 @@ let dict = dict <| ("papuga","parrot");;
 StringDict.lookup dict "papuga";;
 
 
+
+
+
 module IntDict = Dictionary(IntOrder);;
+
+let ( <| ) d (k,x) = IntDict.update d (k,x);;
+
+let dict = IntDict.empty();;
+
+let dict = dict <| (1, "czarny")
+                <| (2, "bialy")
+                <| (5, "czerwony")
+                ;;
+
+IntDict.lookup dict 5;;
+IntDict.lookup dict 4 = None;;
+
+IntDict.lookup dict 1;;
+let dict = IntDict.delete dict 1;;
+IntDict.lookup dict 1;;
+IntDict.lookup dict 2;;
+
 
