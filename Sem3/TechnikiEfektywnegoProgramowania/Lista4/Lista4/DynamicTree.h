@@ -60,7 +60,7 @@ public:
 			delete children[i];
 	}
 
-	void setValue(int newValue)
+	void setValue(T newValue)
 	{
 		value = newValue;
 	}
