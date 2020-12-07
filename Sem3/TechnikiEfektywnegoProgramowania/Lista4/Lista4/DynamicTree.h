@@ -22,14 +22,14 @@ private:
 public:
 	NodeDynamic()
 	{
-		value = 0;
+		// value = 0; // can't here
 		parentNode = NULL;
 	}
 
-	~NodeDynamic()
+	NodeDynamic(const T& initValue)
 	{
-		for (int i = 0; i < children.size(); i++)
-			delete children[i];
+		value = initValue;
+		parentNode = NULL;
 	}
 
 	NodeDynamic(const NodeDynamic& other)
@@ -52,6 +52,12 @@ public:
 				children.push_back(new NodeDynamic(*other.children[i]));
 		}
 		return *this;
+	}
+
+	~NodeDynamic()
+	{
+		for (int i = 0; i < children.size(); i++)
+			delete children[i];
 	}
 
 	void setValue(int newValue)
