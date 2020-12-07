@@ -15,8 +15,8 @@ template <class T>
 class NodeDynamic
 {
 private:
-	std::vector<NodeDynamic*> children;
-	NodeDynamic* parentNode;
+	std::vector<NodeDynamic<T>*> children;
+	NodeDynamic<T>* parentNode;
 	T value;
 
 public:
@@ -32,7 +32,7 @@ public:
 		parentNode = NULL;
 	}
 
-	NodeDynamic(const NodeDynamic& other)
+	NodeDynamic(const NodeDynamic<T>& other)
 	{
 		value = other.value;
 		parentNode = NULL;
@@ -41,7 +41,7 @@ public:
 			children.push_back(new NodeDynamic(*other.children[i]));
 	}
 
-	NodeDynamic& operator=(const NodeDynamic& other)
+	NodeDynamic<T>& operator=(const NodeDynamic<T>& other)
 	{
 		if (this != &other)
 		{
@@ -49,7 +49,7 @@ public:
 			parentNode = NULL;
 
 			for (int i = 0; i < other.children.size(); i++)
-				children.push_back(new NodeDynamic(*other.children[i]));
+				children.push_back(new NodeDynamic<T>(*other.children[i]));
 		}
 		return *this;
 	}
@@ -77,16 +77,16 @@ public:
 
 	void addNewChild()
 	{
-		addNewChild(new NodeDynamic());
+		addNewChild(new NodeDynamic<T>());
 	}
 
-	void addNewChild(NodeDynamic* nodeToAdd)
+	void addNewChild(NodeDynamic<T>* nodeToAdd)
 	{
 		nodeToAdd->parentNode = this;
 		children.push_back(nodeToAdd);
 	}
 
-	bool removeChild(const NodeDynamic* childToRemove)
+	bool removeChild(const NodeDynamic<T>* childToRemove)
 	{
 		for (int i = 0; i < children.size(); i++)
 			if (children[i] == childToRemove)
@@ -98,12 +98,12 @@ public:
 		return false;
 	}
 
-	NodeDynamic* getParent()
+	NodeDynamic<T>* getParent()
 	{
 		return parentNode;
 	}
 
-	NodeDynamic* getChild(int childIndex)
+	NodeDynamic<T>* getChild(int childIndex)
 	{
 		if (childIndex < 0 || childIndex >= children.size())
 			return NULL;
@@ -111,7 +111,7 @@ public:
 		return children[childIndex];
 	}
 
-	std::vector<NodeDynamic*>* getChildren()
+	std::vector<NodeDynamic<T>*>* getChildren()
 	{
 		return &children;
 	}
@@ -123,12 +123,12 @@ public:
 
 	void printAllBelow()
 	{
-		std::queue<NodeDynamic*> q;
+		std::queue<NodeDynamic<T>*> q;
 		q.push(this);
 
 		while (!q.empty())
 		{
-			NodeDynamic* curNode = q.front();
+			NodeDynamic<T>* curNode = q.front();
 			curNode->print();
 			std::cout << Consts::Space;
 			q.pop();
@@ -166,12 +166,12 @@ public:
 			delete root;
 	}
 
-	TreeDynamic(const TreeDynamic& other)
+	TreeDynamic(const TreeDynamic<T>& other)
 	{
 		root = new NodeDynamic<T>(*other.root);
 	}
 
-	TreeDynamic& operator=(const TreeDynamic& other)
+	TreeDynamic<T>& operator=(const TreeDynamic<T>& other)
 	{
 		if (this != &other)
 			root = new NodeDynamic<T>(*other.root);
