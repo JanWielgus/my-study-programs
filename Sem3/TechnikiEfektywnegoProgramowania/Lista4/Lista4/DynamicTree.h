@@ -60,7 +60,7 @@ public:
 			delete children[i];
 	}
 
-	void setValue(T newValue)
+	void setValue(const T& newValue)
 	{
 		value = newValue;
 	}
