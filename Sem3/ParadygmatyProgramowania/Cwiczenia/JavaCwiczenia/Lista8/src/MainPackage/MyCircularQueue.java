@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class MyCircularQueue<E> implements MyQueue<E>
 {
     private ArrayList<E> array;
-    private E NullElem;
     private int front; // index of the first element
     private int back; // index of the last element
     // queue is empty if back == -1
