@@ -1,5 +1,7 @@
 package MainPackage;
 
+// Jan Wielgus
+
 public class FullException extends Exception
 {
     public FullException()

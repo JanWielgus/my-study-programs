@@ -1,5 +1,7 @@
 package MainPackage;
 
+// Jan Wielgus
+
 public class EmptyException extends Exception
 {
     public EmptyException()

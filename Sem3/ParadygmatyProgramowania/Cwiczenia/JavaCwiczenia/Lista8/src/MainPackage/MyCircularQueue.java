@@ -1,5 +1,7 @@
 package MainPackage;
 
+// Jan Wielgus
+
 import java.util.ArrayList;
 
 /**

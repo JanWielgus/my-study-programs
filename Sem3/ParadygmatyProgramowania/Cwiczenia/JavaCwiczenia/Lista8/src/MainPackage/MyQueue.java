@@ -1,5 +1,7 @@
 package MainPackage;
 
+// Jan Wielgus
+
 public interface MyQueue<E>
 {
     void enqueue( E x ) throws FullException;
