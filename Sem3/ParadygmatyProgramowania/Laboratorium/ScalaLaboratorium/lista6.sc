@@ -12,7 +12,7 @@ def zgadnij (): Unit = {
         scala.io.StdIn.readInt()
     }
 
-    val random = r.nextInt(100)
+    val random = r.nextInt(101)
     var choosen = askForNumber()
 
     while (choosen != random) {
