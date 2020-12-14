@@ -24,7 +24,7 @@ public class Pies extends Zwierzak
     @Override
     public String pobierzRodzaj()
     {
-        return "Pies";
+        return "Pies"; // Mozna zamiast tego dostac sie do nazwy klasy
     }
 
     @Override
