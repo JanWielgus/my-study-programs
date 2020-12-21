@@ -46,8 +46,7 @@ class MyQueue[T] private(private val front: List[T], private val back: List[T])
 object MyQueue
 {
     def empty[T] = new MyQueue[T](Nil, Nil)
-    def apply[T](initList: List[T]) = new MyQueue[T](initList, Nil)
-    def apply[T]() = new MyQueue[T](Nil, Nil)
+    def apply[T](args: T*) = new MyQueue[T](args.toList, Nil)
 }
 
 
@@ -88,7 +87,7 @@ object Lista9
                 case _ => Nil
             }
         }
-        bfs(MyQueue(List(tree)))
+        bfs(MyQueue(tree))
     }
 
 
