@@ -16,6 +16,11 @@ vector<TreeDynamic<T>> splitTrees(NodeDynamic<T>* node);
 
 void splitTreesTest();
 
+void parentPolicyTests();
+
+template <class N>
+class ParentPolicy;
+
 
 
 
@@ -25,6 +30,10 @@ int main()
     cout << endl;
 
     splitTreesTest();
+    cout << endl;
+
+
+    parentPolicyTests();
     cout << endl;
 
     return 0;
@@ -135,6 +144,58 @@ void splitTreesTest()
         cout << testArray[i].getRoot()->getValue() << endl;
     cout << "Now rool has " << root.getChildrenNumber() << " children" << endl;
     cout << "test end" << endl;
+}
+
+
+
+
+
+template <class N>
+class ParentPolicy : public N
+{
+public:
+    N* GetParent()
+    {
+        return N::getParent();
+    }
+};
+
+
+class DummyNode
+{
+public:
+    DummyNode* getParent()
+    {
+        return NULL;
+    }
+};
+
+
+
+void parentPolicyTests()
+{
+    cout << "Parent Policy Tests " << endl;
+
+    NodeDynamic<int>* test = new ParentPolicy<NodeDynamic<int>>;
+    test->setValue(5);
+    test->print();
+    test->addNewChild(new ParentPolicy<NodeDynamic<int>>());
+    //test->addNewChild(new ParentPolicy<int>);
+
+    ParentPolicy<NodeDynamic<int>> testPolicy;
+    testPolicy.GetParent();
+    ParentPolicy<DummyNode> otherPolicy;
+    otherPolicy.GetParent();
+
+
+    vector<DummyNode> testVector;
+
+    ParentPolicy<DummyNode> ppDummy;
+    testVector.push_back(ppDummy);
+    testVector.push_back(ParentPolicy<DummyNode>());
+
+
+    delete test;
 }
 
 
