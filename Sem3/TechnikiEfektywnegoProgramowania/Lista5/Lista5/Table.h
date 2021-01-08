@@ -4,7 +4,6 @@
 
 class Table
 {
-private:
 	std::string name;
 	int* array;
 	int arraySize;
@@ -15,15 +14,18 @@ private:
 
 public:
 	Table();
-	Table(std::string name, int arrayLength);
+	Table(std::string name, int arraySize);
 	Table(const Table& other);
+	Table(Table&& toMove) noexcept;
 	~Table();
 	
 	Table& operator=(const Table& other);
-	Table operator+(const Table& other);
+	Table& operator=(Table&& toMove) noexcept;
+	
+	Table operator+(const Table& other) const;
 
-	Table& operator<<(int val);
-	Table& operator>>(int val);
+	Table operator<<(int val) const;
+	Table operator>>(int val) const;
 
 	void shiftLeft();
 	void shiftRight();

@@ -46,11 +46,18 @@ Table::Table(const Table& other)
 	printTextAndName(DmbConsts::CopyCtorMsg);
 }
 
-Table::Table(Table&& toMove)
+
+Table::Table(Table&& toMove) noexcept
 {
-	// TODO !!!!!! <<<<<<<<<
-	exit(0);
+	using std::move;
+	name = move(toMove.name);
+	array = toMove.array;
+	arraySize = toMove.arraySize;
+
+	toMove.array = NULL;
+	toMove.arraySize = 0;
 }
+
 
 Table::~Table()
 {
@@ -76,7 +83,24 @@ Table& Table::operator=(const Table& other)
 }
 
 
-Table Table::operator+(const Table& other)
+Table& Table::operator=(Table&& toMove) noexcept
+{
+	if (this != &toMove)
+	{
+		using std::move;
+		name = move(toMove.name);
+		array = toMove.array;
+		arraySize = toMove.arraySize;
+
+		toMove.array = NULL;
+		toMove.arraySize = 0;
+	}
+
+	return *this;
+}
+
+
+Table Table::operator+(const Table& other) const
 {
 	Table newTable;
 	newTable.setNewSize(arraySize + other.arraySize);
@@ -91,35 +115,33 @@ Table Table::operator+(const Table& other)
 }
 
 
-Table& Table::operator<<(int val)
+Table Table::operator<<(int val) const
 {
-	if (val == 0)
-		return *this;
+	Table result(*this);
 
 	if (val > 0)
 		while (val-- > 0)
-			shiftLeft();
+			result.shiftLeft();
 	else
 		while (val++ < 0)
-			shiftRight();
+			result.shiftRight();
 
-	return *this;
+	return std::move(result);
 }
 
 
-Table& Table::operator>>(int val)
+Table Table::operator>>(int val) const
 {
-	if (val == 0)
-		return *this;
+	Table result(*this);
 
 	if (val > 0)
 		while (val-- > 0)
-			shiftRight();
+			result.shiftRight();
 	else
 		while (val++ < 0)
-			shiftLeft();
+			result.shiftLeft();
 
-	return *this;
+	return std::move(result);
 }
 
 
@@ -152,7 +174,7 @@ void Table::shiftRight()
 
 void Table::setName(string name)
 {
-	this->name = name;
+	this->name = std::move(name);
 }
 
 
