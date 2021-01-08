@@ -27,8 +27,8 @@ void show2DimArray(int** array, int sizeX, int sizeY);
 void showDebugMessage(const char* prefix, bool flag);
 
 // exercise 4
-void modificate_tab(Table* tab, int newSize); // will modify
-void modificate_tab(Table tab, int newSize); // won't modify
+void modify_tab(Table* tab, int newSize); // will modify
+void modify_tab(Table tab, int newSize); // won't modify
 
 void testCTableStaticAndDynamicAllocation();
 
@@ -201,14 +201,14 @@ void showDebugMessage(const char* prefix, bool flag)
 
 
 
-void modificate_tab(Table* tab, int newSize)
+void modify_tab(Table* tab, int newSize)
 {
     tab->setNewSize(newSize);
 }
 
 
 
-void modificate_tab(Table tab, int newSize)
+void modify_tab(Table tab, int newSize)
 {
     tab.setNewSize(newSize);
 }

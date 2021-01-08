@@ -2,27 +2,27 @@
 
 class Tab
 {
-private:
 	static const int DefaultTabSize = 10;
 
 	int* array;
-	int size;
+	size_t size;
 
 
 public:
 	Tab();
 	Tab(const Tab& other);
-	Tab(Tab&& other);
+	Tab(Tab&& other) noexcept;
 	~Tab();
 
 	Tab& operator=(const Tab& other);
-	Tab& operator=(Tab&& other);
+	Tab& operator=(Tab&& other) noexcept;
 
-	bool setSize(int newSize);
-	int getSize();
+	bool setSize(size_t newSize);
+	int getSize() const;
 
 
 private:
-	void copy(const Tab& other);
+	static void copyArray(const int* source, int* dest, size_t size);
+	void destruct();
 };
 

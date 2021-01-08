@@ -11,6 +11,6 @@ public:
 
 	int increment();
 	int decrement();
-	int get();
+	int get() const;
 };
 

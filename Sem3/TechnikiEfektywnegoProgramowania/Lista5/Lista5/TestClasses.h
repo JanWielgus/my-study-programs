@@ -23,10 +23,10 @@ public:
 };
 
 
-class Foo : public Base
+class Derivative : public Base
 {
 public:
-    Foo()
+    Derivative()
     {
         val = 10;
     }

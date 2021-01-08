@@ -8,41 +8,64 @@
 template <class T>
 class MySmartPointer
 {
-private:
-	Counter* refCounter;
 	T* pointer;
+	Counter* refCounter;
 
 
 public:
 	MySmartPointer(T* pointer)
-		:MySmartPointer(pointer, new Counter())
 	{
+		setUpForNewPointer(pointer, new Counter());
 	}
 
 	MySmartPointer(const MySmartPointer& other)
 	{
-		pointer = other.pointer;
-		refCounter = other.refCounter;
-		refCounter->increment();
+		setUpForNewPointer(other.pointer, other.refCounter);
+	}
+
+	MySmartPointer(MySmartPointer&& toMove)
+	{
+		pointer = toMove.pointer;
+		refCounter = toMove.refCounter;
+		toMove.pointer = NULL;
+		toMove.refCounter = NULL;
 	}
 
 private:
 	MySmartPointer(T* pointer, Counter* refCounter)
 	{
-		this->pointer = pointer;
-		this->refCounter = refCounter;
-		refCounter->increment();
+		setUpForNewPointer(pointer, refCounter);
 	}
 
 public:
 
 	~MySmartPointer()
 	{
-		if (refCounter != NULL && refCounter->decrement() == 0)
+		destruct();
+	}
+
+	MySmartPointer& operator=(const MySmartPointer& other)
+	{
+		if (this != other)
 		{
-			delete pointer;
-			delete refCounter;
+			destruct();
+			setUpForNewPointer(other.pointer, other.refCounter);
 		}
+
+		return *this;
+	}
+
+	MySmartPointer& operator=(MySmartPointer&& toMove) noexcept
+	{
+		if (this != &toMove)
+		{
+			pointer = toMove.pointer;
+			refCounter = toMove.refCounter;
+			toMove.pointer = NULL;
+			toMove.refCounter = NULL;
+		}
+
+		return *this;
 	}
 
 	T& operator*()
@@ -55,22 +78,23 @@ public:
 		return pointer;
 	}
 
-	MySmartPointer& operator=(const MySmartPointer& other)
+
+private:
+	void setUpForNewPointer(T* pointer, Counter* refCounter)
 	{
-		if (&other != this)
+		this->pointer = pointer;
+		this->refCounter = refCounter;
+		refCounter->increment();
+	}
+	
+	
+	void destruct() const
+	{
+		if (refCounter != NULL && refCounter->decrement() == 0)
 		{
-			if (refCounter != NULL && refCounter->decrement() == 0)
-			{
-				delete pointer;
-				delete refCounter;
-			}
-
-			pointer = other.pointer;
-			refCounter = other.refCounter;
-			refCounter->increment();
+			delete pointer;
+			delete refCounter;
 		}
-
-		return *this;
 	}
 };
 

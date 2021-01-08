@@ -30,7 +30,7 @@ int Counter::decrement()
 }
 
 
-int Counter::get()
+int Counter::get() const
 {
 	return counter;
 }

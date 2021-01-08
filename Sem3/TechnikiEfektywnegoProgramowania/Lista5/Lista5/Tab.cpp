@@ -4,32 +4,31 @@
 
 Tab::Tab()
 {
-	array = new int[DefaultTabSize];
-	size = DefaultTabSize;
+	array = NULL;
+	setSize(DefaultTabSize);
 }
 
 
 Tab::Tab(const Tab& other)
 {
-	copy(other);
-	std::cout << "Copy ";
+	array = NULL;
+	setSize(other.size);
+	copyArray(other.array, array, other.size);
 }
 
 
-Tab::Tab(Tab&& other)
+Tab::Tab(Tab&& other) noexcept
 {
 	array = other.array;
 	size = other.size;
-	other.array = NULL;	
-	std::cout << "MOVE ";
+	other.array = NULL;
+	other.size = 0;
 }
 
 
 Tab::~Tab()
 {
-	if (array != NULL)
-		delete array;
-	std::cout << "Destr ";
+	destruct();
 }
 
 
@@ -37,45 +36,40 @@ Tab& Tab::operator=(const Tab& other)
 {
 	if (&other != this)
 	{
-		if (array != NULL) delete array;
-		copy(other);
-		std::cout << "op= ";
+		destruct();
+		setSize(other.size);
+		copyArray(other.array, array, other.size);
 	}
 
 	return *this;
 }
 
 
-Tab& Tab::operator=(Tab&& other)
+Tab& Tab::operator=(Tab&& other) noexcept
 {
 	if (&other != this)
 	{
+		destruct();
 		array = other.array;
 		size = other.size;
 		other.array = NULL;
-		std::cout << "MOVE op=";
+		other.size = 0;
 	}
 
 	return *this;
 }
 
 
-bool Tab::setSize(int newSize)
+bool Tab::setSize(size_t newSize)
 {
-	if (newSize <= 0)
-		return false;
-
-	if (newSize == size)
+	if (newSize == size && array != NULL)
 		return true;
 
 	int* newArray = new int[newSize];
 
-	if (array != NULL) // if (array  != nullptr)
+	if (array != NULL)
 	{
-		int copyUpperBound = newSize <= size ? newSize : size; // min
-		for (int i = 0; i < copyUpperBound; i++)
-			newArray[i] = array[i];
-
+		copyArray(array, newArray, std::min<size_t>(size, newSize));
 		delete[] array;
 	}
 
@@ -85,16 +79,21 @@ bool Tab::setSize(int newSize)
 }
 
 
-int Tab::getSize()
+int Tab::getSize() const
 {
 	return size;
 }
 
 
-void Tab::copy(const Tab& cOther)
+void Tab::copyArray(const int* source, int* dest, size_t size)
 {
-	array = new int[cOther.size];
-	size = cOther.size;
-	for (int ii = 0; ii < cOther.size; ii++)
-		array[ii] = cOther.array[ii];
+	for (size_t i = 0; i < size; i++)
+		dest[i] = source[i];
+}
+
+
+void Tab::destruct()
+{
+	if (array != NULL)
+		delete array;
 }
