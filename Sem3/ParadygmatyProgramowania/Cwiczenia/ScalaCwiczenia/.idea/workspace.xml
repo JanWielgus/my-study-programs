@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="53d99d3a-1452-4e4b-95c0-273918f5532f" name="Default Changelist" comment="" />
+    <list default="true" id="b164549f-69f8-4c7b-8d3e-52fcddc1abf7" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,29 +11,14 @@
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Scala Worksheet" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
-  <component name="ProjectId" id="1j0UcVjGj6CYVKEJD3R4gxfZzir" />
+  <component name="ProjectId" id="1mnAF52exU4tGvCKNE9rVh2clVZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Laboratorium/ScalaLaboratorium" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\janwi\Documents\GitHub\my-study-programs\Sem3\ParadygmatyProgramowania\Cwiczenia\ScalaCwiczenia" />
-    </key>
-  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -51,11 +36,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="53d99d3a-1452-4e4b-95c0-273918f5532f" name="Default Changelist" comment="" />
-      <created>1602940581225</created>
+      <changelist id="b164549f-69f8-4c7b-8d3e-52fcddc1abf7" name="Default Changelist" comment="" />
+      <created>1610118874252</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1602940581225</updated>
+      <updated>1610118874252</updated>
     </task>
     <servers />
   </component>
@@ -64,9 +49,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>

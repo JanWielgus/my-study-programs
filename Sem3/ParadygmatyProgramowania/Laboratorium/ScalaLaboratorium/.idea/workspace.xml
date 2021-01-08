@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8930c28e-2b0d-4dc6-b5fb-1937256845af" name="Default Changelist" comment="" />
+    <list default="true" id="1805fd0f-1576-4e01-843e-88cd9641d2b9" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,24 +11,23 @@
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Scala Object" />
-        <option value="Scala Worksheet" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
-  <component name="ProjectId" id="1j6F4abZOsOJuZGMcB9lFD05TYv" />
+  <component name="ProjectId" id="1mn9NA3RkcWI5DynpkQbUpCJEXj" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\janwi\Documents\GitHub\my-study-programs\Sem3\ParadygmatyProgramowania\Laboratorium\ScalaLaboratorium\src\worksheet" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -42,16 +41,36 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="Lista9" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="lista9.Lista9" />
+      <module name="ScalaLaboratorium" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lista9.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Lista9" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8930c28e-2b0d-4dc6-b5fb-1937256845af" name="Default Changelist" comment="" />
-      <created>1603116443054</created>
+      <changelist id="1805fd0f-1576-4e01-843e-88cd9641d2b9" name="Default Changelist" comment="" />
+      <created>1610118444594</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1603116443054</updated>
+      <updated>1610118444594</updated>
     </task>
     <servers />
   </component>
@@ -60,9 +79,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>

@@ -1,3 +1,5 @@
+package lista9
+
 // Jan Wielgus
 
 
@@ -66,7 +68,7 @@ object Lista9
         val testQueue = new MyQueue[Int]
         val testQueue2 = MyQueue[Int]()
         val testQueue3 = MyQueue.empty;
-        //val testQueue4 = MyQueue('a', 'b', 'c') // z wykladu 10
+        //val testQueue4 = lista9.MyQueue('a', 'b', 'c') // z wykladu 10
 
         println(breadthBT(tt) == List(1, 2, 3, 4, 5, 6))
         println(breadthBT(Node(0, Empty, Empty)) == List(0))
