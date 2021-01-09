@@ -5,27 +5,25 @@ package lista9.zadanie2a
 
 class Time (_hour: Int, _minute: Int) {
     private[this] var hrs: Int = _
+    private[this] var mins: Int = _
+    hour = _hour
+    minute = _minute
+
     def hour: Int = hrs
     def hour_=(newHour: Int): Unit = {
         require(newHour >= 0 && newHour < 24, s"newHour = $newHour")
         hrs = newHour
     }
 
-    private[this] var mins: Int = _
     def minute: Int = mins
     def minute_=(newMinute: Int): Unit = {
         require(newMinute >= 0 && newMinute < 60, s"newMinute = $newMinute")
         mins = newMinute
     }
 
-    hour = _hour
-    minute = _minute
+    private def timeInMinutes: Int = hour * 60 + minute
 
-    def before(other: Time): Boolean = {
-        if (hour < other.hour) true
-        else if (hour == other.hour && minute < other.minute) true
-        else false
-    }
+    def before(other: Time): Boolean = timeInMinutes < other.timeInMinutes
 }
 
 

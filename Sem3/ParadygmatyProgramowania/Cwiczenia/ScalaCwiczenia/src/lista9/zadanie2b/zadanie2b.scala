@@ -1,10 +1,13 @@
 package lista9.zadanie2b
 
-
 // Jan Wielgus
+
 
 class Time (_hour: Int, _minute: Int) {
     private[this] var minutesFromMidnight: Int = _
+    hour = _hour
+    minute = _minute
+
     def hour: Int = minutesFromMidnight / 60
     def hour_=(newHour: Int): Unit = {
         require(newHour >= 0 && newHour < 24, s"newHour = $newHour")
@@ -17,14 +20,9 @@ class Time (_hour: Int, _minute: Int) {
         minutesFromMidnight = hour * 60 + newMinute
     }
 
-    hour = _hour
-    minute = _minute
+    private def timeInMinutes: Int = minutesFromMidnight
 
-    def before(other: Time): Boolean = {
-        if (hour < other.hour) true
-        else if (hour == other.hour && minute < other.minute) true
-        else false
-    }
+    def before(other: Time): Boolean = timeInMinutes < other.timeInMinutes
 }
 
 
