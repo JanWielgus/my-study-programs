@@ -79,6 +79,28 @@ public:
 	}
 
 
+	template <class A>
+	friend class MySmartPointer;
+
+
+	template <class Dst>
+	static MySmartPointer<Dst> dynamicCast(const MySmartPointer<T>& toCast)
+	{
+		MySmartPointer<Dst> newSmart(dynamic_cast<Dst*>(toCast.pointer), toCast.refCounter);
+		return newSmart;
+	}
+
+	
+	template <class Dst>
+	static MySmartPointer<Dst> dynamicCast(MySmartPointer<T>&& toCast)
+	{
+		MySmartPointer<Dst> newSmart(dynamic_cast<Dst*>(toCast.pointer), toCast.refCounter);
+		toCast.pointer = NULL;
+		toCast.refCounter = NULL;
+		return newSmart;
+	}
+
+
 private:
 	void setUpForNewPointer(T* pointer, Counter* refCounter)
 	{

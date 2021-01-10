@@ -100,18 +100,17 @@ Table& Table::operator=(Table&& toMove) noexcept
 }
 
 
-Table Table::operator+(const Table& other) const
+Table Table::operator+(Table other) const
 {
-	Table newTable;
-	newTable.setNewSize(arraySize + other.arraySize);
+	other.setNewSize(arraySize + other.arraySize);
 	
 	for (int i = 0; i < arraySize; i++)
-		newTable.array[i] = array[i];
+		other.array[i] = array[i];
 
 	for (int i = 0; i < other.arraySize; i++)
-		newTable.array[arraySize + i] = other.array[i];
+		other.array[arraySize + i] = other.array[i];
 	
-	return std::move(newTable);
+	return other;
 }
 
 
@@ -126,7 +125,7 @@ Table Table::operator<<(int val) const
 		while (val++ < 0)
 			result.shiftRight();
 
-	return std::move(result);
+	return result;
 }
 
 
@@ -141,7 +140,7 @@ Table Table::operator>>(int val) const
 		while (val++ < 0)
 			result.shiftLeft();
 
-	return std::move(result);
+	return result;
 }
 
 
