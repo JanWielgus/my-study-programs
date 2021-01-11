@@ -59,6 +59,8 @@ public:
 	{
 		if (this != &toMove)
 		{
+			destruct();
+			
 			pointer = toMove.pointer;
 			refCounter = toMove.refCounter;
 			toMove.pointer = NULL;
