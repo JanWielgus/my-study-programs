@@ -49,8 +49,7 @@ Table::Table(const Table& other)
 
 Table::Table(Table&& toMove) noexcept
 {
-	using std::move;
-	name = move(toMove.name);
+	name = std::move(toMove.name);
 	array = toMove.array;
 	arraySize = toMove.arraySize;
 
@@ -87,8 +86,10 @@ Table& Table::operator=(Table&& toMove) noexcept
 {
 	if (this != &toMove)
 	{
-		using std::move;
-		name = move(toMove.name);
+		if (array)
+			delete[] array;
+		
+		name = std::move(toMove.name);
 		array = toMove.array;
 		arraySize = toMove.arraySize;
 
@@ -100,17 +101,18 @@ Table& Table::operator=(Table&& toMove) noexcept
 }
 
 
-Table Table::operator+(Table other) const
+Table Table::operator+(const Table& other) const
 {
-	other.setNewSize(arraySize + other.arraySize);
+	Table newTable;
+	newTable.setNewSize(arraySize + other.arraySize);
 	
 	for (int i = 0; i < arraySize; i++)
-		other.array[i] = array[i];
+		newTable.array[i] = array[i];
 
 	for (int i = 0; i < other.arraySize; i++)
-		other.array[arraySize + i] = other.array[i];
+		newTable.array[arraySize + i] = other.array[i];
 	
-	return other;
+	return newTable;
 }
 
 
@@ -191,8 +193,7 @@ bool Table::setNewSize(int newArraySize)
 
 	if (array) // if (array  != nullptr)
 	{
-		int copyUpperBound = newArraySize < arraySize ? newArraySize : arraySize; // min
-		for (int i = 0; i < copyUpperBound; i++)
+		for (int i = 0; i < std::min<int>(arraySize, newArraySize); i++)
 			newArray[i] = array[i];
 
 		delete[] array;

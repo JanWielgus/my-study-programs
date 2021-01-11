@@ -46,7 +46,7 @@ public:
 
 	MySmartPointer& operator=(const MySmartPointer& other)
 	{
-		if (this != other)
+		if (this != &other)
 		{
 			destruct();
 			setUpForNewPointer(other.pointer, other.refCounter);

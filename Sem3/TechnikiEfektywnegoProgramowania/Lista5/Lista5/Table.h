@@ -22,7 +22,7 @@ public:
 	Table& operator=(const Table& other);
 	Table& operator=(Table&& toMove) noexcept;
 	
-	Table operator+(Table other) const;
+	Table operator+(const Table& other) const;
 
 	Table operator<<(int val) const;
 	Table operator>>(int val) const;
