@@ -51,7 +51,7 @@ int main()
 
     MySmartPointer<Derivative> fooMovedFromBase = MySmartPointer<Base>::dynamicCast<Derivative>(std::move(basePtrToMove));
 
-    //basePtrToMove->showVal(); // <---- throw exception
+    //basePtrToMove->showVal(); // <---- throw exception (it should)
 
     fooMovedFromBase->showVal();
 

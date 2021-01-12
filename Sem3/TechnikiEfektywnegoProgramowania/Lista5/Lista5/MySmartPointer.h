@@ -88,7 +88,7 @@ public:
 	template <class Dst>
 	static MySmartPointer<Dst> dynamicCast(const MySmartPointer<T>& toCast)
 	{
-		MySmartPointer<Dst> newSmart(dynamic_cast<Dst*>(toCast.pointer), toCast.refCounter);
+		MySmartPointer<Dst> newSmart(dynamic_cast<Dst*>(toCast.pointer), toCast.refCounter); // dynamic cast can return nullptr
 		return newSmart;
 	}
 
@@ -96,7 +96,7 @@ public:
 	template <class Dst>
 	static MySmartPointer<Dst> dynamicCast(MySmartPointer<T>&& toCast)
 	{
-		MySmartPointer<Dst> newSmart(dynamic_cast<Dst*>(toCast.pointer), toCast.refCounter);
+		MySmartPointer<Dst> newSmart(dynamic_cast<Dst*>(toCast.pointer), toCast.refCounter); // dynamic cast can return nullptr
 		toCast.pointer = NULL;
 		toCast.refCounter = NULL;
 		return newSmart;
