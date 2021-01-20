@@ -1,4 +1,4 @@
-package MainPackage;
+package lista8;
 
 // Jan Wielgus
 
