@@ -1,7 +1,11 @@
+package lista12
+
 // Jan Wielgus
 
 import akka.actor._
 
+
+// zadanie 1
 
 class Player (ID: Int) extends Actor
 {
@@ -13,6 +17,8 @@ class Player (ID: Int) extends Actor
                 println("ping")
                 sender() ! Player.Ping(nextPingNum)
             }
+
+        case other => println(s"Wrong message: $other")
     }
 }
 
@@ -33,3 +39,4 @@ object Main extends App {
     Thread.sleep(1000)
     actorSystem.terminate()
 }
+
