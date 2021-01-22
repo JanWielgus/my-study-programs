@@ -8,11 +8,10 @@ package zadanie2 {
     class Player (val num: Int, val players: Array[ActorRef]) extends Actor {
         override def receive = {
             case Player.Ball(count) =>
-                println(s"Throw number: $count. Throwing player number $num")
+                println(s"Throws counter: $count. Throwing player number $num")
                 val nextPlayerIdx = Player.rand.nextInt(players.length - 1)
-                println(s"next player idx: $nextPlayerIdx")
                 val newBallMessage = Player.Ball(count + 1)
-                if (nextPlayerIdx < players.length)
+                if (nextPlayerIdx < num)
                     players(nextPlayerIdx) ! newBallMessage
                 else
                     players(nextPlayerIdx + 1) ! newBallMessage
