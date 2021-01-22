@@ -1,4 +1,4 @@
-package MainPackage;
+package lista8;
 
 // Jan Wielgus
 
@@ -49,6 +49,7 @@ public class MyCircularQueue<E> implements MyQueue<E>
             back = -1;
         else
         {
+            array.set(front, null);
             front++;
             front %= array.size();
         }
