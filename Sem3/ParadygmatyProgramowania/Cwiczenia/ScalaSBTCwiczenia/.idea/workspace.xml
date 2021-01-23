@@ -97,6 +97,7 @@
     </option>
     <option name="modificationStamps">
       <map>
+        <entry key="$PROJECT_DIR$" value="3222665350271" />
         <entry key="$PROJECT_DIR$/build.sbt" value="2057688949" />
         <entry key="$PROJECT_DIR$/project/build.properties" value="3805757366" />
       </map>
@@ -120,7 +121,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

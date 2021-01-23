@@ -63,7 +63,7 @@
       <module name="JavaCwiczenia" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="lista11.zadanie1.*" />
+          <option name="PATTERN" value="lista11.zadanie2b.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

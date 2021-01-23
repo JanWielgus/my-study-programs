@@ -1,4 +1,4 @@
-package lista11.zadanie1;
+package lista11.zadanie2b;
 
 import java.util.concurrent.Semaphore;
 
@@ -10,6 +10,7 @@ class IntCell {
     public int getN() {return n;}
     public void setN(int n) {this.n = n;}
 }
+
 class Count extends Thread {
     private static IntCell n = new IntCell();
 
