@@ -6,13 +6,57 @@ class DuplicatedKey(msg: String) extends Exception(msg)
 
 class Dictionary[K, V] private (private val rep: List[(K, V)])(implicit ev: K => Ordered[K]){
 
-    def lookup(key: K): Option[V] = ???
+    def lookup(key: K): Option[V] = {
+        @scala.annotation.tailrec
+        def lookupRec(xs: List[(K, V)], key: K): Option[V] = {
+            if (xs == Nil) None
+            else {
+                val (k, elem) :: tail = xs
 
-    def insert(keyValue: (K,V)): Dictionary[K, V] = ???
+                if (key < k) None
+                else if (key == k) Some(elem)
+                else lookupRec(tail, key)
+            }
+        }
 
-    def delete(key: K): Dictionary[K, V] = ???
+        lookupRec(rep, key)
+    }
 
-    override def toString: String = ???
+    def insert(keyValue: (K,V)): Dictionary[K, V] = {
+        def insertRec(xs: List[(K, V)], keyValue: (K,V)): List[(K, V)] = {
+            val (key, elem) = keyValue
+            if (xs == Nil) (key, elem) :: Nil
+            else {
+                val (k, x) :: tail = xs
+
+                if (key < k) (key, elem) :: xs
+                else if (key == k) throw new DuplicatedKey(s"Key $key is duplicated.")
+                else (k, x) :: insertRec(tail, (key, elem))
+            }
+        }
+
+        new Dictionary[K, V] (insertRec(rep, keyValue)) (ev)
+    }
+
+    def delete(key: K): Dictionary[K, V] = {
+        def deleteRec(xs: List[(K, V)], key: K): List[(K, V)] = {
+            if (xs == Nil) Nil
+            else {
+                val (k, x) :: tail = xs
+
+                if (key < k) xs
+                else if (key == k) tail
+                else (k, x) :: deleteRec(tail, key)
+            }
+        }
+
+        new Dictionary[K, V] (deleteRec(rep, key)) (ev)
+    }
+
+    override def toString: String = {
+        rep.map(keyVal => s"${keyVal._1} -> ${keyVal._2}")
+            .foldLeft("")((acc, keyVal) => acc + keyVal + ", ")
+    }
 }
 
 object Dictionary {
@@ -20,7 +64,10 @@ object Dictionary {
         new Dictionary[K, V](elems.toList)(ev)
 }
 
-/*
+
+
+
+
 object TestDict {
   //class Point( ... }
 
@@ -39,4 +86,4 @@ object TestDict {
     //println(points.insert(new Point(0.5,0)-> "p0.5"))
   }
 }
-*/
+
