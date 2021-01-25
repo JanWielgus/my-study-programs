@@ -54,8 +54,9 @@ class Dictionary[K, V] private (private val rep: List[(K, V)])(implicit ev: K =>
     }
 
     override def toString: String = {
+        "Dictionary(" +
         rep.map(keyVal => s"${keyVal._1} -> ${keyVal._2}")
-            .foldLeft("")((acc, keyVal) => acc + keyVal + ", ")
+            .foldLeft("")((acc, keyVal) => acc + keyVal + ", ") + ")"
     }
 }
 
@@ -69,21 +70,30 @@ object Dictionary {
 
 
 object TestDict {
-  //class Point( ... }
+    class Point(var x:Double = 0.0, var y:Double = 0.0) extends Ordered[Point] {
+        @Override
+        def compare(that: Point) =
+            if (x < that.x || x == that.x && y < that.y) -1
+            else if (x == that.x && y == that.y) 0 else 1
+        override def toString = "[" + x + ", " + y + "]"
+    }
 
-  def main(args: Array[String]): Unit = {
-    val dict = Dictionary("pies"->"dog", "kot"->"cat", "slon"->"elephant", "ptak"->"bird")
-    println(dict)
-    println(dict.lookup("pies"))
-    println(dict.lookup("papuga"))
-    val dict1 = dict.insert("papuga"->"parrot")
-    println(dict1)
-    println(dict1.lookup("papuga"))
-    println(dict1.delete("papuga"))
+    def main(args: Array[String]): Unit = {
+        val dict = Dictionary("pies"->"dog", "kot"->"cat", "slon"->"elephant", "ptak"->"bird")
+        println(dict)
+        println(dict.lookup("pies"))
+        println(dict.lookup("papuga"))
+        val dict1 = dict.insert("papuga"->"parrot")
+        println(dict1)
+        println(dict1.lookup("papuga"))
+        println(dict1.delete("papuga"))
 
-    //val points = Dictionary(new Point(1,1) -> "p11", new Point -> "p00")
-    //println(points)
-    //println(points.insert(new Point(0.5,0)-> "p0.5"))
-  }
+        println("\n<<< Point tests >>>\n")
+
+        val points = Dictionary(new Point(1,1) -> "p11", new Point -> "p00")
+        println(points)
+        println(points.insert(new Point(0.5,0)-> "p0.5"))
+        println(points.lookup(new Point))
+    }
 }
 
