@@ -16,7 +16,7 @@ sealed abstract class MyList[+A] {
    * @return a list which contains x as first element and which continues with this list. 
    * @example 1 :: MyList(2, 3) = MyList(2, 3).::(1) = MyList(1, 2, 3)
    */
-    def ::[S >: A](elem: S): MyList[S] = lista10.::(elem, this)
+    def ::[S >: A](elem: S): MyList[S] = elem :: this
 
   /**
    * Adds the elements of a given list in front of this list.

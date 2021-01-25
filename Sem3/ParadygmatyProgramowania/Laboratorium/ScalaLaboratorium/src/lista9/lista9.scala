@@ -7,13 +7,11 @@ package lista9
 
 class MyQueue[T] private(private val front: List[T], private val back: List[T])
 {
-    def makeNormal(f: List[T], b: List[T]): MyQueue[T] = {
-        if (f == Nil) new MyQueue(b.reverse, Nil)
-        else new MyQueue(f, b)
-    }
-
     def enqueue(elem: T): MyQueue[T] = {
-        makeNormal(front, elem :: back)
+        if (front == Nil)
+            new MyQueue[T](elem::Nil, back)
+        else
+            new MyQueue[T](front, elem::back)
     }
 
     def first: T = {
@@ -32,7 +30,7 @@ class MyQueue[T] private(private val front: List[T], private val back: List[T])
 
     def dequeue: MyQueue[T] = {
         front match {
-            case Nil => new MyQueue[T](Nil, Nil)
+            case Nil => this
             case _::Nil => new MyQueue[T](back.reverse, Nil)
             case _::t => new MyQueue[T](t, back)
         }
@@ -80,13 +78,10 @@ object Lista9
 
     def breadthBT[A](tree: BT[A]): List[A] = {
         def bfs (queue: MyQueue[BT[A]]): List[A] = {
-            if (queue.isEmpty) Nil
-            else queue.first match {
-                case Node (value, Empty, Empty) => value :: bfs(queue.dequeue)
-                case Node (value, n1, Empty) => value :: bfs(queue.dequeue.enqueue(n1))
-                case Node (value, Empty, n2) => value :: bfs(queue.dequeue.enqueue(n2))
-                case Node (value, n1, n2) => value :: bfs(queue.dequeue.enqueue(n1).enqueue(n2))
-                case _ => Nil
+            queue.firstOption match {
+                case None => Nil
+                case Some(Empty) => bfs(queue.dequeue)
+                case Some(Node(value, n1, n2)) => value :: bfs(queue.dequeue.enqueue(n1).enqueue(n2))
             }
         }
         bfs(MyQueue(tree))
