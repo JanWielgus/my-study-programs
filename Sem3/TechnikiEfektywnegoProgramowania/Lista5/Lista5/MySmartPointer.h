@@ -46,7 +46,7 @@ public:
 
 	MySmartPointer& operator=(const MySmartPointer& other)
 	{
-		if (this != other)
+		if (this != &other)
 		{
 			destruct();
 			setUpForNewPointer(other.pointer, other.refCounter);
@@ -59,6 +59,8 @@ public:
 	{
 		if (this != &toMove)
 		{
+			destruct();
+			
 			pointer = toMove.pointer;
 			refCounter = toMove.refCounter;
 			toMove.pointer = NULL;
@@ -76,6 +78,28 @@ public:
 	T* operator->()
 	{
 		return pointer;
+	}
+
+
+	template <class A>
+	friend class MySmartPointer;
+
+
+	template <class Dst>
+	static MySmartPointer<Dst> dynamicCast(const MySmartPointer<T>& toCast)
+	{
+		MySmartPointer<Dst> newSmart(dynamic_cast<Dst*>(toCast.pointer), toCast.refCounter); // dynamic cast can return nullptr
+		return newSmart;
+	}
+
+	
+	template <class Dst>
+	static MySmartPointer<Dst> dynamicCast(MySmartPointer<T>&& toCast)
+	{
+		MySmartPointer<Dst> newSmart(dynamic_cast<Dst*>(toCast.pointer), toCast.refCounter); // dynamic cast can return nullptr
+		toCast.pointer = NULL;
+		toCast.refCounter = NULL;
+		return newSmart;
 	}
 
 
