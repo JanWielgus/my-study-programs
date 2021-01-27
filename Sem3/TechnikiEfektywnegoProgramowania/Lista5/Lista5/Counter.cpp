@@ -18,14 +18,14 @@ Counter::Counter(int initialValue)
 
 int Counter::increment()
 {
-	cout << "\tCounter: " << counter+1 << endl;
+	//cout << "\tCounter: " << counter+1 << endl;
 	return ++counter;
 }
 
 
 int Counter::decrement()
 {
-	cout << "\tCounter: " << counter-1 << endl;
+	//cout << "\tCounter: " << counter-1 << endl;
 	return --counter;
 }
 
