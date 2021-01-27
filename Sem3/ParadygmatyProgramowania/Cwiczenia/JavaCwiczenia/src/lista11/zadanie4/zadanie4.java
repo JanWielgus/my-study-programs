@@ -72,15 +72,17 @@ class Philosopher extends Thread
 
 
 class Main {
+    static final int PhilosophersAmt = 5;
+
     public static void main(String[] args) {
         Semaphore diningRoomDoorman = new Semaphore(4, true);
 
-        Semaphore[] chopsticks = new Semaphore[5];
+        Semaphore[] chopsticks = new Semaphore[PhilosophersAmt];
         for (int i = 0; i < chopsticks.length; i++)
             chopsticks[i] = new Semaphore(1, true);
 
-        Philosopher[] philosophers = new Philosopher[5];
-        philosophers[0] = new Philosopher(chopsticks[4], chopsticks[0], diningRoomDoorman);
+        Philosopher[] philosophers = new Philosopher[PhilosophersAmt];
+        philosophers[0] = new Philosopher(chopsticks[PhilosophersAmt - 1], chopsticks[0], diningRoomDoorman);
         for (int i = 1; i < philosophers.length; i++)
             philosophers[i] = new Philosopher(chopsticks[i - 1], chopsticks[i], diningRoomDoorman);
 
