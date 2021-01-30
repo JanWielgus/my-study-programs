@@ -13,8 +13,8 @@ class Dictionary[K, V] private (private val rep: List[(K, V)])(implicit ev: K =>
             else {
                 val (k, elem) :: tail = xs
 
-                if (key < k) None
-                else if (key == k) Some(elem)
+                if (key.compare(k) < 0) None
+                else if (key.compare(k) == 0) Some(elem)
                 else lookupRec(tail, key)
             }
         }
@@ -29,8 +29,8 @@ class Dictionary[K, V] private (private val rep: List[(K, V)])(implicit ev: K =>
             else {
                 val (k, x) :: tail = xs
 
-                if (key < k) (key, elem) :: xs
-                else if (key == k) throw new DuplicatedKey(s"Key $key is duplicated.")
+                if (key.compare(k) < 0) (key, elem) :: xs
+                else if (key.compare(k) == 0) throw new DuplicatedKey(s"Key $key is duplicated.")
                 else (k, x) :: insertRec(tail, (key, elem))
             }
         }
@@ -44,8 +44,8 @@ class Dictionary[K, V] private (private val rep: List[(K, V)])(implicit ev: K =>
             else {
                 val (k, x) :: tail = xs
 
-                if (key < k) xs
-                else if (key == k) tail
+                if (key.compare(k) < 0) xs
+                else if (key.compare(k) == 0) tail
                 else (k, x) :: deleteRec(tail, key)
             }
         }
@@ -62,7 +62,7 @@ class Dictionary[K, V] private (private val rep: List[(K, V)])(implicit ev: K =>
 
 object Dictionary {
     def apply[K, V](elems: (K, V)*)(implicit ev: K => Ordered[K]): Dictionary[K, V] =
-        new Dictionary[K, V](elems.toList)(ev)
+        elems.toList.foldLeft(new Dictionary[K, V](Nil)(ev))((dict, keyVal) => dict.insert(keyVal))
 }
 
 
@@ -72,9 +72,12 @@ object Dictionary {
 object TestDict {
     class Point(var x:Double = 0.0, var y:Double = 0.0) extends Ordered[Point] {
         @Override
-        def compare(that: Point) =
+        def compare(that: Point) = {
+            //println("compare method was called")
             if (x < that.x || x == that.x && y < that.y) -1
             else if (x == that.x && y == that.y) 0 else 1
+        }
+
         override def toString = "[" + x + ", " + y + "]"
     }
 
@@ -94,6 +97,7 @@ object TestDict {
         println(points)
         println(points.insert(new Point(0.5,0)-> "p0.5"))
         println(points.lookup(new Point))
+        //points.insert(new Point(1, 1) -> "asdf") // throws DuplicatedKey exception
     }
 }
 
