@@ -63,9 +63,10 @@ class Point (private[this] var corX: Int = 0,
     override def toString: String = s"cords: [$x, $y]"
 }
 
-class Circle (private[this] var r: Int, x: Int, y: Int) extends Point(x, y) {
+class Circle (private[this] var r: Int = 1, x: Int, y: Int) extends Point(x, y) {
     def radius: Int = r
     def radius_=(newRadius: Int): this.type = {
+        require(newRadius > 0, s"radius $newRadius have to be positive")
         r = newRadius
         this
     }
@@ -73,9 +74,10 @@ class Circle (private[this] var r: Int, x: Int, y: Int) extends Point(x, y) {
     override def toString: String = super.toString + s" radius: $radius"
 }
 
-class Cylinder (private[this] var h: Int, r: Int, x: Int, y: Int) extends Circle(r, x, y) {
+class Cylinder (private[this] var h: Int = 1, r: Int, x: Int, y: Int) extends Circle(r, x, y) {
     def height: Int = h
     def height_=(newHeight: Int): this.type = {
+        require(newHeight > 0, s"height $newHeight have to be positive")
         h = newHeight
         this
     }
